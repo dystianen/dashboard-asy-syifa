@@ -1,6 +1,7 @@
 <ul
-    class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+    class="navbar-nav sidebar sidebar-dark accordion"
     id="accordionSidebar"
+    style="background-color: #ff9106"
 >
     <!-- Sidebar - Brand -->
     <a
@@ -15,7 +16,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item text-white">
         <a
             class="nav-link"
             href="/admin"
@@ -32,7 +33,7 @@
             href="/admin/users"
         >
             <i class="fas fa-fw fa-table"></i>
-            <span>Users</span></a>
+            <span>Karyawan</span></a>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

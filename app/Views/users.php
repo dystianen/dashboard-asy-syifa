@@ -2,27 +2,39 @@
 <?= $this->section('content') ?>
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-        For more information about DataTables, please visit the <a
-            target="_blank"
-            href="https://datatables.net"
-        >official DataTables documentation</a>.</p> -->
+    <div class="d-sm-flex flex-column mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Karyawan</h1>
 
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-            <li
-                class="breadcrumb-item active"
-                aria-current="page"
-            >Users</li>
-        </ol>
-    </nav>
+        <nav aria-label="breadcrumb">
+            <ol
+                class="breadcrumb"
+                style="background-color: none"
+            >
+                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                <li
+                    class="breadcrumb-item active"
+                    aria-current="page"
+                >Karyawan</li>
+            </ol>
+        </nav>
+    </div>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Users</h6>
+            <form class="d-flex justify-content-between">
+                <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    style="width: 25%"
+                >
+                <button
+                    class="btn btn-primary"
+                    type="submit"
+                >Filter</button>
+            </form>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -34,42 +46,42 @@
                 >
                     <thead>
                         <tr>
-                            <th>NIP</th>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Nama</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Tempat/Tanggal Lahir</th>
+                            <th>Kewarganegaraan</th>
+                            <th>Pendidikan Terakhir</th>
+                            <th>Alamat</th>
+                            <th>Divisi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>109091</td>
-                            <td>Shad Decker</td>
-                            <td>Regional Director</td>
+                            <td>Dystian</td>
+                            <td>Laki-Laki</td>
+                            <td>Ngawi, 14 April 2003</td>
+                            <td>Indonesia</td>
+                            <td>S1</td>
+                            <td>Ngawi</td>
+                            <td>Programmer</td>
+                        </tr>
+                        <tr>
+                            <td>Eka Trisnawati</td>
+                            <td>Laki-Laki</td>
+                            <td>Ngawi, 14 April 2003</td>
+                            <td>Indonesia</td>
+                            <td>S1</td>
+                            <td>Ngawi</td>
+                            <td>Programmer</td>
+                        </tr>
+                        <tr>
                             <td>Edinburgh</td>
-                            <td>51</td>
-                            <td>2008/11/13</td>
-                            <td>$183,000</td>
-                        </tr>
-                        <tr>
-                            <td>199191</td>
-                            <td>Michael Bruce</td>
-                            <td>Javascript Developer</td>
-                            <td>Singapore</td>
-                            <td>29</td>
-                            <td>2011/06/27</td>
-                            <td>$183,000</td>
-                        </tr>
-                        <tr>
-                            <td>190109</td>
-                            <td>Donna Snider</td>
-                            <td>Customer Support</td>
-                            <td>New York</td>
-                            <td>27</td>
-                            <td>2011/01/25</td>
-                            <td>$112,000</td>
+                            <td>Laki-Laki</td>
+                            <td>Ngawi, 14 April 2003</td>
+                            <td>Indonesia</td>
+                            <td>S1</td>
+                            <td>Ngawi</td>
+                            <td>Programmer</td>
                         </tr>
                     </tbody>
                 </table>
