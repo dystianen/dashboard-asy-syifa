@@ -30,8 +30,12 @@ $routes->setAutoRoute(true);
  */
 
 // We get a performance increase by specifying the default
-// route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+// route since we don't have to scan directories.s
+
+$routes->group('admin', static function ($routes) {
+    $routes->get('/', 'Home::index');
+    $routes->get('contract', 'Home::contract');
+});
 
 /*
  * --------------------------------------------------------------------
