@@ -9,8 +9,8 @@ class Home extends BaseController
         return view('dashboard');
     }
 
-    public function contract()
+    public function user()
     {
-        echo view('welcome_message');
+        echo view('users');
     }
 }

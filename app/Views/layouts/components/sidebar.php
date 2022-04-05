@@ -18,7 +18,7 @@
     <li class="nav-item active">
         <a
             class="nav-link"
-            href="/"
+            href="/admin"
         >
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -29,10 +29,10 @@
     <li class="nav-item">
         <a
             class="nav-link"
-            href="/contract"
+            href="/admin/users"
         >
             <i class="fas fa-fw fa-table"></i>
-            <span>Contacts</span></a>
+            <span>Users</span></a>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

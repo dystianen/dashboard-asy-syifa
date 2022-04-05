@@ -19,7 +19,7 @@
         name="author"
         content=""
     >
-    <title>Codeigniter 4 - Dashboard</title>
+    <title>Absensi Karyawan</title>
     <!-- Custom fonts for this template-->
     <link
         href="<?= base_url() ?>/assets/vendor/fontawesome-free/css/all.min.css"
@@ -64,7 +64,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Codelapan <?= Date('Y') ?> </span>
+                        <span>Absensi &copy; <?= Date('Y') ?> </span>
                     </div>
                 </div>
             </footer>
