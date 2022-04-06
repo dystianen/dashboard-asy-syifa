@@ -8,6 +8,6 @@ class Login extends BaseController
 {
     public function index()
     {
-        echo view('login');
+        echo view('layouts/pages/login');
     }
 }

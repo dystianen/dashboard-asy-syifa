@@ -34,7 +34,8 @@ $routes->setAutoRoute(true);
 $routes->get('/login', 'Login::index');
 $routes->group('admin', static function ($routes) {
     $routes->get('/', 'Home::index');
-    $routes->get('users', 'User::index');
+    $routes->get('employee', 'Employee::index');
+    $routes->get('job', 'Job::index');
 });
 
 /*

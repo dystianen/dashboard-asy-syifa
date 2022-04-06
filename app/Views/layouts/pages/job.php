@@ -1,9 +1,9 @@
-<?= $this->extend('layouts/admin') ?>
+<?= $this->extend('layouts/app') ?>
 <?= $this->section('content') ?>
 <div class="container-fluid">
 
     <div class="d-sm-flex flex-column mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Karyawan</h1>
+        <h1 class="h3 mb-0 text-gray-800">Job</h1>
 
         <nav aria-label="breadcrumb">
             <ol
@@ -14,7 +14,7 @@
                 <li
                     class="breadcrumb-item active"
                     aria-current="page"
-                >Karyawan</li>
+                >Job</li>
             </ol>
         </nav>
     </div>
@@ -46,42 +46,26 @@
                 >
                     <thead>
                         <tr>
-                            <th>Nama</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Tempat/Tanggal Lahir</th>
-                            <th>Kewarganegaraan</th>
-                            <th>Pendidikan Terakhir</th>
-                            <th>Alamat</th>
-                            <th>Divisi</th>
+                            <th>Job Type</th>
+                            <th>Description</th>
+                            <th>Point</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Dystian</td>
-                            <td>Laki-Laki</td>
-                            <td>Ngawi, 14 April 2003</td>
-                            <td>Indonesia</td>
-                            <td>S1</td>
-                            <td>Ngawi</td>
-                            <td>Programmer</td>
+                            <td>Programer</td>
+                            <td>Create, Update, Read & Delete</td>
+                            <td>2000</td>
                         </tr>
                         <tr>
-                            <td>Eka Trisnawati</td>
-                            <td>Laki-Laki</td>
-                            <td>Ngawi, 14 April 2003</td>
-                            <td>Indonesia</td>
-                            <td>S1</td>
-                            <td>Ngawi</td>
-                            <td>Programmer</td>
+                            <td>Devops</td>
+                            <td>Deploy Aplication</td>
+                            <td>3000</td>
                         </tr>
                         <tr>
-                            <td>Edinburgh</td>
-                            <td>Laki-Laki</td>
-                            <td>Ngawi, 14 April 2003</td>
-                            <td>Indonesia</td>
-                            <td>S1</td>
-                            <td>Ngawi</td>
-                            <td>Programmer</td>
+                            <td>UI/UX</td>
+                            <td>Wireframe</td>
+                            <td>2000</td>
                         </tr>
                     </tbody>
                 </table>

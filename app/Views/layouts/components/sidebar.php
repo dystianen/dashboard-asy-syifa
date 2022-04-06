@@ -30,14 +30,23 @@
     <li class="nav-item">
         <a
             class="nav-link"
-            href="/admin/users"
+            href="/admin/employee"
         >
             <i class="fas fa-fw fa-table"></i>
-            <span>Karyawan</span></a>
+            <span>Employee</span></a>
     </li>
-    <!-- Divider -->
+
+    <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a
+            class="nav-link"
+            href="/admin/job"
+        >
+            <i class="fas fa-fw fa-table"></i>
+            <span>Job</span></a>
+    </li>
+
     <hr class="sidebar-divider d-none d-md-block">
-    <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button
             class="rounded-circle border-0"

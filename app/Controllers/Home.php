@@ -6,11 +6,6 @@ class Home extends BaseController
 {
     public function index()
     {
-        return view('dashboard');
-    }
-
-    public function user()
-    {
-        echo view('users');
+        echo view('layouts/pages/dashboard');
     }
 }

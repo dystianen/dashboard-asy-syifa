@@ -117,7 +117,7 @@
                     >Cancel</button>
                     <a
                         class="btn btn-primary"
-                        href="logout"
+                        href="/login"
                     >Logout</a>
                 </div>
             </div>

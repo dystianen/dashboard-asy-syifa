@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-class User extends UserController
+class Job extends BaseController
 {
     public function index()
     {
-        echo view('users');
+        echo view('layouts/pages/job');
     }
 }
