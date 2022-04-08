@@ -32,7 +32,7 @@
             class="nav-link"
             href="/admin/employee"
         >
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-users"></i>
             <span>Employee</span></a>
     </li>
 
