@@ -67,8 +67,10 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($employee as $it) ?>
                         <tr>
-                            <td>Dystian</td>
+                            <td><?= $i++; ?></td>
                             <td>Laki-Laki</td>
                             <td>Ngawi, 14 April 2003</td>
                             <td>Indonesia</td>
