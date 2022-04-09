@@ -68,7 +68,6 @@
                     </thead>
                     <tbody>
                         <?php $i = 1; ?>
-                        <?php foreach ($employee as $it) ?>
                         <tr>
                             <td><?= $i++; ?></td>
                             <td>Laki-Laki</td>
