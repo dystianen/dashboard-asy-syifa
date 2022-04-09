@@ -1,8 +1,9 @@
 <?= $this->extend('layouts/app') ?>
 <?= $this->section('content') ?>
 <div class="container-fluid">
+
     <div class="d-sm-flex flex-column mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Job</h1>
+        <h1 class="h3 mb-0 text-gray-800">Employee</h1>
 
         <nav aria-label="breadcrumb">
             <ol
@@ -13,7 +14,7 @@
                 <li
                     class="breadcrumb-item active"
                     aria-current="page"
-                >Job</li>
+                >Employee</li>
             </ol>
         </nav>
     </div>
@@ -29,6 +30,7 @@
                     aria-label="Search"
                     style="width: 25%"
                 >
+
                 <div>
                     <button
                         type="button"
@@ -36,12 +38,11 @@
                         data-target="#modalFilter"
                         class="btn btn-light"
                     ><i class="fas fa-fw fa-filter"></i> Filter</button>
-                    <button
+                    <a
                         type="button"
                         class="btn btn-primary"
-                        data-toggle="modal"
-                        data-target="#modalCreate"
-                    ><i class="fas fa-fw fa-plus"></i> Create</button>
+                        href="/admin/employee/add"
+                    ><i class="fas fa-fw fa-plus"></i> Create</a>
                 </div>
             </form>
         </div>
@@ -56,101 +57,30 @@
                     <thead>
                         <tr>
                             <th>No. </th>
-                            <th>Job Type</th>
-                            <th>Description</th>
-                            <th>Point</th>
+                            <th>NIK</th>
+                            <th>Fullname</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1; ?>
                         <tr>
                             <td>1</td>
-                            <td>Programer</td>
-                            <td>Create, Update, Read & Delete</td>
-                            <td>2000</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Devops</td>
-                            <td>Deploy Aplication</td>
-                            <td>3000</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>UI/UX</td>
-                            <td>Wireframe</td>
-                            <td>2000</td>
+                            <td>0018827399281</td>
+                            <td>Sida</td>
+                            <td>sida@gmail.com</td>
+                            <td>08133672662</td>
+                            <td>
+                                <div class="row">
+                                    <button class="btn btn-link"><i class="fas fa-fw fa-eye"></i></button>
+                                    <button class="btn btn-link"><i class="fas fa-fw fa-edit"></i></button>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div
-        class="modal fade"
-        id="modalCreate"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-        data-backdrop="static"
-    >
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5
-                        class="modal-title"
-                        id="exampleModalLabel"
-                    >Create Job</h5>
-                    <button
-                        type="button"
-                        class="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                    >
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="jobType">Job Type</label>
-                            <select class="custom-select">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <input
-                                class="form-control"
-                                id="description"
-                                placeholder="Create, Update Read & Delete"
-                            >
-                        </div>
-                        <div class="form-group">
-                            <label for="point">Point</label>
-                            <input
-                                class="form-control"
-                                id="point"
-                                placeholder="2000"
-                            >
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-dismiss="modal"
-                    >Close</button>
-                    <button
-                        type="button"
-                        class="btn btn-primary"
-                    >Save changes</button>
-                </div>
             </div>
         </div>
     </div>
@@ -202,7 +132,7 @@
                     <button
                         type="button"
                         class="btn btn-primary"
-                    >Filter</button>
+                    >Save changes</button>
                 </div>
             </div>
         </div>

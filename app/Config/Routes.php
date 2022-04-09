@@ -35,6 +35,7 @@ $routes->get('/login', 'Login::index');
 $routes->group('admin', static function ($routes) {
     $routes->get('/', 'Home::index');
     $routes->get('employee', 'Employee::index');
+    $routes->add('employee/add', 'Employee::create');
     $routes->get('job', 'Job::index');
 });
 
