@@ -123,7 +123,7 @@
                 type="button"
                 class="btn btn-secondary"
                 href="/admin/employee"
-            >Back</a>
+            >Cancel</a>
             <button
                 type="button"
                 class="btn btn-primary"
