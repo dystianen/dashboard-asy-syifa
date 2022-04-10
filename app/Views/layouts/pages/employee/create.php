@@ -100,7 +100,7 @@
                         <div class="form-group">
                             <label>Gender</label>
                             <select class="custom-select">
-                                <option selected>Open this select menu</option>
+                                <option selected>Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
