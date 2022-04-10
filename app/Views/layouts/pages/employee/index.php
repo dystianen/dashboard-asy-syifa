@@ -31,19 +31,11 @@
                     style="width: 25%"
                 >
 
-                <div>
-                    <button
-                        type="button"
-                        data-toggle="modal"
-                        data-target="#modalFilter"
-                        class="btn btn-light"
-                    ><i class="fas fa-fw fa-filter"></i> Filter</button>
-                    <a
-                        type="button"
-                        class="btn btn-primary"
-                        href="/admin/employee/add"
-                    ><i class="fas fa-fw fa-plus"></i> Create</a>
-                </div>
+                <a
+                    type="button"
+                    class="btn btn-primary"
+                    href="/admin/employee/add"
+                ><i class="fas fa-fw fa-plus"></i> Create</a>
             </form>
         </div>
         <div class="card-body">

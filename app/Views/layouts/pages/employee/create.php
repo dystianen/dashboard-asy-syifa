@@ -21,7 +21,7 @@
     </div>
 
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header d-flex align-items-center justify-content-between py-3">
             <h5 class="card-title mb-0 text-gray-900">Create Employee</h5>
         </div>
 
@@ -119,11 +119,11 @@
         </div>
 
         <div class="card-footer text-right">
-            <button
+            <a
                 type="button"
                 class="btn btn-secondary"
-                data-dismiss="modal"
-            >Close</button>
+                href="/admin/employee"
+            >Back</a>
             <button
                 type="button"
                 class="btn btn-primary"
