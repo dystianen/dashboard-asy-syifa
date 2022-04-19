@@ -1,4 +1,5 @@
 <?= $this->extend('layouts/app') ?>
+
 <?= $this->section('content') ?>
 <div class="container-fluid">
     <div class="d-sm-flex flex-column mb-4">
@@ -7,7 +8,7 @@
         <nav aria-label="breadcrumb">
             <ol
                 class="breadcrumb"
-                style="background-color: none"
+                style="background-color: transparent"
             >
                 <li class="breadcrumb-item"><a href="/admin">Home</a></li>
                 <li
@@ -20,36 +21,36 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <form class="d-flex justify-content-between">
-                <input
-                    class="form-control me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                    style="width: 25%"
-                >
-                <div>
-                    <button
-                        type="button"
-                        data-toggle="modal"
-                        data-target="#modalFilter"
-                        class="btn btn-light"
-                    ><i class="fas fa-fw fa-filter"></i> Filter</button>
-                    <button
-                        type="button"
-                        class="btn btn-primary"
-                        data-toggle="modal"
-                        data-target="#modalCreate"
-                    ><i class="fas fa-fw fa-plus"></i> Create</button>
-                </div>
-            </form>
-        </div>
+<!--        <div class="card-header py-3">-->
+<!--            <form class="d-flex justify-content-between">-->
+<!--                <input-->
+<!--                    class="form-control me-2"-->
+<!--                    type="search"-->
+<!--                    placeholder="Search"-->
+<!--                    aria-label="Search"-->
+<!--                    style="width: 25%"-->
+<!--                >-->
+<!--                <div>-->
+<!--                    <button-->
+<!--                        type="button"-->
+<!--                        data-toggle="modal"-->
+<!--                        data-target="#modalFilter"-->
+<!--                        class="btn btn-light"-->
+<!--                    ><i class="fas fa-fw fa-filter"></i> Filter</button>-->
+<!--                    <button-->
+<!--                        type="button"-->
+<!--                        class="btn btn-primary"-->
+<!--                        data-toggle="modal"-->
+<!--                        data-target="#modalCreate"-->
+<!--                    ><i class="fas fa-fw fa-plus"></i> Create</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
         <div class="card-body">
             <div class="table-responsive">
                 <table
-                    class="table"
-                    id="dataTable"
+                    class="display"
+                    id="table"
                     width="100%"
                     cellspacing="0"
                 >
@@ -208,4 +209,15 @@
         </div>
     </div>
 </div>
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table').DataTable({
+            ordering: false,
+            pagingType: "simple_numbers"
+        });
+    });
+</script>
 <?= $this->endSection() ?>

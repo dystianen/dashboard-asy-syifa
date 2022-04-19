@@ -9,7 +9,7 @@
             <nav aria-label="breadcrumb">
                 <ol
                         class="breadcrumb"
-                        style="background-color: none"
+                        style="background-color: transparent;"
                 >
                     <li class="breadcrumb-item"><a href="/admin">Home</a></li>
                     <li
@@ -23,28 +23,28 @@
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <form class="d-flex justify-content-between">
-                    <input
-                            class="form-control me-2"
-                            type="search"
-                            placeholder="Search"
-                            aria-label="Search"
-                            style="width: 25%"
-                    >
-
-                    <a
-                            type="button"
-                            class="btn btn-primary"
-                            href="/admin/employee/add"
-                    ><i class="fas fa-fw fa-plus"></i> Create</a>
-                </form>
-            </div>
+            <!--            <div class="card-header py-3">-->
+            <!--                <form class="d-flex justify-content-between">-->
+            <!--                    <input-->
+            <!--                            class="form-control me-2"-->
+            <!--                            type="search"-->
+            <!--                            placeholder="Search"-->
+            <!--                            aria-label="Search"-->
+            <!--                            style="width: 25%"-->
+            <!--                    >-->
+            <!---->
+            <!--                    <a-->
+            <!--                            type="button"-->
+            <!--                            class="btn btn-primary"-->
+            <!--                            href="/admin/employee/add"-->
+            <!--                    ><i class="fas fa-fw fa-plus"></i> Create</a>-->
+            <!--                </form>-->
+            <!--            </div>-->
             <div class="card-body">
                 <div class="table-responsive">
                     <table
                             class="display"
-                            id="table_id"
+                            id="table"
                     >
                         <thead>
                         <tr>
@@ -53,7 +53,7 @@
                             <th>Fullname</th>
                             <th>Email</th>
                             <th>Phone</th>
-                            <th>Aksi</th>
+<!--                            <th>Aksi</th>-->
                         </tr>
                         </thead>
                         <tbody>
@@ -64,12 +64,26 @@
                             <td>Sida</td>
                             <td>sida@gmail.com</td>
                             <td>08133672662</td>
-                            <td>
-                                <div class="row">
-                                    <button class="btn btn-link"><i class="fas fa-fw fa-eye"></i></button>
-                                    <button class="btn btn-link"><i class="fas fa-fw fa-edit"></i></button>
-                                </div>
-                            </td>
+<!--                            <td>-->
+<!--                                <div class="row">-->
+<!--                                    <button class="btn btn-link"><i class="fas fa-fw fa-eye"></i></button>-->
+<!--                                    <button class="btn btn-link"><i class="fas fa-fw fa-edit"></i></button>-->
+<!--                                </div>-->
+<!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0018827399281</td>
+                            <td>Sida</td>
+                            <td>sida@gmail.com</td>
+                            <td>08133672662</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0018827399281</td>
+                            <td>Sida</td>
+                            <td>sida@gmail.com</td>
+                            <td>08133672662</td>
                         </tr>
                         </tbody>
                     </table>
@@ -137,7 +151,10 @@
 <?= $this->section('scripts') ?>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#table_id').DataTable();
+            $('#table').DataTable({
+                ordering: false,
+                pagingType: "simple_numbers"
+            });
         });
     </script>
 <?= $this->endSection() ?>
