@@ -8,4 +8,14 @@ class User extends BaseController
     {
         echo view('layouts/pages/User/index');
     }
+
+    public function scanner()
+    {
+        echo view('layouts/pages/User/scan');
+    }
+
+    public function profile()
+    {
+        echo view('layouts/pages/User/profile');
+    }
 }

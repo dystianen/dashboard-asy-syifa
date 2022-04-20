@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Absensi Karyawan</title>
+    <title>Welcome to CodeIgniter 4!</title>
     <meta name="description" content="The small framework with powerful features">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
@@ -15,15 +15,11 @@
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet"
     >
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-
     <!-- Custom styles for this template-->
     <link
             href="<?= base_url('assets/css/sb-admin-2.min.css') ?>"
             rel="stylesheet"
     >
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- STYLES -->
 
@@ -139,7 +135,7 @@
 
         section {
             max-width: 1100px;
-            padding: 2rem 1.75rem 1rem 1.75rem;
+            padding: 2rem 1.75rem 2rem 1.75rem;
         }
 
         section h1 {
@@ -259,35 +255,51 @@
 </header>
 
 <!-- CONTENT -->
+
 <section>
-    <div class="card" style="border-radius: 10px">
-        <div class="card-body">
-            <img src="/assets/img/scan.jpg" alt="" width="100%" height="300"/>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="/assets/img/scan.jpg" class="rounded" width="100px" height="100px" alt="...">
+            </div>
+            <div class="col">
+                <h5>Dystian En Yusgiantoro</h5>
+                <div class="row">
+                    <div class="col-1">
+                        <img src="https://prog-8.com/assets/packs/dist/images/completed-ribbon-6ef701192c22d265157c..svg">
+                    </div>
+                    <div class="col">
+                        <span class="m-0">7775</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <a class="btn btn-primary" href="/users/scan">Check In</a>
     </div>
 </section>
 
-<section>
-    <div class="row">
-        <div class="col">
-            <div class="card"
-                 style="border-radius: 10px; border: none; box-shadow: 1px 4px 14px -2px rgb(168 168 168 / 34%)">
-                <div class="card-body">
-                    <h5 class="text-center m-0">Daily Task</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card"
-                 style="border-radius: 10px; border: none; box-shadow: 1px 4px 14px -2px rgb(168 168 168 / 34%)">
-                <div class="card-body">
-                    <h5 class="text-center m-0">Point</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+<!-- FOOTER: DEBUG INFO + COPYRIGHTS -->
+
+<!--<footer>-->
+<!--    <div class="environment">-->
+<!---->
+<!--        <p>Page rendered in {elapsed_time} seconds</p>-->
+<!---->
+<!--        <p>Environment: --><? //= ENVIRONMENT ?><!--</p>-->
+<!---->
+<!--    </div>-->
+<!---->
+<!--    <div class="copyrights">-->
+<!---->
+<!--        <p>&copy; -->
+<? //= date('Y') ?><!-- CodeIgniter Foundation. CodeIgniter is open source project released under the MIT-->
+<!--            open source licence.</p>-->
+<!---->
+<!--    </div>-->
+<!---->
+<!--</footer>-->
+
+<!-- SCRIPTS -->
 
 <script>
     function toggleMenu() {
@@ -299,9 +311,7 @@
     }
 </script>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- -->
 
 </body>
 </html>
