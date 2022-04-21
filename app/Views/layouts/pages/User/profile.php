@@ -291,7 +291,7 @@
                 <li class="menu-toggle">
                     <button onclick="toggleMenu();">&#9776;</button>
                 </li>
-                <li class="menu-item hidden"><a href="#">Home</a></li>
+                <li class="menu-item hidden"><a href="/users">Home</a></li>
                 <li class="menu-item hidden"><a href="/users/profile">Profile</a></li>
             </ul>
         </div>
