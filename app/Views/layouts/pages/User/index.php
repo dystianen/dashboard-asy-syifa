@@ -10,7 +10,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <link href="<?= base_url() ?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Custom styles for this template-->
+    <link href="<?= base_url('assets/css/sb-admin-2.min.css') ?>" rel="stylesheet">
 
     <style {csp-style-nonce}>
         * {
@@ -171,6 +174,17 @@
             width: 25px;
         }
 
+        .card-menu {
+            border-radius: 10px;
+            border: none;
+            box-shadow: 1px 4px 14px -2px rgb(168 168 168 / 34%)
+        }
+
+        .card-menu:hover {
+            cursor: pointer;
+            box-shadow: 1px 8px 14px -2px rgb(168 168 168 / 34%)
+        }
+
         .card-img {
             height: 400px;
         }
@@ -303,16 +317,22 @@
         <section>
             <div class="row">
                 <div class="col">
-                    <div class="card" style="border-radius: 10px; border: none; box-shadow: 1px 4px 14px -2px rgb(168 168 168 / 34%)">
+                    <div class="card card-menu">
                         <div class="card-body">
-                            <h5 class="text-center m-0">Daily Task</h5>
+                            <div class="row justify-content-center">
+                                <i class="fas fa-tasks mt-1 mr-3"></i>
+                                <h5 class="text-center m-0">Daily Task</h5>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card" style="border-radius: 10px; border: none; box-shadow: 1px 4px 14px -2px rgb(168 168 168 / 34%)">
+                    <div class="card card-menu">
                         <div class="card-body">
-                            <h5 class="text-center m-0">Point</h5>
+                            <div class="row justify-content-center">
+                                <i class="fas fa-medal mt-1 mr-3"></i>
+                                <h5 class="text-center m-0">Point</h5>
+                            </div>
                         </div>
                     </div>
                 </div>
