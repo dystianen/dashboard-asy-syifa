@@ -49,7 +49,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table
-                    class="display"
+                    class="table table-striped"
                     id="table"
                     width="100%"
                     cellspacing="0"
@@ -216,7 +216,7 @@
     $(document).ready(function () {
         $('#table').DataTable({
             ordering: false,
-            pagingType: "simple_numbers"
+            // pagingType: "simple_numbers"
         });
     });
 </script>

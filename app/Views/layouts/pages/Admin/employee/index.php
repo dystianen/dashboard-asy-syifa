@@ -36,7 +36,7 @@
         <!--            </div>-->
         <div class="card-body">
             <div class="table-responsive">
-                <table class="display" id="table">
+                <table class="table table-striped" id="table">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -61,6 +61,76 @@
                             <!--                                    <button class="btn btn-link"><i class="fas fa-fw fa-edit"></i></button>-->
                             <!--                                </div>-->
                             <!--                            </td>-->
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0018827399281</td>
+                            <td>Sida</td>
+                            <td>sida@gmail.com</td>
+                            <td>08133672662</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0018827399281</td>
+                            <td>Sida</td>
+                            <td>sida@gmail.com</td>
+                            <td>08133672662</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0018827399281</td>
+                            <td>Sida</td>
+                            <td>sida@gmail.com</td>
+                            <td>08133672662</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0018827399281</td>
+                            <td>Sida</td>
+                            <td>sida@gmail.com</td>
+                            <td>08133672662</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0018827399281</td>
+                            <td>Sida</td>
+                            <td>sida@gmail.com</td>
+                            <td>08133672662</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0018827399281</td>
+                            <td>Sida</td>
+                            <td>sida@gmail.com</td>
+                            <td>08133672662</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0018827399281</td>
+                            <td>Sida</td>
+                            <td>sida@gmail.com</td>
+                            <td>08133672662</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0018827399281</td>
+                            <td>Sida</td>
+                            <td>sida@gmail.com</td>
+                            <td>08133672662</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0018827399281</td>
+                            <td>Sida</td>
+                            <td>sida@gmail.com</td>
+                            <td>08133672662</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0018827399281</td>
+                            <td>Sida</td>
+                            <td>sida@gmail.com</td>
+                            <td>08133672662</td>
                         </tr>
                         <tr>
                             <td>1</td>

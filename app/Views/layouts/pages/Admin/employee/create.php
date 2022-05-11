@@ -8,7 +8,7 @@
         <nav aria-label="breadcrumb">
             <ol
                 class="breadcrumb"
-                style="background-color: none"
+                style="background-color: transparent"
             >
                 <li class="breadcrumb-item"><a href="/admin">Home</a></li>
                 <li class="breadcrumb-item"><a href="/admin/employee">Employee</a></li>
