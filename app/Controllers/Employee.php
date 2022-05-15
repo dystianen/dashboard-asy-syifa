@@ -6,7 +6,6 @@ class Employee extends BaseController
 {
     public function index()
     {
-
         $data = [
             'title' => 'Product Catalog',
             'brand' => 'Smartphone Xiaomi',
@@ -18,6 +17,6 @@ class Employee extends BaseController
 
     public function create()
     {
-        echo view('layouts/pages/employee/create');
+        echo view('layouts/pages/admin/employee/create');
     }
 }

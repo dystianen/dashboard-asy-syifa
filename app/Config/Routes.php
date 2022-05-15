@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.s
 $routes->get('/login', 'Login::index');
+
 $routes->group('admin', static function ($routes) {
     $routes->get('dashboard', 'Home::index');
     $routes->get('employee', 'Employee::index');
@@ -41,6 +42,12 @@ $routes->group('admin', static function ($routes) {
 // $routes->group('employee', static function ($routes) {
 //     $routes->get('dashboard', 'H')
 // })
+
+$routes->group('users', static function ($routes) {
+    $routes->get('/', 'User::index');
+    $routes->get('scan', 'User::scanner');
+    $routes->get('profile', 'User::profile');
+});
 
 /*
  * --------------------------------------------------------------------

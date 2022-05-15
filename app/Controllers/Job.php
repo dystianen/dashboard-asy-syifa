@@ -6,6 +6,6 @@ class Job extends BaseController
 {
     public function index()
     {
-        echo view('layouts/pages/job');
+        echo view('layouts/pages/admin/job/index');
     }
 }
