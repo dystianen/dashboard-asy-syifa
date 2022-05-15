@@ -33,11 +33,14 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.s
 $routes->get('/login', 'Login::index');
 $routes->group('admin', static function ($routes) {
-    $routes->get('/', 'Home::index');
+    $routes->get('dashboard', 'Home::index');
     $routes->get('employee', 'Employee::index');
     $routes->add('employee/add', 'Employee::create');
     $routes->get('job', 'Job::index');
 });
+// $routes->group('employee', static function ($routes) {
+//     $routes->get('dashboard', 'H')
+// })
 
 /*
  * --------------------------------------------------------------------

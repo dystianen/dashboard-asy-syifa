@@ -58,9 +58,10 @@
                     </thead>
                     <tbody>
                         <?php $i = 1; ?>
-                        <tr>
+                        <?php foreach ($product as $item) : ?>
+                            <tr>
                             <td>1</td>
-                            <td>0018827399281</td>
+                            <td> <?= $item ?> </td>
                             <td>Sida</td>
                             <td>sida@gmail.com</td>
                             <td>08133672662</td>
@@ -71,6 +72,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
