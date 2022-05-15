@@ -34,7 +34,7 @@ class Database extends Config
         'DSN'      => '',
         'hostname' => 'localhost',
         'username' => 'root',
-        'password' => '123',
+        'password' => '',
         'database' => 'absensi_ci4',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',

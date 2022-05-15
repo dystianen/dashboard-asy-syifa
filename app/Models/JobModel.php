@@ -14,7 +14,13 @@ class JobModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        "user_id",
+        "type_of_work",
+        "description",
+        "point",
+        "is_completed",
+    ];
 
     // Dates
     protected $useTimestamps = false;

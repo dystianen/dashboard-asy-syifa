@@ -17,8 +17,6 @@ class Users extends Migration
                 'auto_increment' => true,
             ],
 
-
-
             'fullname' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
@@ -79,8 +77,6 @@ class Users extends Migration
                 'constraint' => 255,
                 'null' => true,
             ],
-
-
 
             'created_at' => [
                 'type' => 'DATETIME',

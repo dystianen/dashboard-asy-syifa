@@ -17,7 +17,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('SigninController');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -31,7 +31,8 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.s
-$routes->get('/login', 'Login::index');
+$routes->get('/login', 'SigninController::index');
+$routes->get('/register', 'SignupController::index');
 
 $routes->group('admin', static function ($routes) {
     $routes->get('dashboard', 'Home::index');
@@ -39,14 +40,15 @@ $routes->group('admin', static function ($routes) {
     $routes->add('employee/add', 'Employee::create');
     $routes->get('job', 'Job::index');
 });
+
 // $routes->group('employee', static function ($routes) {
 //     $routes->get('dashboard', 'H')
 // })
 
 $routes->group('users', static function ($routes) {
-    $routes->get('/', 'User::index');
-    $routes->get('scan', 'User::scanner');
-    $routes->get('profile', 'User::profile');
+    $routes->get('/', 'User::index',['filter' => 'authGuard']);
+    $routes->get('scan', 'User::scanner',['filter' => 'authGuard']);
+    $routes->get('profile', 'User::profile',['filter' => 'authGuard']);
 });
 
 /*

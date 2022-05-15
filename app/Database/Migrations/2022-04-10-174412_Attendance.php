@@ -8,7 +8,7 @@ class Attendance extends Migration
 {
     public function up()
     {
-        $forge = \Config\Database::forge();
+        $this->db->disableForeignKeyChecks();
         $this->forge->addField([
             'id' => [
                 'type' => 'INT',
@@ -16,14 +16,12 @@ class Attendance extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'users_id' => [
+            'user_id' => [
                 'type' => 'INT',
-                'constraint' => 11,
+                'constraint' => 12,
                 'unsigned' => true,
                 'null' => true,
             ],
-
-
 
             'is_logged_in' => [
                 'type' => 'BOOLEAN',
@@ -37,8 +35,6 @@ class Attendance extends Migration
                 'type' => 'TEXT',
                 'null' => true
             ],
-
-
 
             'created_at' => [
                 'type' => 'DATETIME',
@@ -58,10 +54,11 @@ class Attendance extends Migration
         $this->forge->addKey('id', true);
 
         // Added Relation
-        $forge->addForeignKey('users_id', 'users', 'id');
+        $this->forge->addForeignKey('user_id', 'users', 'id');
 
         // Create Table Attendance
         $this->forge->createTable('attendance');
+        $this->db->enableForeignKeyChecks();
     }
 
     public function down()

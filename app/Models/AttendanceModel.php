@@ -14,7 +14,12 @@ class AttendanceModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        "user_id",
+        "is_logged_in",
+        "description",
+        "file",
+    ];
 
     // Dates
     protected $useTimestamps = false;

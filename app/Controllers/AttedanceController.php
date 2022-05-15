@@ -2,13 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Models\JobModel;
+use App\Controllers\BaseController;
+use App\Models\AttendanceModel;
 
-class Job extends BaseController
+class AttedanceController extends BaseController
 {
     public function index()
     {
-        echo view('layouts/pages/job/index');
+        echo view('layouts/pages/attedance/index');
     }
 
     public function store()
@@ -16,35 +17,33 @@ class Job extends BaseController
         helper(['form']);
         $rules = [
             'user_id'       => 'required',
-            'type_of_work'  => 'required',
+            'is_logged_in'  => 'required',
             'description'   => 'required',
-            'point'         => 'required',
-            'is_completed'  => 'required',
+            'file'          => 'required',
         ];
           
         if ($this->validate($rules)) {
-            $jobModel = new JobModel();
+            $attedanceModel = new AttendanceModel();
 
             $data = [
                 'user_id'       => $this->request->getVar('user_id'),
-                'type_of_work'  => $this->request->getVar('type_of_work'),
+                'is_logged_in'  => $this->request->getVar('is_logged_in'),
                 'description'   => $this->request->getVar('description'),
-                'point'         => $this->request->getVar('point'),
-                'is_completed'  => $this->request->getVar('is_completed'),
+                'file'          => $this->request->getVar('file'),
             ];
 
-            $jobModel->save($data);
+            $attedanceModel->save($data);
 
             // TBD
-            return redirect()->to("/job/create");
+            return redirect()->to("/attedance/create");
         } else {
             $data['validation'] = $this->validator;
 
             // TBD
-            echo view("/job/create", $data);
+            echo view("/attedance/create", $data);
         }
     }
-    
+
     public function show() 
     {
         // Your Code...    
@@ -64,4 +63,5 @@ class Job extends BaseController
     {
         // Your Code...    
     }
+    
 }

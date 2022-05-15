@@ -18,4 +18,24 @@ class User extends BaseController
     {
         echo view('layouts/pages/User/profile');
     }
+    
+    public function show() 
+    {
+        // Your Code...    
+    }
+
+    public function edit() 
+    {
+        // Your Code...    
+    }
+
+    public function update() 
+    {
+        // Your Code...    
+    }
+
+    public function destroy() 
+    {
+        // Your Code...    
+    }
 }
