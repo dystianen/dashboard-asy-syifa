@@ -19,7 +19,7 @@
      <li class="nav-item text-white">
          <a
              class="nav-link"
-             href="/admin"
+             href="/admin/dashboard"
          >
              <i class="fas fa-fw fa-tachometer-alt"></i>
              <span>Dashboard</span></a>

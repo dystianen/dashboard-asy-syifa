@@ -4,10 +4,10 @@
 <div class="container-fluid">
 
     <div class="d-sm-flex flex-column mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Employee</h1>
+        <h1 class="h3 mb-3 text-gray-800">Employee</h1>
 
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb" style="background-color: transparent;">
+            <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Employee
                 </li>

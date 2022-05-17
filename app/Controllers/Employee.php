@@ -12,7 +12,7 @@ class Employee extends BaseController
             'product' => ['Redmi Note 9', 'Redmi Note 9 Pro', 'Mi Note 10', 'Mi Note 10 Pro']
         ];
 
-        return view('layouts/pages/employee/index', $data);
+        return view('layouts/pages/admin/employee/index', $data);
     }
 
     public function create()
