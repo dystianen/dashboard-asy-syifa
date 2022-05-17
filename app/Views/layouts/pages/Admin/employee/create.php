@@ -8,7 +8,6 @@
         <nav aria-label="breadcrumb">
             <ol
                 class="breadcrumb"
-                style="background-color: transparent"
             >
                 <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
                 <li class="breadcrumb-item"><a href="/admin/employee">Employee</a></li>
@@ -26,48 +25,64 @@
         </div>
 
         <div class="card-body">
-            <form>
+            <?php if(isset($validation)):?>
+                <div class="alert alert-warning">
+                    <?= $validation->listErrors() ?>
+                </div>
+            <?php endif;?>
+            <form action="<?php echo base_url(); ?>/SignupController/store" method="post">
+                <?= csrf_field(); ?>
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <div class="form-group">
                             <label for="nik">NIK</label>
                             <input
+                                name="nik"
                                 class="form-control"
                                 id="nik"
                                 placeholder="example: 3521067738749"
+                                value="<?= set_value('nik') ?>"
                             >
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input
+                                name="email"
                                 class="form-control"
                                 id="email"
                                 type="email"
                                 placeholder="example: example@gmail.com"
+                                value="<?= set_value('email') ?>"
                             >
                         </div>
                         <div class="form-group">
                             <label for="place_of_birth">Place of Birth</label>
                             <input
+                                name="place_of_birth"
                                 class="form-control"
                                 id="place_of_birth"
                                 placeholder="example: Malang"
+                                value="<?= set_value('place_of_birth') ?>"
                             >
                         </div>
                         <div class="form-group">
                             <label for="age">Age</label>
                             <input
+                                name="age"
                                 class="form-control"
                                 id="age"
                                 placeholder="example: 20"
+                                value="<?= set_value('age') ?>"
                             >
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
                             <input
+                                name="phone_number"
                                 class="form-control"
                                 id="phone"
                                 placeholder="example: 08146635529"
+                                value="<?= set_value('phone_number') ?>"
                             >
                         </div>
                     </div>
@@ -76,30 +91,36 @@
                         <div class="form-group">
                             <label for="fullname">Fullname</label>
                             <input
+                                name="fullname"
                                 class="form-control"
                                 id="fullname"
                                 placeholder="example: brotherhood"
+                                value="<?= set_value('fullname') ?>"
                             >
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input
+                                name="password"
                                 class="form-control"
                                 id="password"
                                 type="password"
+                                value="<?= set_value('password') ?>"
                             >
                         </div>
                         <div class="form-group">
                             <label for="date_of_birth">Date of Birth</label>
                             <input
+                                name="date_of_birth "
                                 class="form-control"
                                 id="date_of_birth"
                                 type="date"
+                                value="<?= set_value('date_of_birth') ?>"
                             >
                         </div>
                         <div class="form-group">
                             <label>Gender</label>
-                            <select class="custom-select">
+                            <select name="gender" class="custom-select" value="<?= set_value('gender') ?>">
                                 <option selected>Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -107,11 +128,13 @@
                         </div>
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <input
+                            <textarea
+                                name="address"
                                 class="form-control"
                                 id="address"
                                 placeholder="example: Jl. Danau Ranau, Sawojajar, Kec. Kedungkandang, Kota Malang, Jawa Timur 65139"
-                            />
+                                value="<?= set_value('address') ?>"
+                            ></textarea>
                         </div>
                     </div>
                 </div>
@@ -125,7 +148,7 @@
                 href="/admin/employee"
             >Cancel</a>
             <button
-                type="button"
+                type="submit"
                 class="btn btn-primary"
             >Save</button>
         </div>

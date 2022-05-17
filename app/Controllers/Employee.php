@@ -17,6 +17,7 @@ class Employee extends BaseController
 
     public function create()
     {
+        helper(['form']);
         echo view('layouts/pages/admin/employee/create');
     }
 }
