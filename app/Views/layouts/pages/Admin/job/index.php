@@ -9,7 +9,7 @@
             <ol
                 class="breadcrumb"
             >
-                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
                 <li
                     class="breadcrumb-item active"
                     aria-current="page"
