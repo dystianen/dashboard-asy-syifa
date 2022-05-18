@@ -38,6 +38,7 @@ $routes->group('admin', static function ($routes) {
     $routes->get('dashboard', 'Home::index');
     $routes->get('employee', 'Employee::index');
     $routes->add('employee/add', 'Employee::create');
+    $routes->add('employee/save', 'Employee::save');
     $routes->get('job', 'Job::index');
 });
 
