@@ -140,7 +140,7 @@
                     "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
                 "responsive": true,
                 "paging": true,
-                "ordering": false,
+                "ordering": true,
                 "info": true,
                 "buttons": [
                     'excel', 'pdf'

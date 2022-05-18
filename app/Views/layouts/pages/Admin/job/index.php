@@ -48,7 +48,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table
-                    class="table table-striped"
+                    class="table"
                     id="table"
                     width="100%"
                     cellspacing="0"
@@ -212,10 +212,29 @@
 
 <?= $this->section('scripts') ?>
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#table').DataTable({
-            ordering: false,
-            // pagingType: "simple_numbers"
+            // "dom": 'QBflrtip',
+            "dom": `Q
+                <'row mt-3'
+                    <'col-sm-12 col-md-4'l>
+                    <'col-sm-12 col-md-8'
+                        <'row'
+                            <'col-sm-12 col-md-9'f>
+                            <'col-sm-12 col-md-3'B>
+                        >
+                    >
+                >
+                ` +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            "responsive": true,
+            "paging": true,
+            "ordering": true,
+            "info": true,
+            "buttons": [
+                'excel', 'pdf'
+            ]
         });
     });
 </script>

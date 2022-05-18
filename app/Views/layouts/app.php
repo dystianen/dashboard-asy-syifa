@@ -11,8 +11,9 @@
     <link rel="shortcut icon" href="<?= base_url() ?>/assets/images/logo/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon" href="<?= base_url() ?>/assets/images/logo/favicon.png" type="image/png">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/shared/iconly.css">
-<!--    <script defer src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/fc-4.0.2/r-2.2.9/sb-1.3.2/sp-2.0.0/datatables.min.css" />
     <?= $this->renderSection('styles') ?>
 </head>
 
@@ -82,25 +83,10 @@
 </div>
 
 <script src="<?= base_url() ?>/assets/js/app.js"></script>
-<!--<script>-->
-<!--    let navContainer = document.getElementsByClassName("sidebar-menu")[0];-->
-<!--    let menuContainer = navContainer.getElementsByClassName("menu")[0];-->
-<!--    let link = menuContainer.getElementsByClassName("sidebar-item");-->
-<!---->
-<!--    console.log({link})-->
-<!---->
-<!--    // Loop through the buttons and add the active class to the current/clicked button-->
-<!--    for (let i = 0; i < link.length; i++) {-->
-<!--        console.log(link[i])-->
-<!--        link[i].addEventListener("click", function () {-->
-<!--            let current = document.getElementsByClassName("active");-->
-<!--            current[0].className = current[0].className.replace(" active", "");-->
-<!--            this.className += " active";-->
-<!--            console.log('masukk')-->
-<!---->
-<!--        });-->
-<!--    }-->
-<!--</script>-->
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/fc-4.0.2/r-2.2.9/sb-1.3.2/sp-2.0.0/datatables.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0-beta.2/pdfmake.min.js" integrity="sha512-k9XKlDENMt9s19gEl+L6F/r+OWAR4pesbUd8/SKQVMt3b1ECqsRXgLA9XnJoq4J9mjlxLQabfTxf3268lzpFUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <?= $this->renderSection('scripts') ?>
 </body>
