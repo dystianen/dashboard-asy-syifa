@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use Config\Services;
 
 class Employee extends BaseController
 {
@@ -15,13 +16,20 @@ class Employee extends BaseController
             'user' => $user
         ];
 
+        $data['data'] = $data;
+
         return view('layouts/pages/admin/employee/index', $data);
     }
 
     public function create()
     {
         helper(['form']);
-        echo view('layouts/pages/admin/employee/create');
+        $data = [
+            'page' => 'employee',
+            'validation' => Services::validation(),
+        ];
+
+        echo view('layouts/pages/admin/employee/create', $data);
     }
 
     public function save()
@@ -61,8 +69,8 @@ class Employee extends BaseController
             $userModel->save($data);
             return redirect()->to("/admin/employee");
         } else {
-            $data['validation'] = $this->validator;
-            echo view('layouts/pages/admin/employee/create', $data);
+            $validation = Services::validation();
+            return redirect()->to('/admin/employee/form')->withInput()->with('validation', $validation);
         }
     }
 }
