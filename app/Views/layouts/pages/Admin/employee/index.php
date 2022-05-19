@@ -58,11 +58,16 @@
                                 <td><?= $e['phone_number']; ?></td>
                                 <td>
                                     <div class="row">
-                                        <div class="col-3">
-                                            <button class="btn btn-link"><i class="bi bi-pencil-square"></i></button>
+                                        <div class="col-2">
+                                            <a class="btn btn-link"><i class="bi bi-pencil-square"></i></a>
                                         </div>
-                                        <div class="col-3">
-                                            <button class="btn btn-link"><i class="bi bi-eye-fill"></i></button>
+                                        <div class="col-2">
+                                            <a class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
+                                        </div>
+                                        <div class="col-2">
+                                            <button class="btn btn-link" data-bs-toggle="modal"
+                                                    data-bs-target="#deleteModal"><i
+                                                        class="bi bi-trash-fill"></i></button>
                                         </div>
                                     </div>
                                 </td>
@@ -107,25 +112,35 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal Delete -->
+        <div class="modal fade" id="deleteModal" data-bs-backdrop="static" tabindex="-1"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <h3>Are you sure?</h3>
+                        Do you really delete this data?
+
+                        </br>
+                        <div class="pt-3">
+                            <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
+                            <form class="d-inline" method="post"
+                                  action="<?php echo base_url(); ?>/admin/employee/delete/">
+                                <?= csrf_field() ?>
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-danger m-2">Yes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 <?= $this->endSection() ?>
 
 <?= $this->section('scripts') ?>
     <script type="text/javascript">
-        // $(document).ready(function () {
-        //     $('#table').DataTable({
-        //         ordering: false,
-        //         pagingType: "simple_numbers",
-        //         dom: 'Bfrtip',
-        //         buttons: [{
-        //             text: 'Create',
-        //             action: function (e, dt, node, config) {
-        //                 window.location.href = '/admin/employee/add'
-        //             }
-        //         }]
-        //     });
-        // });
-
         $(document).ready(function () {
             $('#table').DataTable({
                 // "dom": 'QBflrtip',

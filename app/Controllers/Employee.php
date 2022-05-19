@@ -73,4 +73,10 @@ class Employee extends BaseController
             return redirect()->to('/admin/employee/form')->withInput()->with('validation', $validation);
         }
     }
+
+    public function delete($id) {
+        $data = new UserModel();
+        $data->delete($id);
+        return redirect()->to('/admin/employee');
+    }
 }

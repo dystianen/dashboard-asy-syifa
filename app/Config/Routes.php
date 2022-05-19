@@ -39,6 +39,7 @@ $routes->group('admin', static function ($routes) {
     $routes->get('employee', 'Employee::index');
     $routes->add('employee/form', 'Employee::create');
     $routes->add('employee/save', 'Employee::save');
+    $routes->delete('employee/delete/(:num)', 'Employee::delete/$1');
     $routes->get('job', 'Job::index');
 });
 

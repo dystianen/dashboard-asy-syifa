@@ -8,14 +8,17 @@ class Job extends BaseController
 {
     public function index()
     {
+        $jobModel = new JobModel();
+        $job = $jobModel->findAll();
         $data = [
             'page' => 'job',
+            'job' => $job
         ];
 
         echo view('layouts/pages/admin/job/index', $data);
     }
 
-    public function store()
+    public function save()
     {
         helper(['form']);
         $rules = [
