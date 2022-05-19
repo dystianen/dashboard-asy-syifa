@@ -1,6 +1,6 @@
 <?= $this->extend("layouts/app") ?>
 <?= $this->section("content") ?>
-<div class="container">
+<div class="container-fluid">
 
     <div class="d-sm-flex flex-column mb-4">
         <h1 class="h3 mb-3 text-gray-800">Employee</h1>
@@ -132,7 +132,7 @@
                         </div>
                         <div class="form-group">
                             <label>Gender <span style="color: red">*</span></label>
-                            <select name="gender" class="custom-select" value="<?= set_value('gender') ?>">
+                            <select name="gender" class="form-select" id="basicSelect" value="<?= set_value('gender') ?>">
                                 <option selected>Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -151,7 +151,7 @@
                     </div>
                 </div>
 
-                <div class="d-grid text-right pt-3">
+                <div class="float-end pt-3">
                     <a
                             type="button"
                             class="btn btn-secondary"

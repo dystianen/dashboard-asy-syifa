@@ -58,8 +58,12 @@
                                 <td><?= $e['phone_number']; ?></td>
                                 <td>
                                     <div class="row">
-                                        <button class="btn btn-link"><i class="fas fa-fw fa-eye"></i></button>
-                                        <button class="btn btn-link"><i class="fas fa-fw fa-edit"></i></button>
+                                        <div class="col-3">
+                                            <button class="btn btn-link"><i class="bi bi-pencil-square"></i></button>
+                                        </div>
+                                        <div class="col-3">
+                                            <button class="btn btn-link"><i class="bi bi-eye-fill"></i></button>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -122,7 +126,7 @@
         //     });
         // });
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#table').DataTable({
                 // "dom": 'QBflrtip',
                 "dom": `Q
@@ -143,7 +147,14 @@
                 "ordering": true,
                 "info": true,
                 "buttons": [
-                    'excel', 'pdf'
+                    // 'excel',
+                    // 'pdf',
+                    {
+                        text: 'Create',
+                        action: function (e, dt, node, config) {
+                            window.location.href = '/admin/employee/add'
+                        }
+                    }
                 ]
             });
         });
