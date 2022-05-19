@@ -152,7 +152,7 @@
                     {
                         text: 'Create',
                         action: function (e, dt, node, config) {
-                            window.location.href = '/admin/employee/add'
+                            window.location.href = '/admin/employee/form'
                         }
                     }
                 ]
