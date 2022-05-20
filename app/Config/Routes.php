@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.s
 $routes->get('/login', 'SigninController::index');
+$routes->add('/login/submit', 'SigninController::loginAuth');
 $routes->get('/register', 'SignupController::index');
 
 $routes->group('admin', static function ($routes) {
@@ -39,7 +40,10 @@ $routes->group('admin', static function ($routes) {
     $routes->get('employee', 'Employee::index');
     $routes->add('employee/form', 'Employee::create');
     $routes->add('employee/save', 'Employee::save');
+    $routes->add('employee/edit/(:num)', 'Employee::edit/$1');
+    $routes->add('employee/update/(:num)', 'Employee::update/$1');
     $routes->delete('employee/delete/(:num)', 'Employee::delete/$1');
+
     $routes->get('job', 'Job::index');
 });
 

@@ -14,7 +14,7 @@
                     <li
                             class="breadcrumb-item active"
                             aria-current="page"
-                    >Add
+                    >Edit
                     </li>
                 </ol>
             </nav>
@@ -22,11 +22,11 @@
 
         <div class="card shadow mb-4">
             <div class="card-header d-flex align-items-center justify-content-between py-3">
-                <h5 class="card-title mb-0 text-gray-900">Create Employee</h5>
+                <h5 class="card-title mb-0 text-gray-900">Edit Employee</h5>
             </div>
 
             <div class="card-body">
-                <form action="<?php echo base_url(); ?>/admin/employee/save" method="post">
+                <form action="<?php echo base_url(); ?>/admin/employee/update/<?= $user['id'] ?>" method="post">
                     <?= csrf_field(); ?>
                     <div class="row">
                         <div class="col-md-6 col-12">
@@ -37,7 +37,7 @@
                                         class="form-control <?= ($validation->hasError('nik') ? 'is-invalid' : '') ?>"
                                         id="nik"
                                         placeholder="example: 3521067738749"
-                                        value="<?= old('nik') ?>"
+                                        value="<?= $user['nik'] ?>"
                                 >
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('nik') ?>
@@ -51,24 +51,10 @@
                                         id="email"
                                         type="email"
                                         placeholder="example: example@gmail.com"
-                                        value="<?= old('email') ?>"
+                                        value="<?= $user['email'] ?>"
                                 >
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('email') ?>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="confirmPassword">Confirm Password <span style="color: red">*</span></label>
-                                <input
-                                        name="confirmPassword"
-                                        class="form-control <?= ($validation->hasError('confirmPassword') ? 'is-invalid' : '') ?>"
-                                        id="confirmPassword"
-                                        type="password"
-                                        placeholder="Input confirm password"
-                                        value="<?= old('confirmPassword') ?>"
-                                >
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('confirmPassword') ?>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -78,7 +64,7 @@
                                         class="form-control <?= ($validation->hasError('place_of_birth') ? 'is-invalid' : '') ?>"
                                         id="place_of_birth"
                                         placeholder="example: Malang"
-                                        value="<?= old('place_of_birth') ?>"
+                                        value="<?= $user['place_of_birth'] ?>"
                                 >
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('place_of_birth') ?>
@@ -91,7 +77,7 @@
                                         class="form-control <?= ($validation->hasError('age') ? 'is-invalid' : '') ?>"
                                         id="age"
                                         placeholder="example: 20"
-                                        value="<?= old('age') ?>"
+                                        value="<?= $user['age'] ?>"
                                 >
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('age') ?>
@@ -104,7 +90,7 @@
                                         class="form-control <?= ($validation->hasError('address') ? 'is-invalid' : '') ?>"
                                         id="address"
                                         placeholder="example: Jl. Danau Ranau, Sawojajar, Kec. Kedungkandang, Kota Malang, Jawa Timur 65139"
-                                ><?= old('address') ?></textarea>
+                                ><?= $user['address'] ?></textarea>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('address') ?>
                                 </div>
@@ -119,24 +105,10 @@
                                         class="form-control <?= ($validation->hasError('fullname') ? 'is-invalid' : '') ?>"
                                         id="fullname"
                                         placeholder="example: brotherhood"
-                                        value="<?= old('fullname') ?>"
+                                        value="<?= $user['fullname'] ?>"
                                 >
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('fullname') ?>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password <span style="color: red">*</span></label>
-                                <input
-                                        name="password"
-                                        class="form-control <?= ($validation->hasError('password') ? 'is-invalid' : '') ?>"
-                                        id="password"
-                                        type="password"
-                                        placeholder="Input password"
-                                        value="<?= old('password') ?>"
-                                >
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('password') ?>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -146,7 +118,7 @@
                                         class="form-control <?= ($validation->hasError('date_of_birth') ? 'is-invalid' : '') ?>"
                                         id="date_of_birth"
                                         type="date"
-                                        value="<?= old('date_of_birth') ?>"
+                                        value="<?= $user['date_of_birth'] ?>"
                                 >
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('date_of_birth') ?>
@@ -156,10 +128,10 @@
                                 <label>Gender <span style="color: red">*</span></label>
                                 <select name="gender"
                                         class="form-select <?= ($validation->hasError('gender') ? 'is-invalid' : '') ?>"
-                                        id="basicSelect" value="<?= old('gender') ?>">
+                                        id="basicSelect" value="<?= $user['gender'] ?>">
                                     <option value="">--please select--</option>
-                                    <option value="Male" <?php if(old('gender') == 'Male') {echo 'selected';}?>>Male</option>
-                                    <option value="Female"<?php if(old('gender') == 'Female') {echo 'selected';}?>>Female</option>
+                                    <option value="Male" <?php if($user['gender'] == 'Male'){echo 'selected';}?>>Male</option>
+                                    <option value="Female" <?php if($user['gender'] == 'Female'){echo 'selected';}?>>Female</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('gender') ?>
@@ -172,7 +144,7 @@
                                         class="form-control <?= ($validation->hasError('phone_number') ? 'is-invalid' : '') ?>"
                                         id="phone"
                                         placeholder="example: 08146635529"
-                                        value="<?= old('phone_number') ?>"
+                                        value="<?= $user['phone_number'] ?>"
                                 >
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('phone_number') ?>

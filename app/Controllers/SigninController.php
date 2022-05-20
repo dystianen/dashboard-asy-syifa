@@ -18,13 +18,13 @@ class SigninController extends BaseController
         $userModel = new UserModel();
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
-        
+
         $data = $userModel->where('email', $email)->first();
-        
-        if ( $data ) {
+
+        if ($data) {
             $pass = $data['password'];
             $authenticatePassword = password_verify($password, $pass);
-            if($authenticatePassword){
+            if ($authenticatePassword) {
                 $ses_data = [
                     'id' => $data['id'],
                     'fullname' => $data['fullname'],
@@ -33,15 +33,20 @@ class SigninController extends BaseController
                 ];
 
                 $session->set($ses_data);
-                return redirect()->to('/users/profile');
-            
+
+                if ($data['level'] == 'employee') {
+                    return redirect()->to('/users/profile');
+                } else {
+                    return redirect()->to('/admin/dashboard');
+                }
+
             } else {
                 $session->setFlashdata('failed', 'Password is incorrect.');
-                return redirect()->to('/signin');
+                return redirect()->to('/login');
             }
         } else {
             $session->setFlashdata('failed', 'Email does not exist.');
-            return redirect()->to('/signin');
+            return redirect()->to('/login');
         }
     }
 }

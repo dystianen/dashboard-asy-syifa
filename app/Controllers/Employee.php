@@ -7,6 +7,13 @@ use Config\Services;
 
 class Employee extends BaseController
 {
+    protected $userModel;
+
+    public function __construct()
+    {
+        $this->userModel = new UserModel();
+    }
+
     public function index()
     {
         $userModel = new UserModel();
@@ -25,6 +32,7 @@ class Employee extends BaseController
     {
         helper(['form']);
         $data = [
+            'title' => 'Create',
             'page' => 'employee',
             'validation' => Services::validation(),
         ];
@@ -74,9 +82,60 @@ class Employee extends BaseController
         }
     }
 
-    public function delete($id) {
-        $data = new UserModel();
-        $data->delete($id);
+    public function delete($id)
+    {
+        $this->userModel->delete($id);
         return redirect()->to('/admin/employee');
+    }
+
+    public function edit($id)
+    {
+        helper(['form']);
+        $data = [
+            'title' => 'Edit',
+            'page' => 'employee',
+            'validation' => Services::validation(),
+            'user' => $this->userModel->where(['id' => $id])->first(),
+        ];
+
+        echo view('layouts/pages/admin/employee/edit', $data);
+    }
+
+    public function update($id)
+    {
+        helper(['form']);
+        $rules = [
+            'nik' => 'required|min_length[16]|max_length[16]',
+            'fullname' => 'required|min_length[2]|max_length[50]',
+            'email' => 'required|min_length[4]|max_length[100]|valid_email',
+            'date_of_birth' => 'required',
+            'place_of_birth' => 'required',
+            'gender' => 'required',
+            'age' => 'required',
+            'phone_number' => 'required',
+            'address' => 'required',
+            'password' => 'required',
+        ];
+
+        if ($this->validate($rules)) {
+            $data = [
+                'id' => $id,
+                'nik' => $this->request->getVar('nik'),
+                'fullname' => $this->request->getVar('fullname'),
+                'email' => $this->request->getVar('email'),
+                'date_of_birth' => $this->request->getVar('date_of_birth'),
+                'place_of_birth' => $this->request->getVar('place_of_birth'),
+                'gender' => $this->request->getVar('gender'),
+                'age' => $this->request->getVar('age'),
+                'phone_number' => $this->request->getVar('phone_number'),
+                'address' => $this->request->getVar('address'),
+            ];
+
+            $this->userModel->save($data);
+            return redirect()->to("/admin/employee");
+        } else {
+            $validation = Services::validation();
+            return redirect()->to('/admin/employee/edit/'.$id)->withInput()->with('validation', $validation);
+        }
     }
 }
