@@ -3,19 +3,40 @@
 namespace App\Controllers;
 
 use App\Models\JobModel;
+use App\Models\UserModel;
+use Config\Services;
 
 class Job extends BaseController
 {
+    protected $jobModel;
+
+    public function __construct() {
+        $this->jobModel = new JobModel();
+    }
+
     public function index()
     {
-        $jobModel = new JobModel();
-        $job = $jobModel->findAll();
+        $job = $this->jobModel->findAll();
         $data = [
             'page' => 'job',
             'job' => $job
         ];
 
         echo view('layouts/pages/admin/job/index', $data);
+    }
+
+    public function create()
+    {
+        helper(['form']);
+        $userModel = new UserModel();
+        $dataUser = $userModel->findAll();
+        $data = [
+            'page' => 'employee',
+            'validation' => Services::validation(),
+            'user' => $dataUser
+        ];
+
+        echo view('layouts/pages/admin/job/create', $data);
     }
 
     public function save()
@@ -45,10 +66,8 @@ class Job extends BaseController
             // TBD
             return redirect()->to("/job/create");
         } else {
-            $data['validation'] = $this->validator;
-
-            // TBD
-            echo view("/job/create", $data);
+            $validation = Services::validation();
+            return redirect()->to('/admin/job/create')->withInput()->with('validation', $validation);
         }
     }
     
