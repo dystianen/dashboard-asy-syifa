@@ -32,7 +32,6 @@ class Employee extends BaseController
     {
         helper(['form']);
         $data = [
-            'title' => 'Create',
             'page' => 'employee',
             'validation' => Services::validation(),
         ];
@@ -92,7 +91,6 @@ class Employee extends BaseController
     {
         helper(['form']);
         $data = [
-            'title' => 'Edit',
             'page' => 'employee',
             'validation' => Services::validation(),
             'user' => $this->userModel->where(['id' => $id])->first(),
@@ -135,7 +133,19 @@ class Employee extends BaseController
             return redirect()->to("/admin/employee");
         } else {
             $validation = Services::validation();
-            return redirect()->to('/admin/employee/edit/'.$id)->withInput()->with('validation', $validation);
+            return redirect()->to('/admin/employee/edit/' . $id)->withInput()->with('validation', $validation);
         }
+    }
+
+    public function detail($id)
+    {
+        helper(['form']);
+        $data = [
+            'page' => 'employee',
+            'validation' => Services::validation(),
+            'user' => $this->userModel->where(['id' => $id])->first(),
+        ];
+
+        echo view('layouts/pages/admin/employee/detail', $data);
     }
 }
