@@ -28,5 +28,9 @@
                 <span>Job</span>
             </a>
         </li>
+
+        <div class="d-grid gap-2">
+            <button class='btn btn-outline-danger mt-5' block><i class="bi bi-lock-fill" style="padding-right: 10px"></i>Log Out</button>
+        </div>
     </ul>
 </div>

@@ -6,14 +6,9 @@
         <h1 class="h3 mb-3 text-gray-800">Job</h1>
 
         <nav aria-label="breadcrumb">
-            <ol
-                    class="breadcrumb"
-            >
+            <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
-                <li
-                        class="breadcrumb-item active"
-                        aria-current="page"
-                >Job
+                <li class="breadcrumb-item active" aria-current="page">Job
                 </li>
             </ol>
         </nav>
@@ -23,45 +18,39 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <table
-                        class="table"
-                        id="table"
-                >
+                <table class="table" id="table">
                     <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Job Type</th>
-                        <th>Description</th>
-                        <th>Point</th>
-                        <th>Action</th>
-                    </tr>
+                        <tr>
+                            <th>No.</th>
+                            <th>Job Type</th>
+                            <th>Description</th>
+                            <th>Point</th>
+                            <th>Action</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($job as $j)  : ?>
-                        <tr>
-                            <td><?= $i++ ?></td>
-                            <td><?= $j['type_of_work'] ?></td>
-                            <td><?= $j['description'] ?></td>
-                            <td><?= $j['point'] ?></td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-2">
-                                        <a href="<?php echo base_url(); ?>/admin/job/edit/<?= $j['id'] ?>"
-                                           class="btn btn-link"><i class="bi bi-pencil-square"></i></a>
+                        <?php $i = 1; ?>
+                        <?php foreach ($job as $j) : ?>
+                            <tr>
+                                <td><?= $i++ ?></td>
+                                <td><?= $j['type_of_work'] ?></td>
+                                <td><?= $j['description'] ?></td>
+                                <td><?= $j['point'] ?></td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <a href="<?php echo base_url(); ?>/admin/job/edit/<?= $j['id'] ?>" class="btn btn-link"><i class="bi bi-pencil-square"></i></a>
+                                        </div>
+                                        <div class="col-2">
+                                            <a class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
+                                        </div>
+                                        <div class="col-2">
+                                            <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $j['id'] ?>"><i class="bi bi-trash-fill"></i></button>
+                                        </div>
                                     </div>
-                                    <div class="col-2">
-                                        <a class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
-                                    </div>
-                                    <div class="col-2">
-                                        <button class="btn btn-link" data-bs-toggle="modal"
-                                                data-bs-target="#deleteModal<?= $j['id'] ?>"><i
-                                                    class="bi bi-trash-fill"></i></button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -72,7 +61,7 @@
 
 <?= $this->section('scripts') ?>
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#table').DataTable({
             // "dom": 'QBflrtip',
             "dom": `Q
@@ -94,10 +83,9 @@
             "info": true,
             "buttons": [
                 'excel',
-                'pdf',
                 {
                     text: 'Create',
-                    action: function (e, dt, node, config) {
+                    action: function(e, dt, node, config) {
                         window.location.href = '/admin/job/create'
                     }
                 }

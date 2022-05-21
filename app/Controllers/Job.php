@@ -10,7 +10,8 @@ class Job extends BaseController
 {
     protected $jobModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->jobModel = new JobModel();
     }
 
@@ -31,7 +32,7 @@ class Job extends BaseController
         $userModel = new UserModel();
         $dataUser = $userModel->findAll();
         $data = [
-            'page' => 'employee',
+            'page' => 'job',
             'validation' => Services::validation(),
             'user' => $dataUser
         ];
@@ -49,7 +50,7 @@ class Job extends BaseController
             'point'         => 'required',
             'is_completed'  => 'required',
         ];
-          
+
         if ($this->validate($rules)) {
             $jobModel = new JobModel();
 
@@ -70,23 +71,23 @@ class Job extends BaseController
             return redirect()->to('/admin/job/create')->withInput()->with('validation', $validation);
         }
     }
-    
-    public function show() 
+
+    public function show()
     {
         // Your Code...    
     }
 
-    public function edit() 
+    public function edit()
     {
         // Your Code...    
     }
 
-    public function update() 
+    public function update()
     {
         // Your Code...    
     }
 
-    public function destroy() 
+    public function destroy()
     {
         // Your Code...    
     }
