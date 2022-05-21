@@ -186,11 +186,11 @@
                                 type="button"
                                 class="btn btn-secondary"
                                 href="/admin/employee"
-                        >Cancel</a>
+                        ><i class="bi bi-x-lg"></i> Cancel</a>
                         <button
                                 type="submit"
                                 class="btn btn-primary"
-                        >Save
+                        ><i class="bi bi-check-lg"></i> Save
                         </button>
                     </div>
 

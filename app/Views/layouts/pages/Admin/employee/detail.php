@@ -161,11 +161,8 @@
                     </div>
 
                     <div class="float-end pt-3">
-                        <a
-                                type="button"
-                                class="btn btn-secondary"
-                                href="/admin/employee"
-                        >Back</a>
+                        <a type="button" class="btn btn-secondary" href="/admin/employee"><i class="bi bi-box-arrow-left"></i> Back</a>
+                        <a href="<?php echo base_url(); ?>/admin/employee/edit/<?= $user['id']?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>
                     </div>
 
                 </form>
