@@ -150,7 +150,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand"><i class="bi bi-alarm" style="font-size: 26px;"></i> <span style="font-size: 26px; font-weight: bold">Absensi</span></a>
+                    <a href="/user" class="navbar-brand"><i class="bi bi-alarm" style="font-size: 26px;"></i> <span style="font-size: 26px; font-weight: bold">Absensi</span></a>
                     <div class="justify-content-end">
                         <h5 style="font-size: 16px; margin: 0">Brotherhood</h5>
                         <span style="font-size: 14px; color: gray; margin: 0">Project Manager</span>
@@ -161,56 +161,31 @@
 
         <section>
             <div class="text-center">
-                <h3>Good Morning,</h3>
-                <span style="color: gray">Resep kesuksesan adalah bekerja keras dan pantang menyerah. Selamat bekerja!</span>
+                <span style="color: gray">Please select your Attendance today!</span>
             </div>
         </section>
 
-        <section class="mt-4">
+        <section>
             <div class="row">
-                <div class="col">
-                    <a class="card card-menu stretched-link text-decoration-none" href="/user/absent">
-                        <div class="card-body text-center">
-                            <div class="column justify-content-center">
-                                <i class="bi bi-box-arrow-in-right mt-1 mr-3" style="font-size: 32px; color: #6610f2"></i>
-                                <h5 class="title text-center m-0 pt-3" style="color: #5e5e5e">Check In</h5>
-                            </div>
+                <a class="card card-menu stretched-link text-decoration-none" href="/user/scan">
+                    <div class="card-body text-center">
+                        <div class="column justify-content-center">
+                            <i class="bi bi-qr-code-scan mt-1 mr-3" style="font-size: 32px; color: #6610f2"></i>
+                            <h5 class="title text-center m-0 pt-3" style="color: #5e5e5e">Presence</h5>
                         </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a class="card card-menu stretched-link text-decoration-none" href="/user/report">
-                        <div class="card-body text-center">
-                            <div class="column justify-content-center">
-                                <i class="bi bi-box-arrow-left mt-1 mr-3" style="font-size: 32px; color: #6610f2"></i>
-                                <h5 class="title text-center m-0 pt-3" style="color: #5e5e5e">Check Out</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
 
             <div class="row mt-4">
-                <div class="col">
-                    <a class="card card-menu stretched-link text-decoration-none" href="/user/task">
-                        <div class="card-body text-center">
-                            <div class="column justify-content-center">
-                                <i class="bi bi-list-task mt-1 mr-3" style="font-size: 32px; color: #6610f2"></i>
-                                <h5 class="title text-center m-0 pt-3" style="color: #5e5e5e">Daily Task</h5>
-                            </div>
+                <a class="card card-menu stretched-link text-decoration-none" href="/user/permission">
+                    <div class="card-body text-center">
+                        <div class="column justify-content-center">
+                            <i class="bi bi-file-earmark-text mt-1 mr-3" style="font-size: 32px; color: #6610f2"></i>
+                            <h5 class="title text-center m-0 pt-3" style="color: #5e5e5e">Permission</h5>
                         </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a class="card card-menu stretched-link text-decoration-none" href="/user/profile">
-                        <div class="card-body text-center">
-                            <div class="column justify-content-center">
-                                <i class="bi bi-file-person mt-1 mr-3" style="font-size: 32px; color: #6610f2"></i>
-                                <h5 class="title text-center m-0 pt-3" style="color: #5e5e5e">Profile</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
         </section>
     </div>

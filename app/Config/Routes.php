@@ -53,10 +53,14 @@ $routes->group('admin', static function ($routes) {
 //     $routes->get('dashboard', 'H')
 // })
 
-$routes->group('users', static function ($routes) {
+$routes->group('user', static function ($routes) {
     $routes->get('/', 'User::index',['filter' => 'authGuard']);
     $routes->get('scan', 'User::scanner',['filter' => 'authGuard']);
     $routes->get('profile', 'User::profile',['filter' => 'authGuard']);
+    $routes->get('absent', 'User::absent',['filter' => 'authGuard']);
+    $routes->get('permission', 'User::permission',['filter' => 'authGuard']);
+    $routes->get('report', 'User::report',['filter' => 'authGuard']);
+    $routes->get('task', 'User::task',['filter' => 'authGuard']);
 });
 
 /*

@@ -18,6 +18,26 @@ class User extends BaseController
     {
         echo view('layouts/pages/User/profile');
     }
+
+    public function absent()
+    {
+        echo view('layouts/pages/User/absent');
+    }
+
+    public function permission()
+    {
+        echo view('layouts/pages/User/permission');
+    }
+
+    public function report()
+    {
+        echo view('layouts/pages/User/report');
+    }
+
+    public function task()
+    {
+        echo view('layouts/pages/User/task');
+    }
     
     public function show() 
     {

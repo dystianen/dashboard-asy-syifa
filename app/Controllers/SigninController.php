@@ -35,7 +35,7 @@ class SigninController extends BaseController
                 $session->set($ses_data);
 
                 if ($data['level'] == 'employee') {
-                    return redirect()->to('/users/profile');
+                    return redirect()->to('/user');
                 } else {
                     return redirect()->to('/admin/dashboard');
                 }
