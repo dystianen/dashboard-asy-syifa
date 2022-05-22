@@ -164,7 +164,7 @@
                 "ordering": true,
                 "info": true,
                 "buttons": [
-                    // 'excel',
+                    'excel',
                     // 'pdf',
                     {
                         text: 'Create',
