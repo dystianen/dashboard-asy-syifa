@@ -49,4 +49,17 @@ class SigninController extends BaseController
             return redirect()->to('/login');
         }
     }
+
+    function logout() {
+		$session = session();
+        $session->set(array(
+            'id' => '',
+            'fullname' => '',
+            'email' => '',
+            'isLoggedIn' => FALSE
+        ));
+        $session->destroy();
+    }
+
+
 }
