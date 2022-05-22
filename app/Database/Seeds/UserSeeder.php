@@ -12,8 +12,14 @@ class UserSeeder extends Seeder
             [
                 'fullname'  => 'Administrator',
                 'email'  =>  "admin@admin.com",
-                'level'  => 'Admin',
-                'password'  =>  password_hash("admin123", PASSWORD_DEFAULT)
+                'level'  => 'admin',
+                'password'  =>  password_hash("123", PASSWORD_DEFAULT)
+            ],
+            [
+                'fullname'  => 'Employee',
+                'email'  =>  "employee@employee.com",
+                'level'  => 'employee',
+                'password'  =>  password_hash("123", PASSWORD_DEFAULT)
             ],
         ];
         $this->db->table('users')->insertBatch($data);

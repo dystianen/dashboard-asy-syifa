@@ -44,24 +44,35 @@ class AttedanceController extends BaseController
         }
     }
 
+    // Detail Page
     public function show() 
     {
         // Your Code...    
     }
 
+    // Edit Page
     public function edit() 
     {
         // Your Code...    
     }
 
+    // Update Function
     public function update() 
     {
-        // Your Code...    
+        $this->contact->update($id, [
+            'name' => $this->request->getPost('name'),
+            'email' => $this->request->getPost('email'),
+            'phone' => $this->request->getPost('phone'),
+            'address' => $this->request->getPost('address'),
+        ]);
+        return redirect('contact')->with('success', 'Data Updated Successfully'); 
     }
 
+    // Delete or Soft Delete Function
     public function destroy() 
     {
-        // Your Code...    
+        $this->contact->delete($id);
+        return redirect('contact')->with('success', 'Data Deleted Successfully');
     }
     
 }

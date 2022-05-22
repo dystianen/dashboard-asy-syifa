@@ -36,7 +36,7 @@ $routes->get('/logout', 'SigninController::logout');
 $routes->add('/login/submit', 'SigninController::loginAuth');
 $routes->get('/register', 'SignupController::index');
 
-$routes->group('admin', static function ($routes) {
+$routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('dashboard', 'Home::index');
     $routes->get('employee', 'Employee::index');
     $routes->add('employee/form', 'Employee::create');
@@ -54,7 +54,7 @@ $routes->group('admin', static function ($routes) {
 //     $routes->get('dashboard', 'H')
 // })
 
-$routes->group('user', static function ($routes) {
+$routes->group('user', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('/', 'User::index',['filter' => 'authGuard']);
     $routes->get('scan', 'User::scanner',['filter' => 'authGuard']);
     $routes->get('profile', 'User::profile',['filter' => 'authGuard']);

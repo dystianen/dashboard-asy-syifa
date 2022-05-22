@@ -29,6 +29,7 @@ class SigninController extends BaseController
                     'id' => $data['id'],
                     'fullname' => $data['fullname'],
                     'email' => $data['email'],
+                    'level' => $data['level'],
                     'isLoggedIn' => TRUE
                 ];
 
@@ -56,6 +57,7 @@ class SigninController extends BaseController
             'id' => '',
             'fullname' => '',
             'email' => '',
+            'level' => '',
             'isLoggedIn' => FALSE
         ));
         $session->destroy();
