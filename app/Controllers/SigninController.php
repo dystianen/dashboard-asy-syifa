@@ -59,6 +59,7 @@ class SigninController extends BaseController
             'isLoggedIn' => FALSE
         ));
         $session->destroy();
+        return redirect()->to('/login');
     }
 
 
