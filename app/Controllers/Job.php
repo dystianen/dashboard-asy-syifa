@@ -13,6 +13,11 @@ class Job extends BaseController
     public function __construct()
     {
         $this->jobModel = new JobModel();
+
+        if (session()->get('role') != "admin") {
+            echo 'Access denied';
+            exit;
+        }
     }
 
     public function index()

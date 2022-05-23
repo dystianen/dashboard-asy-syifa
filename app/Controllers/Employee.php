@@ -12,6 +12,11 @@ class Employee extends BaseController
     public function __construct()
     {
         $this->userModel = new UserModel();
+
+        if (session()->get('role') != "admin") {
+            echo 'Access denied';
+            exit;
+        }
     }
 
     public function index()

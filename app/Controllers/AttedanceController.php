@@ -7,6 +7,14 @@ use App\Models\AttendanceModel;
 
 class AttedanceController extends BaseController
 {
+    public function __construct()
+    {
+        if (session()->get('role') != "admin") {
+            echo 'Access denied';
+            exit;
+        }
+    }
+
     public function index()
     {
         echo view('layouts/pages/attedance/index');
@@ -16,20 +24,20 @@ class AttedanceController extends BaseController
     {
         helper(['form']);
         $rules = [
-            'user_id'       => 'required',
-            'is_logged_in'  => 'required',
-            'description'   => 'required',
-            'file'          => 'required',
+            'user_id' => 'required',
+            'is_logged_in' => 'required',
+            'description' => 'required',
+            'file' => 'required',
         ];
-          
+
         if ($this->validate($rules)) {
             $attedanceModel = new AttendanceModel();
 
             $data = [
-                'user_id'       => $this->request->getVar('user_id'),
-                'is_logged_in'  => $this->request->getVar('is_logged_in'),
-                'description'   => $this->request->getVar('description'),
-                'file'          => $this->request->getVar('file'),
+                'user_id' => $this->request->getVar('user_id'),
+                'is_logged_in' => $this->request->getVar('is_logged_in'),
+                'description' => $this->request->getVar('description'),
+                'file' => $this->request->getVar('file'),
             ];
 
             $attedanceModel->save($data);
@@ -111,5 +119,5 @@ class AttedanceController extends BaseController
 
         echo view('layouts/pages/admin/employee/detail', $data);
     }
-    
+
 }

@@ -4,6 +4,14 @@ namespace App\Controllers;
 
 class User extends BaseController
 {
+    public function __construct()
+    {
+        if (session()->get('role') != "user") {
+            echo 'Access denied';
+            exit;
+        }
+    }
+
     public function index()
     {
         echo view('layouts/pages/User/index');
