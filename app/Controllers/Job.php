@@ -14,7 +14,7 @@ class Job extends BaseController
     {
         $this->jobModel = new JobModel();
 
-        if (session()->get('role') != "admin") {
+        if (session()->get('level') != "admin") {
             echo 'Access denied';
             exit;
         }

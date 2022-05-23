@@ -9,7 +9,7 @@ class AttedanceController extends BaseController
 {
     public function __construct()
     {
-        if (session()->get('role') != "admin") {
+        if (session()->get('level') != "admin") {
             echo 'Access denied';
             exit;
         }

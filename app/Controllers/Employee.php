@@ -13,7 +13,7 @@ class Employee extends BaseController
     {
         $this->userModel = new UserModel();
 
-        if (session()->get('role') != "admin") {
+        if (session()->get('level') != "admin") {
             echo 'Access denied';
             exit;
         }

@@ -6,7 +6,7 @@ class User extends BaseController
 {
     public function __construct()
     {
-        if (session()->get('role') != "user") {
+        if (session()->get('level') != "employee") {
             echo 'Access denied';
             exit;
         }

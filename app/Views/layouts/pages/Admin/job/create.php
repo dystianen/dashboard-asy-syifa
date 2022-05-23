@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <div class="form-group">
-                            <label>Gender <span style="color: red">*</span></label>
+                            <label>User <span style="color: red">*</span></label>
                             <select name="user" class="form-select <?= ($validation->hasError('user') ? 'is-invalid' : '') ?>" id="basicSelect">
                                 <option value="">--please select--</option>
                                 <?php foreach ($user as $e) : ?>

@@ -169,7 +169,6 @@
                                 <option value="">--please select--</option>
                                 <option value="Sakit">Sakit</option>
                                 <option value="Izin">Izin</option>
-                                <option value="Cuti">Cuti</option>
                             </select>
                         </div>
                         <div class="form-group">

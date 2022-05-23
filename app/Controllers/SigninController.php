@@ -35,24 +35,24 @@ class SigninController extends BaseController
 
                 $session->set($ses_data);
 
+                if ($data['level'] == 'employee') {
+                    return redirect()->to('/user');
+                } else {
                     return redirect()->to('/admin/dashboard');
-//                if ($data['level'] == 'employee') {
-//                    return redirect()->to('/user');
-//                } else {
-//                }
-
+                }
             } else {
                 $session->setFlashdata('failed', 'Password is incorrect.');
-//                return redirect()->to('/login');
+                return redirect()->to('/login');
             }
         } else {
             $session->setFlashdata('failed', 'Email does not exist.');
-//            return redirect()->to('/login');
+            return redirect()->to('/login');
         }
     }
 
-    function logout() {
-		$session = session();
+    function logout()
+    {
+        $session = session();
         $session->set(array(
             'id' => '',
             'fullname' => '',
@@ -63,6 +63,4 @@ class SigninController extends BaseController
         $session->destroy();
         return redirect()->to('/login');
     }
-
-
 }
