@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <section>
     <div class="text-center">
-        <h3>Good Morning,</h3>
+        <h3 class="greeting"></h3>
         <span style="color: gray">Resep kesuksesan adalah bekerja keras dan pantang menyerah. Selamat bekerja!</span>
     </div>
 </section>
@@ -55,4 +55,17 @@
         </div>
     </div>
 </section>
+
+<script>
+    $(document).ready(function() {
+        function dateTime() {
+            var ndate = new Date();
+            var hours = ndate.getHours();
+            var message = hours < 12 ? `Good Morning, <?= session()->get('fullname') ?>` : hours < 18 ? `Good Afternoon, <?= session()->get('fullname') ?>` : `Good Evening, <?= session()->get('fullname') ?>`;
+            $(".greeting").text(message);
+        }
+
+        setInterval(dateTime, 100);
+    });
+</script>
 <?= $this->endSection() ?>
