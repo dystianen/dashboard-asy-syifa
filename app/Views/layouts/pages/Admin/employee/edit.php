@@ -153,6 +153,27 @@
                         </div>
                     </div>
 
+                    <!-- DataTales -->
+                    <div class="card shadow mt-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" id="table">
+                                    <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Job Type</th>
+                                        <th>Description</th>
+                                        <th>Point</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <!-- <tbody>
+                                </tbody> -->
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="float-end pt-3">
                         <a
                                 type="button"

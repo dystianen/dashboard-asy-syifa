@@ -102,7 +102,7 @@
                     </div>
                 </div>
 
-                <!-- DataTales Example -->
+                <!-- DataTales -->
                 <div class="card shadow mt-4">
                     <div class="card-body">
                         <div class="table-responsive">
