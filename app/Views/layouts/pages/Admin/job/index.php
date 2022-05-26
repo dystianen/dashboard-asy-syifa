@@ -3,12 +3,12 @@
 <?= $this->section('content') ?>
 <div class="container-fluid">
     <div class="d-sm-flex flex-column mb-4">
-        <h1 class="h3 mb-3 text-gray-800">Job</h1>
+        <h1 class="h3 mb-3 text-gray-800">Jobs</h1>
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Job
+                <li class="breadcrumb-item active" aria-current="page">Jobs
                 </li>
             </ol>
         </nav>
