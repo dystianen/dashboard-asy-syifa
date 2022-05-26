@@ -2,16 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Models\JobModel;
 use App\Models\UserModel;
 use Config\Services;
 
 class Employee extends BaseController
 {
-    protected $userModel;
+    protected $userModel, $jobModel;
 
     public function __construct()
     {
         $this->userModel = new UserModel();
+
+        $this->jobModel = new JobModel();
 
         if (session()->get('level') != "admin") {
             echo 'Access denied';
@@ -39,6 +42,7 @@ class Employee extends BaseController
         $data = [
             'page' => 'employee',
             'validation' => Services::validation(),
+            'job' => $this->jobModel->findAll()
         ];
 
         echo view('layouts/pages/admin/employee/create', $data);
@@ -99,6 +103,7 @@ class Employee extends BaseController
             'page' => 'employee',
             'validation' => Services::validation(),
             'user' => $this->userModel->where(['id' => $id])->first(),
+            'job' => $this->jobModel->findAll()
         ];
 
         echo view('layouts/pages/admin/employee/edit', $data);
@@ -149,6 +154,7 @@ class Employee extends BaseController
             'page' => 'employee',
             'validation' => Services::validation(),
             'user' => $this->userModel->where(['id' => $id])->first(),
+            'job' => $this->jobModel->findAll()
         ];
 
         echo view('layouts/pages/admin/employee/detail', $data);

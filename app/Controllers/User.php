@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\JobModel;
+
 class User extends BaseController
 {
     public function __construct()
@@ -44,25 +46,32 @@ class User extends BaseController
 
     public function task()
     {
-        echo view('layouts/pages/User/task');
+        $jobModel = new JobModel();
+        $job = $jobModel->findAll();
+        $data = [
+            'page' => 'job',
+            'job' => $job
+        ];
+
+        echo view('layouts/pages/User/task', $data);
     }
-    
-    public function show() 
+
+    public function show()
     {
         // Your Code...    
     }
 
-    public function edit() 
+    public function edit()
     {
         // Your Code...    
     }
 
-    public function update() 
+    public function update()
     {
         // Your Code...    
     }
 
-    public function destroy() 
+    public function destroy()
     {
         // Your Code...    
     }
