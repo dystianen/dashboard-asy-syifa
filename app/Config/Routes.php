@@ -37,6 +37,7 @@ $routes->add('/login/submit', 'SigninController::loginAuth');
 $routes->get('/register', 'SignupController::index');
 
 $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
+    /** EMPLOYEE **/
     $routes->get('dashboard', 'Home::index');
     $routes->get('employee', 'Employee::index');
     $routes->add('employee/form', 'Employee::create');
@@ -46,8 +47,12 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
     $routes->add('employee/detail/(:num)', 'Employee::detail/$1');
     $routes->delete('employee/delete/(:num)', 'Employee::delete/$1');
 
+    /** JOBS **/
     $routes->get('job', 'Job::index');
     $routes->add('job/create', 'Job::create');
+
+    /** ATTEDANCE **/
+    $routes->get('attedance', 'AttedanceController::index');
 });
 
 // $routes->group('employee', static function ($routes) {

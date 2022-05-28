@@ -11,12 +11,18 @@ class AttedanceController extends BaseController
     protected $attendanceModel;
     public function __construct()
     {
+        helper(['form']);
         $this->attendanceModel = new AttendanceModel();
     }
 
     public function index()
     {
-        echo view('layouts/pages/attedance/index');
+        $data = [
+            'page' => 'attedance',
+            'attedance' => $this->attendanceModel->findAll()
+        ];
+
+        echo view('layouts/pages/attedance/index', $data);
     }
 
     public function store()
