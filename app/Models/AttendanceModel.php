@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class AttendanceModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'attendances';
+    protected $table            = 'attendance';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -17,6 +17,7 @@ class AttendanceModel extends Model
     protected $allowedFields    = [
         "user_id",
         "is_logged_in",
+        "category",
         "description",
         "file",
     ];

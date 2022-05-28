@@ -34,11 +34,6 @@ class User extends BaseController
         echo view('layouts/pages/User/absent');
     }
 
-    public function permission()
-    {
-        echo view('layouts/pages/User/permission');
-    }
-
     public function report()
     {
         echo view('layouts/pages/User/report');

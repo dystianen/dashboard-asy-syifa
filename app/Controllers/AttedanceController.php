@@ -4,15 +4,14 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AttendanceModel;
+use CodeIgniter\Config\Services;
 
 class AttedanceController extends BaseController
 {
+    protected $attendanceModel;
     public function __construct()
     {
-        if (session()->get('level') != "admin") {
-            echo 'Access denied';
-            exit;
-        }
+        $this->attendanceModel = new AttendanceModel();
     }
 
     public function index()
@@ -120,4 +119,41 @@ class AttedanceController extends BaseController
         echo view('layouts/pages/admin/employee/detail', $data);
     }
 
+    public function permission()
+    {
+        $data = [
+            'validation' => Services::validation(),
+        ];
+
+        echo view('layouts/pages/User/permission', $data);
+    }
+
+    public function permissionSave()
+    {
+        helper(['form']);
+        $rules = [
+            'category' => 'required',
+            'description' => 'required',
+            'file' => 'required',
+        ];
+
+        if ($this->validate($rules)) {
+            $data = [
+                'user_id' => session()->get('id'),
+                'category' => $this->request->getVar('category'),
+                'description' => $this->request->getVar('description'),
+                'file' => $this->request->getVar('file'),
+                'is_logged_in' => TRUE,
+                'created_at' => date('Y-m-d H:i:s')
+            ];
+
+            $this->attendanceModel->save($data);
+
+            // TBD
+            return redirect()->to('/user/absent');
+        } else {
+            $validation = Services::validation();
+            return redirect()->to('/user/permission')->withInput()->with('validation', $validation);
+        }
+    }
 }

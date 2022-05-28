@@ -27,6 +27,11 @@ class Attendance extends Migration
                 'type' => 'BOOLEAN',
                 'default' => false
             ],
+            'category' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => true,
+            ],
             'description' => [
                 'type' => 'TEXT',
                 'null' => true
