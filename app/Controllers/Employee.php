@@ -24,8 +24,7 @@ class Employee extends BaseController
 
     public function index()
     {
-        $userModel = new UserModel();
-        $user = $userModel->findAll();
+        $user = $this->userModel->findAll();
         $data = [
             'page' => 'employee',
             'user' => $user
@@ -81,7 +80,8 @@ class Employee extends BaseController
                 'phone_number' => $this->request->getVar('phone_number'),
                 'address' => $this->request->getVar('address'),
                 'position' => $this->request->getVar('position'),
-                'level' => 'employee'
+                'level' => 'employee',
+                'created_at' => date('Y-m-d H:i:s'),
             ];
 
             $userModel->save($data);
@@ -105,7 +105,7 @@ class Employee extends BaseController
             'page' => 'employee',
             'validation' => Services::validation(),
             'user' => $this->userModel->where(['id' => $id])->first(),
-            'job' => $this->jobModel->findAll()
+            'job' => $this->jobModel->where(['user_id' => $id])->findAll(),
         ];
 
         echo view('layouts/pages/admin/employee/edit', $data);
@@ -141,6 +141,7 @@ class Employee extends BaseController
                 'phone_number' => $this->request->getVar('phone_number'),
                 'address' => $this->request->getVar('address'),
                 'position' => $this->request->getVar('position'),
+                'updated_at' => date('Y-m-d H:i:s')
             ];
 
             $this->userModel->save($data);
@@ -158,7 +159,7 @@ class Employee extends BaseController
             'page' => 'employee',
             'validation' => Services::validation(),
             'user' => $this->userModel->where(['id' => $id])->first(),
-            'job' => $this->jobModel->findAll()
+            'job' => $this->jobModel->where(['user_id' => $id])->findAll(),
         ];
 
         echo view('layouts/pages/admin/employee/detail', $data);

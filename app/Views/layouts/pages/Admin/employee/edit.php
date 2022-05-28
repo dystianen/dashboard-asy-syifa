@@ -20,65 +20,72 @@
             <h5 class="card-title mb-0 text-gray-900">Edit Employee</h5>
         </div>
 
-        <div class="card-body">
+        <div class="card-body mt-2">
             <form action="<?php echo base_url(); ?>/admin/employee/update/<?= $user['id'] ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <div class="form-group">
-                            <label for="nik">NIK <span style="color: red">*</span></label>
+                            <label for="nik" class="form-label">NIK <span style="color: red">*</span></label>
                             <input name="nik" class="form-control <?= ($validation->hasError('nik') ? 'is-invalid' : '') ?>" id="nik" placeholder="example: 3521067738749" value="<?= $user['nik'] ?>">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('nik') ?>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email <span style="color: red">*</span></label>
+                            <label for="email" class="form-label">Email <span style="color: red">*</span></label>
                             <input name="email" class="form-control <?= ($validation->hasError('email') ? 'is-invalid' : '') ?>" id="email" type="email" placeholder="example: example@gmail.com" value="<?= $user['email'] ?>">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('email') ?>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="place_of_birth">Place of Birth <span style="color: red">*</span></label>
+                            <label for="place_of_birth" class="form-label">Place of Birth <span style="color: red">*</span></label>
                             <input name="place_of_birth" class="form-control <?= ($validation->hasError('place_of_birth') ? 'is-invalid' : '') ?>" id="place_of_birth" placeholder="example: Malang" value="<?= $user['place_of_birth'] ?>">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('place_of_birth') ?>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="age">Age <span style="color: red">*</span></label>
+                            <label for="age" class="form-label">Age <span style="color: red">*</span></label>
                             <input name="age" class="form-control <?= ($validation->hasError('age') ? 'is-invalid' : '') ?>" id="age" placeholder="example: 20" value="<?= $user['age'] ?>">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('age') ?>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="address">Address <span style="color: red">*</span></label>
-                            <textarea name="address" class="form-control <?= ($validation->hasError('address') ? 'is-invalid' : '') ?>" id="address" placeholder="example: Jl. Danau Ranau, Sawojajar, Kec. Kedungkandang, Kota Malang, Jawa Timur 65139"><?= $user['address'] ?></textarea>
+                            <label for="phone" class="form-label">Phone Number <span style="color: red">*</span></label>
+                            <input name="phone_number" class="form-control <?= ($validation->hasError('phone_number') ? 'is-invalid' : '') ?>" id="phone" placeholder="example: 08146635529" value="<?= $user['phone_number'] ?>">
                             <div class="invalid-feedback">
-                                <?= $validation->getError('address') ?>
+                                <?= $validation->getError('phone_number') ?>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6 col-12">
                         <div class="form-group">
-                            <label for="fullname">Fullname <span style="color: red">*</span></label>
+                            <label for="fullname" class="form-label">Fullname <span style="color: red">*</span></label>
                             <input name="fullname" class="form-control <?= ($validation->hasError('fullname') ? 'is-invalid' : '') ?>" id="fullname" placeholder="example: brotherhood" value="<?= $user['fullname'] ?>">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('fullname') ?>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="date_of_birth">Date of Birth <span style="color: red">*</span></label>
+                            <label for="date_of_birth" class="form-label">Date of Birth <span style="color: red">*</span></label>
                             <input name="date_of_birth" class="form-control <?= ($validation->hasError('date_of_birth') ? 'is-invalid' : '') ?>" id="date_of_birth" type="date" value="<?= $user['date_of_birth'] ?>">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('date_of_birth') ?>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Gender <span style="color: red">*</span></label>
+                            <label for="position" class="form-label">Position <span style="color: red">*</span></label>
+                            <input name="position" class="form-control <?= ($validation->hasError('position') ? 'is-invalid' : '') ?>" id="position" value="<?= old('position') ?>" placeholder="example: Programmer">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('position') ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender" class="form-label">Gender <span style="color: red">*</span></label>
                             <select name="gender" class="form-select <?= ($validation->hasError('gender') ? 'is-invalid' : '') ?>" id="basicSelect" value="<?= $user['gender'] ?>">
                                 <option value="">--please select--</option>
                                 <option value="Male" <?php if ($user['gender'] == 'Male') {
@@ -93,10 +100,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number <span style="color: red">*</span></label>
-                            <input name="phone_number" class="form-control <?= ($validation->hasError('phone_number') ? 'is-invalid' : '') ?>" id="phone" placeholder="example: 08146635529" value="<?= $user['phone_number'] ?>">
+                            <label for="address" class="form-label">Address <span style="color: red">*</span></label>
+                            <textarea name="address" class="form-control <?= ($validation->hasError('address') ? 'is-invalid' : '') ?>" id="address" placeholder="example: Jl. Danau Ranau, Sawojajar, Kec. Kedungkandang, Kota Malang, Jawa Timur 65139"><?= $user['address'] ?></textarea>
                             <div class="invalid-feedback">
-                                <?= $validation->getError('phone_number') ?>
+                                <?= $validation->getError('address') ?>
                             </div>
                         </div>
                     </div>

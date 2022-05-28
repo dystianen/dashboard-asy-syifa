@@ -47,13 +47,14 @@ class User extends BaseController
     public function task()
     {
         $jobModel = new JobModel();
-        $job = $jobModel->findAll();
+        $userId =  session()->get('id');
+        $job = $jobModel->where('user_id', $userId)->findAll();
         $data = [
             'page' => 'job',
             'job' => $job
         ];
 
-        echo view('layouts/pages/User/task', $data);
+        echo view('layouts/pages/User/task/index', $data);
     }
 
     public function show()

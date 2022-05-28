@@ -167,9 +167,8 @@
                 </div>
 
                 <div class="float-end pt-3">
-                    <a type="button" class="btn btn-secondary" href="/admin/employee"><i class="bi bi-x-lg"></i> Cancel</a>
-                    <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Save
-                    </button>
+                    <a type="button" class="btn btn-secondary" href="/admin/employee">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
 
             </form>
