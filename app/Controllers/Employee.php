@@ -62,7 +62,8 @@ class Employee extends BaseController
             'gender' => 'required',
             'age' => 'required',
             'phone_number' => 'required',
-            'address' => 'required'
+            'address' => 'required',
+            'position' => 'required',
         ];
 
         if ($this->validate($rules)) {
@@ -79,6 +80,7 @@ class Employee extends BaseController
                 'age' => $this->request->getVar('age'),
                 'phone_number' => $this->request->getVar('phone_number'),
                 'address' => $this->request->getVar('address'),
+                'position' => $this->request->getVar('position'),
                 'level' => 'employee'
             ];
 
@@ -123,6 +125,7 @@ class Employee extends BaseController
             'phone_number' => 'required',
             'address' => 'required',
             'password' => 'required',
+            'position' => 'required',
         ];
 
         if ($this->validate($rules)) {
@@ -137,6 +140,7 @@ class Employee extends BaseController
                 'age' => $this->request->getVar('age'),
                 'phone_number' => $this->request->getVar('phone_number'),
                 'address' => $this->request->getVar('address'),
+                'position' => $this->request->getVar('position'),
             ];
 
             $this->userModel->save($data);

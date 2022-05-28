@@ -10,13 +10,13 @@ class JobSeeder extends Seeder
     {
         $data = [
             [
-                'user_id' => 7,
+                'user_id' => 1,
                 'type_of_work'  => 'Administrator',
                 'description'  =>  "admin@admin.com",
                 'point'  => 600,
             ],
             [
-                'user_id' => 8,
+                'user_id' => 3,
                 'type_of_work'  => 'Programmer',
                 'description'  =>  "Membuat sebuah database yang ramah dilihat user",
                 'point'  => 7000,

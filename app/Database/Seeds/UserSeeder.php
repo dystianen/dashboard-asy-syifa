@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
                 'email'  =>  "admin@admin.com",
                 'level'  => 'admin',
                 'phone_number' => '081336473785',
+                'position' => 'Admin',
                 'password'  =>  password_hash("123", PASSWORD_DEFAULT)
             ],
             [
@@ -23,6 +24,16 @@ class UserSeeder extends Seeder
                 'email'  =>  "employee@employee.com",
                 'level'  => 'employee',
                 'phone_number' => '081336473755',
+                'position' => 'Employee',
+                'password'  =>  password_hash("123", PASSWORD_DEFAULT)
+            ],
+            [
+                'nik' => '1099929938810013',
+                'fullname'  => 'Ridho',
+                'email'  =>  "ridho@employee.com",
+                'level'  => 'employee',
+                'phone_number' => '081336473755',
+                'position' => 'Programmer',
                 'password'  =>  password_hash("123", PASSWORD_DEFAULT)
             ],
         ];

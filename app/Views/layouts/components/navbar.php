@@ -11,7 +11,7 @@
                         <li><a class="dropdown-item" href="<?php echo base_url(); ?>/logout">Logout</a></li>
                     </ul>
                 </div>
-                <span style="font-size: 14px; color: gray; margin: 0">Project Manager</span>
+                <span style="font-size: 14px; color: gray; margin: 0"><?= session()->get('position') ?></span>
             </div>
         </div>
     </nav>

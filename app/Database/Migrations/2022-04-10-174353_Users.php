@@ -16,7 +16,6 @@ class Users extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-
             'fullname' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
@@ -63,6 +62,11 @@ class Users extends Migration
                 'null' => true,
             ],
             'password' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => true,
+            ],
+            'position' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
                 'null' => true,

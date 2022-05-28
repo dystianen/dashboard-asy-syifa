@@ -23,6 +23,7 @@ class UserModel extends Model
         "gender",
         "address",
         "phone_number",
+        "position",
         "level",
         "last_signed_in",
         "email",
