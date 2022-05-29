@@ -14,16 +14,18 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks Completed</div>
-                            <div class="row no-gutters align-items-center">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $task_completed?> Tasks</div>
+                            <!-- <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">90%</div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 90%"
+                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -38,8 +40,10 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Tasks not Completed</div>
-                            <div class="row no-gutters align-items-center">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Tasks not Completed
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $task_unfinished?> Tasks</div>
+                            <!-- <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">20%</div>
                                 </div>
@@ -48,7 +52,7 @@
                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -64,7 +68,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Employees</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">100 People</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_employees?> People</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -88,7 +92,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Attendees</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">80 People</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $employee_presence?> People</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -104,7 +108,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Sick Employee</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">2 People</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $employee_sick?> People</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
