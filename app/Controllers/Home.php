@@ -25,13 +25,9 @@ class Home extends BaseController
 
     public function index()
     {
-
-        $date = new DateTime("now");
-        $curr_date = $date->format('Y-m-d');
-        // $datePlusOne = strtotime("+1 day", $curr_date);
-
-        $NewDate = date('Y-m-d', strtotime('+1 days'));
-
+        // Get Today Date + 1
+        $todayPlusOne = date('Y-m-d', strtotime('+1 days'));
+        
         $data = [
             // Sidebar
             'page' => 'dashboard',
@@ -40,13 +36,13 @@ class Home extends BaseController
             'task_completed' => $this
             ->jobModel
             ->where("is_completed", 1)
-            ->where('DATE(created_at)',$NewDate)
+            ->where('DATE(created_at)',$todayPlusOne)
             ->countAllResults(),
 
             'task_unfinished' => $this
             ->jobModel
             ->where("is_completed", 0)
-            ->where('DATE(created_at)',$NewDate)
+            ->where('DATE(created_at)',$todayPlusOne)
             ->countAllResults(),
 
             'total_employees' => $this
@@ -57,18 +53,16 @@ class Home extends BaseController
             'employee_presence' => $this
             ->attedanceModel
             ->where("category", "Hadir")
-            ->where('DATE(created_at)',$NewDate)
+            ->where('DATE(created_at)',$todayPlusOne)
             ->countAllResults(),
 
             'employee_sick' => $this
             ->attedanceModel
             ->where("category", "Sakit")
-            ->where('DATE(created_at)',$NewDate)
+            ->where('DATE(created_at)',$todayPlusOne)
             ->countAllResults(),
         ];
-
-        // var_dump($curr_date, $NewDate);
-        // var_dump($NewDate);
+        
         echo view('layouts/pages/admin/dashboard/index', $data);
     }
 }
