@@ -43,7 +43,7 @@ class AttedanceController extends BaseController
                 'is_logged_in' => $this->request->getVar('is_logged_in'),
                 'description' => $this->request->getVar('description'),
                 'file' => $this->request->getVar('file'),
-                'created_at' => date("Y-m-d", time()),
+                'created_at' => date('Y-m-d', strtotime('+1 days')),
             ];
 
             $attedanceModel->save($data);
@@ -104,6 +104,7 @@ class AttedanceController extends BaseController
                 'age' => $this->request->getVar('age'),
                 'phone_number' => $this->request->getVar('phone_number'),
                 'address' => $this->request->getVar('address'),
+                'updated_at' => date('Y-m-d', strtotime('+1 days')),
             ];
 
             $this->userModel->save($data);

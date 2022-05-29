@@ -20,6 +20,8 @@ class AttendanceModel extends Model
         "category",
         "description",
         "file",
+        "created_at",
+        "updated_at",
     ];
 
     // Dates

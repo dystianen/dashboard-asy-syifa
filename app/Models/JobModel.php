@@ -20,6 +20,8 @@ class JobModel extends Model
         "description",
         "point",
         "is_completed",
+        "created_at",
+        "updated_at",
     ];
 
     // Dates

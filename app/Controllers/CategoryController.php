@@ -57,7 +57,7 @@ class CategoryController extends BaseController
             $data = [
                 'name' => $this->request->getVar('name'),
                 'slug' => url_title($this->request->getVar('name'), '-', TRUE),
-                'created_at' => date("Y-m-d", time()),
+                'created_at' => date('Y-m-d', strtotime('+1 days')),
             ];
 
             $this->categoryModel->save($data);
@@ -104,6 +104,7 @@ class CategoryController extends BaseController
                 'id' => $id,
                 'name' => $this->request->getVar('name'),
                 'slug' => url_title($this->request->getVar('name'), '-', TRUE),
+                'updated_at' => date('Y-m-d', strtotime('+1 days'))
             ];
 
             $this->categoryModel->save($data);

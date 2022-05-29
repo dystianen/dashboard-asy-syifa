@@ -16,7 +16,9 @@ class CategoryModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         "name",
-        "slug"
+        "slug",
+        "created_at",
+        "updated_at",
     ];
 
     // Dates
