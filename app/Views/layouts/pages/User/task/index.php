@@ -24,19 +24,24 @@
                     <tbody>
                         <?php $i = 1 ?>
                         <?php foreach ($job as $j) : ?>
-                            <tr>
-                                <td><?= $i++ ?></td>
-                                <td><?= $j['description'] ?></td>
-                                <td><?= $j['point'] ?></td>
-                                <td><?= $j['created_at'] ?></td>
-                                <td>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <a class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
-                                        </div>
+                        <tr>
+                            <td><?= $i++ ?></td>
+                            <td><?= (
+                                strlen(htmlspecialchars($j['description'])) > 13) 
+                                ? substr(htmlspecialchars($j['description']),0,10).'...' 
+                                : htmlspecialchars($j['description']
+                            ); ?>
+                            </td>
+                            <td><?= $j['point'] ?></td>
+                            <td><?= $j['created_at'] ?></td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <a class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
                                     </div>
-                                </td>
-                            </tr>
+                                </div>
+                            </td>
+                        </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
@@ -48,10 +53,10 @@
 
 <?= $this->section('scripts') ?>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#table').DataTable({
-            "responsive": true,
-        });
+$(document).ready(function() {
+    $('#table').DataTable({
+        "responsive": true,
     });
+});
 </script>
 <?= $this->endSection() ?>

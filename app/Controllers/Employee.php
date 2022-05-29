@@ -81,7 +81,7 @@ class Employee extends BaseController
                 'address' => $this->request->getVar('address'),
                 'position' => $this->request->getVar('position'),
                 'level' => 'employee',
-                'created_at' => date('Y-m-d H:i:s'),
+                'created_at' => date("Y-m-d", time()),
             ];
 
             $userModel->save($data);

@@ -64,6 +64,7 @@ class Job extends BaseController
                 'description'   => $this->request->getVar('description'),
                 'point'         => $this->request->getVar('point'),
                 'is_completed'  => 0,
+                'created_at'  => date("Y-m-d", time()),
             ];
 
             $jobModel->save($data);

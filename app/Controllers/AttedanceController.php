@@ -43,6 +43,7 @@ class AttedanceController extends BaseController
                 'is_logged_in' => $this->request->getVar('is_logged_in'),
                 'description' => $this->request->getVar('description'),
                 'file' => $this->request->getVar('file'),
+                'created_at' => date("Y-m-d", time()),
             ];
 
             $attedanceModel->save($data);

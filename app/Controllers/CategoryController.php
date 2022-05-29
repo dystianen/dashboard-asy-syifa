@@ -57,7 +57,7 @@ class CategoryController extends BaseController
             $data = [
                 'name' => $this->request->getVar('name'),
                 'slug' => url_title($this->request->getVar('name'), '-', TRUE),
-                'created_at' => date('Y-m-d H:i:s'),
+                'created_at' => date("Y-m-d", time()),
             ];
 
             $this->categoryModel->save($data);
