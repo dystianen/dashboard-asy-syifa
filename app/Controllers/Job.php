@@ -31,7 +31,7 @@ class Job extends BaseController
         echo view('layouts/pages/admin/job/index', $data);
     }
 
-    public function create()
+    public function form()
     {
         helper(['form']);
         $userModel = new UserModel();
@@ -53,7 +53,6 @@ class Job extends BaseController
             'type_of_work'  => 'required',
             'description'   => 'required',
             'point'         => 'required',
-            'is_completed'  => 'required',
         ];
 
         if ($this->validate($rules)) {
@@ -64,16 +63,15 @@ class Job extends BaseController
                 'type_of_work'  => $this->request->getVar('type_of_work'),
                 'description'   => $this->request->getVar('description'),
                 'point'         => $this->request->getVar('point'),
-                'is_completed'  => $this->request->getVar('is_completed'),
+                'is_completed'  => 0,
             ];
 
             $jobModel->save($data);
 
-            // TBD
-            return redirect()->to("/job/create");
+            return redirect()->to("/job");
         } else {
             $validation = Services::validation();
-            return redirect()->to('/admin/job/create')->withInput()->with('validation', $validation);
+            return redirect()->to('/admin/job/form')->withInput()->with('validation', $validation);
         }
     }
 

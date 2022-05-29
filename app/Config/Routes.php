@@ -49,7 +49,8 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
 
     /** JOBS **/
     $routes->get('job', 'Job::index');
-    $routes->add('job/create', 'Job::create');
+    $routes->get('job/form', 'Job::form');
+    $routes->add('job/save', 'Job::save');
 
     /** ATTEDANCE **/
     $routes->get('attedance', 'AttedanceController::index');
