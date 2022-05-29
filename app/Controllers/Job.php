@@ -77,8 +77,8 @@ class Job extends BaseController
 
     public function delete($id)
     {
-        $this->userModel->delete($id);
-        return redirect()->to('/admin/employee');
+        $this->jobModel->delete($id);
+        return redirect()->to('/admin/job');
     }
 
     public function edit($id)

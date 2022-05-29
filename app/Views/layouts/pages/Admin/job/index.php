@@ -64,6 +64,31 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Delete -->
+    <?php foreach ($job as $j)  : ?>
+    <div class="modal fade" id="deleteModal<?= $j['id']?>" data-bs-backdrop="static" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h3>Are you sure?</h3>
+                    Do you really delete this data?
+                    </br>
+                    <div class="pt-3">
+                        <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
+                        <form class="d-inline" method="post"
+                            action="<?= base_url(); ?>/admin/job/delete/<?= $j['id']?>">
+                            <?= csrf_field() ?>
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger m-2">Yes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endforeach; ?>
 </div>
 <?= $this->endSection() ?>
 

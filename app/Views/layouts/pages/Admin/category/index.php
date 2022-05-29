@@ -72,7 +72,7 @@
                     <div class="pt-3">
                         <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
                         <form class="d-inline" method="post"
-                            action="<?= base_url(); ?>/admin/category/delete/<?= $e['id']?>">
+                            action="<?= base_url(); ?>/admin/job/delete/<?= $e['id']?>">
                             <?= csrf_field() ?>
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-danger m-2">Yes</button>
