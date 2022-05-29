@@ -37,6 +37,15 @@
             </a>
         </li>
 
+        <li class="sidebar-item <?php if ($page == 'category') {
+            echo 'active';
+        } ?>">
+            <a href="/admin/category" class='sidebar-link'>
+                <i class="bi bi-tags"></i>
+                <span>Category</span>
+            </a>
+        </li>
+
         <div class="d-grid gap-2">
             <a class='btn btn-outline-danger mt-5' block href="<?php echo base_url(); ?>/logout">
                 <i class="bi bi-lock-fill" style="padding-right: 10px"></i>Log Out

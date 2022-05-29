@@ -16,7 +16,9 @@ class UserSeeder extends Seeder
                 'level'  => 'admin',
                 'phone_number' => '081336473785',
                 'position' => 'Admin',
-                'password'  =>  password_hash("123", PASSWORD_DEFAULT)
+                'password'  =>  password_hash("123", PASSWORD_DEFAULT),
+                'created_at' => date("Y-m-d", time()),
+                'updated_at' => date("Y-m-d", time()),
             ],
             [
                 'nik' => '1099929938810013',
@@ -25,7 +27,9 @@ class UserSeeder extends Seeder
                 'level'  => 'employee',
                 'phone_number' => '081336473755',
                 'position' => 'Employee',
-                'password'  =>  password_hash("123", PASSWORD_DEFAULT)
+                'password'  =>  password_hash("123", PASSWORD_DEFAULT),
+                'created_at' => date("Y-m-d", time()),
+                'updated_at' => date("Y-m-d", time()),
             ],
             [
                 'nik' => '1099929938810013',
@@ -34,7 +38,9 @@ class UserSeeder extends Seeder
                 'level'  => 'employee',
                 'phone_number' => '081336473755',
                 'position' => 'Programmer',
-                'password'  =>  password_hash("123", PASSWORD_DEFAULT)
+                'password'  =>  password_hash("123", PASSWORD_DEFAULT),
+                'created_at' => date("Y-m-d", time()),
+                'updated_at' => date("Y-m-d", time()),
             ],
         ];
         $this->db->table('users')->insertBatch($data);

@@ -32,8 +32,10 @@
                             <input disabled name="email" class="form-control" id="email" value="<?= $user['email'] ?>">
                         </div>
                         <div class="form-group">
-                            <label for="place_of_birth" class="form-label">Place of Birth <span style="color: red">*</span></label>
-                            <input disabled name="place_of_birth" class="form-control" id="place_of_birth" value="<?= $user['place_of_birth'] ?>">
+                            <label for="place_of_birth" class="form-label">Place of Birth <span
+                                    style="color: red">*</span></label>
+                            <input disabled name="place_of_birth" class="form-control" id="place_of_birth"
+                                value="<?= $user['place_of_birth'] ?>">
                         </div>
                         <div class="form-group">
                             <label for="age" class="form-label">Age <span style="color: red">*</span></label>
@@ -41,30 +43,37 @@
                         </div>
                         <div class="form-group">
                             <label for="phone" class="form-label">Phone Number <span style="color: red">*</span></label>
-                            <input disabled name="phone_number" class="form-control" id="phone" value="<?= $user['phone_number'] ?>">
+                            <input disabled name="phone_number" class="form-control" id="phone"
+                                value="<?= $user['phone_number'] ?>">
                         </div>
                     </div>
 
                     <div class="col-md-6 col-12">
                         <div class="form-group">
                             <label for="fullname" class="form-label">Fullname <span style="color: red">*</span></label>
-                            <input disabled name="fullname" class="form-control" id="fullname" value="<?= $user['fullname'] ?>">
+                            <input disabled name="fullname" class="form-control" id="fullname"
+                                value="<?= $user['fullname'] ?>">
                         </div>
                         <div class="form-group">
-                            <label for="date_of_birth" class="form-label">Date of Birth <span style="color: red">*</span></label>
-                            <input disabled name="date_of_birth" class="form-control" id="date_of_birth" type="date" value="<?= $user['date_of_birth'] ?>">
+                            <label for="date_of_birth" class="form-label">Date of Birth <span
+                                    style="color: red">*</span></label>
+                            <input disabled name="date_of_birth" class="form-control" id="date_of_birth" type="date"
+                                value="<?= $user['date_of_birth'] ?>">
                         </div>
                         <div class="form-group">
                             <label for="position" class="form-label">Position <span style="color: red">*</span></label>
-                            <input disabled name="position" class="form-control" id="position" value="<?= $user['position'] ?>">
+                            <input disabled name="position" class="form-control" id="position"
+                                value="<?= $user['position'] ?>">
                         </div>
                         <div class="form-group">
                             <label for="gender" class="form-label">Gender <span style="color: red">*</span></label>
-                            <input disabled name="gender" class="form-control" id="gender" value="<?= $user['gender'] ?>">
+                            <input disabled name="gender" class="form-control" id="gender"
+                                value="<?= $user['gender'] ?>">
                         </div>
                         <div class="form-group">
                             <label for="address" class="form-label">Address <span style="color: red">*</span></label>
-                            <textarea disabled name="address" class="form-control" id="address"><?= $user['address'] ?></textarea>
+                            <textarea disabled name="address" class="form-control"
+                                id="address"><?= $user['address'] ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -85,12 +94,12 @@
                                 <tbody>
                                     <?php $i = 1 ?>
                                     <?php foreach ($job as $j) : ?>
-                                        <tr>
-                                            <td><?= $i++ ?></td>
-                                            <td><?= $j['type_of_work'] ?></td>
-                                            <td><?= $j['description'] ?></td>
-                                            <td><?= $j['point'] ?></td>
-                                        </tr>
+                                    <tr>
+                                        <td><?= $i++ ?></td>
+                                        <td><?= $j['type_of_work'] ?></td>
+                                        <td><?= $j['description'] ?></td>
+                                        <td><?= $j['point'] ?></td>
+                                    </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
@@ -100,7 +109,8 @@
 
                 <div class="float-end pt-3">
                     <a type="button" class="btn btn-secondary" href="/admin/employee">Back</a>
-                    <a href="<?php echo base_url(); ?>/admin/employee/edit/<?= $user['id'] ?>" class="btn btn-primary">Edit</a>
+                    <a href="<?php echo base_url(); ?>/admin/employee/edit/<?= $user['id'] ?>"
+                        class="btn btn-primary">Edit</a>
                 </div>
 
             </form>
@@ -111,10 +121,10 @@
 
 <?= $this->section('scripts') ?>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#table').DataTable({
-            "responsive": true,
-        });
+$(document).ready(function() {
+    $('#table').DataTable({
+        "responsive": true,
     });
+});
 </script>
 <?= $this->endSection() ?>
