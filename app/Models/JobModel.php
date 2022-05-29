@@ -45,4 +45,14 @@ class JobModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getJob($id)
+    {
+        $jobDetail = $this
+        ->join('users', 'users.id = jobs.user_id')
+        ->find($id);
+        
+        return $jobDetail;
+    }
+    
 }

@@ -89,6 +89,7 @@
                                         <th>Job Type</th>
                                         <th>Description</th>
                                         <th>Point</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -97,8 +98,30 @@
                                     <tr>
                                         <td><?= $i++ ?></td>
                                         <td><?= $j['type_of_work'] ?></td>
-                                        <td><?= $j['description'] ?></td>
+                                        <td><?= (
+                                                strlen(htmlspecialchars($j['description'])) > 13) 
+                                                ? substr(htmlspecialchars($j['description']),0,10).'...' 
+                                                : htmlspecialchars($j['description']
+                                            ); ?>
+                                        </td>
                                         <td><?= $j['point'] ?></td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <a href="<?php echo base_url(); ?>/admin/job/edit/<?= $j['id'] ?>"
+                                                        class="btn btn-link"><i class="bi bi-pencil-square"></i></a>
+                                                </div>
+                                                <div class="col-2">
+                                                    <a href="<?= base_url(); ?>/admin/job/detail/<?= $j['id']?>"
+                                                        class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
+                                                </div>
+                                                <div class="col-2">
+                                                    <button class="btn btn-link" data-bs-toggle="modal"
+                                                        data-bs-target="#deleteModal<?= $j['id'] ?>"><i
+                                                            class="bi bi-trash-fill"></i></button>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>

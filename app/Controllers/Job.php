@@ -135,11 +135,13 @@ class Job extends BaseController
     {
         helper(['form']);
         $data = [
-            'page' => 'employee',
+            'page' => 'job',
             'validation' => Services::validation(),
-            'user' => $this->userModel->where(['id' => $id])->first(),
+            'job' => $this->jobModel->getJob($id),
         ];
 
-        echo view('layouts/pages/admin/employee/detail', $data);
+        // var_dump();
+
+        echo view('layouts/pages/admin/job/detail', $data);
     }
 }

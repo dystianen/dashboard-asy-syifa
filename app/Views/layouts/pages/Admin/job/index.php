@@ -47,7 +47,8 @@
                                             class="btn btn-link"><i class="bi bi-pencil-square"></i></a>
                                     </div>
                                     <div class="col-2">
-                                        <a class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
+                                        <a href="<?= base_url(); ?>/admin/job/detail/<?= $j['id']?>"
+                                            class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
                                     </div>
                                     <div class="col-2">
                                         <button class="btn btn-link" data-bs-toggle="modal"
