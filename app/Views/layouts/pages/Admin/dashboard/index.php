@@ -9,7 +9,7 @@
     <div class="row">
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
+            <div class="card card-dashboard h-100 py-2" style="border: none; border-radius: 10px; box-shadow:  5px 5px 16px #cccccc,-5px -5px 16px #ffffff;">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -37,7 +37,7 @@
         </div>
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
+            <div class="card h-100 py-2" style="border: none; border-radius: 10px; box-shadow:  5px 5px 16px #cccccc,-5px -5px 16px #ffffff;">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -65,7 +65,7 @@
         </div>
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
+            <div class="card h-100 py-2" style="border: none; border-radius: 10px; box-shadow:  5px 5px 16px #cccccc,-5px -5px 16px #ffffff;">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -89,7 +89,7 @@
 
     <div class="row">
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
+            <div class="card h-100 py-2" style="border: none; border-radius: 10px; box-shadow:  5px 5px 16px #cccccc,-5px -5px 16px #ffffff;">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -105,7 +105,7 @@
         </div>
 
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
+            <div class="card h-100 py-2" style="border: none; border-radius: 10px; box-shadow:  5px 5px 16px #cccccc,-5px -5px 16px #ffffff;">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
