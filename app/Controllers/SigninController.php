@@ -28,7 +28,7 @@ class SigninController extends BaseController
                 $ses_data = [
                     'id' => $data['id'],
                     'fullname' => $data['fullname'],
-                    // 'position' => $data['position'],
+                    'position' => $data['position'],
                     'email' => $data['email'],
                     'level' => $data['level'],
                     'isLoggedIn' => TRUE
