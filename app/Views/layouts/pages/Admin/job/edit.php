@@ -24,22 +24,53 @@
                 <form action="<?php echo base_url(); ?>/admin/job/save" method="post">
                     <?= csrf_field(); ?>
                     <div class="row">
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="user" class="form-label">User <span style="color: red">*</span></label>
-                                <select name="user_id"
-                                        class="form-select <?= ($validation->hasError('user_id') ? 'is-invalid' : '') ?>"
-                                        id="basicSelect">
-                                    <option value="">--please select--</option>
-                                    <?php foreach ($user as $e) : ?>
-                                        <option value="<?= $e['id'] ?>" selected><?= $e['fullname'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('user_id') ?>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="user" class="form-label">User <span style="color: red">*</span></label>
+                                        <select name="user_id"
+                                                class="form-select <?= ($validation->hasError('user_id') ? 'is-invalid' : '') ?>"
+                                                id="basicSelect">
+                                            <option value="">--please select--</option>
+                                            <?php foreach ($user as $e) : ?>
+                                                <option value="<?= $e['id'] ?>" selected><?= $e['fullname'] ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('user_id') ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="type_of_work" class="form-label">Type of Work <span
+                                                    style="color: red">*</span></label>
+                                        <input name="type_of_work"
+                                               class="form-control <?= ($validation->hasError('type_of_work') ? 'is-invalid' : '') ?>"
+                                               id="type_of_work" placeholder="example: Programmer" value="<?= $job['type_of_work'] ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('type_of_work') ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="point" class="form-label">Point <span style="color: red">*</span></label>
+                                        <input name="point"
+                                               class="form-control <?= ($validation->hasError('point') ? 'is-invalid' : '') ?>"
+                                               id="point" placeholder="example: 500" value="<?= $job['point'] ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('point') ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
+                        <div>
                             <div class="form-group">
                                 <label for="description" class="form-label">Description<span
                                             style="color: red">*</span></label>
@@ -48,29 +79,6 @@
                                 </textarea>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('description') ?>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="type_of_work" class="form-label">Type of Work <span
-                                            style="color: red">*</span></label>
-                                <input name="type_of_work"
-                                       class="form-control <?= ($validation->hasError('type_of_work') ? 'is-invalid' : '') ?>"
-                                       id="type_of_work" placeholder="example: Programmer" value="<?= $job['type_of_work'] ?>">
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('type_of_work') ?>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="point" class="form-label">Point <span style="color: red">*</span></label>
-                                <input name="point"
-                                       class="form-control <?= ($validation->hasError('point') ? 'is-invalid' : '') ?>"
-                                       id="point" placeholder="example: 500" value="<?= $job['point'] ?>">
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('point') ?>
                                 </div>
                             </div>
                         </div>

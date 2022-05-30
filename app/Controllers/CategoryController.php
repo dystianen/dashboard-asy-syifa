@@ -84,7 +84,7 @@ class CategoryController extends BaseController
     {
         helper(['form']);
         $data = [
-            'page' => 'employee',
+            'page' => 'category',
             'validation' => Services::validation(),
             'category' => $this->categoryModel->where(['id' => $id])->first(),
         ];

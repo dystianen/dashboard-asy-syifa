@@ -87,7 +87,7 @@ class Job extends BaseController
     {
         helper(['form']);
         $data = [
-            'page' => 'employee',
+            'page' => 'job',
             'validation' => Services::validation(),
             'job' => $this->jobModel->getJob($id),
             'user' => $this->userModel->findAll()
