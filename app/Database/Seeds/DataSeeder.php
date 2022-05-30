@@ -10,5 +10,6 @@ class DataSeeder extends Seeder
     {
         $this->call('UserSeeder');
         $this->call('JobSeeder');
+        $this->call('CategoriesSeeder');
     }
 }

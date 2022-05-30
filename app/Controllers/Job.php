@@ -8,11 +8,12 @@ use Config\Services;
 
 class Job extends BaseController
 {
-    protected $jobModel;
+    protected $jobModel, $userModel;
 
     public function __construct()
     {
         $this->jobModel = new JobModel();
+        $this->userModel = new UserModel();
 
         if (session()->get('level') != "admin") {
             echo 'Access denied';
@@ -88,10 +89,11 @@ class Job extends BaseController
         $data = [
             'page' => 'employee',
             'validation' => Services::validation(),
-            'user' => $this->userModel->where(['id' => $id])->first(),
+            'job' => $this->jobModel->getJob($id),
+            'user' => $this->userModel->findAll()
         ];
 
-        echo view('layouts/pages/admin/employee/edit', $data);
+        echo view('layouts/pages/admin/job/edit', $data);
     }
 
     public function update($id)

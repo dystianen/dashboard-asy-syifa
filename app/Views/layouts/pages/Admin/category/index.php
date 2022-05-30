@@ -25,6 +25,7 @@
                             <th>No.</th>
                             <th>Name</th>
                             <th>Slug</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
