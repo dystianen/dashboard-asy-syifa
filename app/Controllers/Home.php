@@ -26,7 +26,7 @@ class Home extends BaseController
     public function index()
     {
         // Get Today Date + 1
-        $todayPlusOne = date('Y-m-d', strtotime('+1 days'));
+        $todayPlusOne = date('Y-m-d H:i:s');
         
         $data = [
             // Sidebar

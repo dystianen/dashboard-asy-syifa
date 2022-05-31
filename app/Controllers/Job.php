@@ -65,7 +65,7 @@ class Job extends BaseController
                 'description'   => $this->request->getVar('description'),
                 'point'         => $this->request->getVar('point'),
                 'is_completed'  => 0,
-                'created_at'  => date('Y-m-d', strtotime('+1 days')),
+                'created_at'  => date('Y-m-d H:i:s'),
             ];
 
             $jobModel->save($data);
@@ -124,7 +124,7 @@ class Job extends BaseController
                 'age' => $this->request->getVar('age'),
                 'phone_number' => $this->request->getVar('phone_number'),
                 'address' => $this->request->getVar('address'),
-                'updated_at' => date('Y-m-d', strtotime('+1 days')),
+                'updated_at' => date('Y-m-d H:i:s'),
             ];
 
             $this->userModel->save($data);

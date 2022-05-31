@@ -9,12 +9,9 @@
                     <label class="form-label" for="category">Category <span style="color: red">*</span></label>
                     <select name="category" class="form-select  <?= ($validation->hasError('category') ? 'is-invalid' : '') ?>" id="basicSelect" value="<?= old('category') ?>">
                         <option value="">--please select--</option>
-                        <option value="sakit" <?php if (old('category') == 'sakit') {
-                                                    echo 'selected';
-                                                } ?>>Sakit</option>
-                        <option value="izin" <?php if (old('category') == 'izin') {
-                                                    echo 'selected';
-                                                } ?>>Izin</option>
+                        <?php foreach ($category as $e) : ?>
+                            <option value="<?= $e['slug'] ?>"><?= $e['name'] ?></option>
+                        <?php endforeach; ?>
                     </select>
                     <div class="invalid-feedback">
                         <?= $validation->getError('category') ?>

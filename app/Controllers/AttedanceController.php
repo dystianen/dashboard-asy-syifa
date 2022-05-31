@@ -4,15 +4,17 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AttendanceModel;
+use App\Models\CategoryModel;
 use CodeIgniter\Config\Services;
 
 class AttedanceController extends BaseController
 {
-    protected $attendanceModel;
+    protected $attendanceModel, $categoryModel;
     public function __construct()
     {
         helper(['form']);
         $this->attendanceModel = new AttendanceModel();
+        $this->categoryModel = new CategoryModel();
     }
 
     public function index()
@@ -43,7 +45,7 @@ class AttedanceController extends BaseController
                 'is_logged_in' => $this->request->getVar('is_logged_in'),
                 'description' => $this->request->getVar('description'),
                 'file' => $this->request->getVar('file'),
-                'created_at' => date('Y-m-d', strtotime('+1 days')),
+                'created_at' => date('Y-m-d H:i:s'),
             ];
 
             $attedanceModel->save($data);
@@ -104,7 +106,7 @@ class AttedanceController extends BaseController
                 'age' => $this->request->getVar('age'),
                 'phone_number' => $this->request->getVar('phone_number'),
                 'address' => $this->request->getVar('address'),
-                'updated_at' => date('Y-m-d', strtotime('+1 days')),
+                'updated_at' => date('Y-m-d H:i:s'),
             ];
 
             $this->userModel->save($data);
@@ -131,6 +133,7 @@ class AttedanceController extends BaseController
     {
         $data = [
             'validation' => Services::validation(),
+            'category' => $this->categoryModel->findAll()
         ];
 
         echo view('layouts/pages/User/permission', $data);
