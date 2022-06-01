@@ -8,12 +8,11 @@ use Config\Services;
 
 class CategoryController extends BaseController
 {
-
-    protected $categoryModel;
-
+    protected $categoryModel, $session;
     public function __construct()
     {
         $this->categoryModel = new CategoryModel();
+        $this->session = session();
 
         if (session()->get('level') != "admin") {
             echo 'Access denied';
@@ -61,6 +60,7 @@ class CategoryController extends BaseController
             ];
 
             $this->categoryModel->save($data);
+            $this->session->setFlashdata('success_category', 'Create Category successfully.');
             return redirect()->to("/admin/category");
         } else {
             $validation = Services::validation();
@@ -108,6 +108,7 @@ class CategoryController extends BaseController
             ];
 
             $this->categoryModel->save($data);
+            $this->session->setFlashdata('success_category', 'Update Category successfully.');
             return redirect()->to("/admin/category");
         } else {
             $validation = Services::validation();
@@ -118,6 +119,7 @@ class CategoryController extends BaseController
     public function delete($id)
     {
         $this->categoryModel->delete($id);
+        $this->session->setFlashdata('success_category', 'Delete Category successfully.');
         return redirect()->to('/admin/category');
     }
 }

@@ -58,7 +58,7 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
 
     /** ATTEDANCE **/
     $routes->get('attedance', 'AttedanceController::index');
-    
+
     /** CATEGORIES **/
     $routes->get('category', 'CategoryController::index');
     $routes->add('category/form', 'CategoryController::create');
@@ -67,7 +67,6 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
     $routes->add('category/update/(:num)', 'CategoryController::update/$1');
     $routes->add('category/detail/(:num)', 'CategoryController::detail/$1');
     $routes->delete('category/delete/(:num)', 'CategoryController::delete/$1');
-
 });
 
 // $routes->group('employee', static function ($routes) {
