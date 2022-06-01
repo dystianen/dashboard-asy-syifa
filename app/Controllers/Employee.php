@@ -8,13 +8,12 @@ use Config\Services;
 
 class Employee extends BaseController
 {
-    protected $userModel, $jobModel;
-
+    protected $userModel, $jobModel, $session;
     public function __construct()
     {
         $this->userModel = new UserModel();
-
         $this->jobModel = new JobModel();
+        $this->session = session();
 
         if (session()->get('level') != "admin") {
             echo 'Access denied';
@@ -85,17 +84,12 @@ class Employee extends BaseController
             ];
 
             $userModel->save($data);
+            $this->session->setFlashdata('success', 'Create Employee successfully.');
             return redirect()->to("/admin/employee");
         } else {
             $validation = Services::validation();
             return redirect()->to('/admin/employee/form')->withInput()->with('validation', $validation);
         }
-    }
-
-    public function delete($id)
-    {
-        $this->userModel->delete($id);
-        return redirect()->to('/admin/employee');
     }
 
     public function edit($id)
@@ -124,7 +118,6 @@ class Employee extends BaseController
             'age' => 'required',
             'phone_number' => 'required',
             'address' => 'required',
-            'password' => 'required',
             'position' => 'required',
         ];
 
@@ -145,6 +138,7 @@ class Employee extends BaseController
             ];
 
             $this->userModel->save($data);
+            $this->session->setFlashdata('success', 'Update Employee successfully.');
             return redirect()->to("/admin/employee");
         } else {
             $validation = Services::validation();
@@ -163,5 +157,12 @@ class Employee extends BaseController
         ];
 
         echo view('layouts/pages/admin/employee/detail', $data);
+    }
+
+    public function delete($id)
+    {
+        $this->userModel->delete($id);
+        $this->session->setFlashdata('success', 'Delete Employee successfully.');
+        return redirect()->to('/admin/employee');
     }
 }
