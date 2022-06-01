@@ -142,9 +142,8 @@ class Job extends BaseController
             'page' => 'job',
             'validation' => Services::validation(),
             'job' => $this->jobModel->getJob($id),
+            'job_id' => $id
         ];
-
-        // var_dump();
 
         echo view('layouts/pages/admin/job/detail', $data);
     }
