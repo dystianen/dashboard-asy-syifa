@@ -9,7 +9,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
                 <li class="breadcrumb-item"><a href="/admin/job">Jobs</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Add
+                <li class="breadcrumb-item active" aria-current="page">Edit
                 </li>
             </ol>
         </nav>
@@ -17,11 +17,11 @@
 
     <div class="card shadow mb-4">
         <div class="card-header d-flex align-items-center justify-content-between py-3">
-            <h5 class="card-title mb-0 text-gray-900">Create Job</h5>
+            <h5 class="card-title mb-0 text-gray-900">Edit Job</h5>
         </div>
 
         <div class="card-body mt-2">
-            <form action="<?php echo base_url(); ?>/admin/job/save" method="post">
+            <form action="<?php echo base_url(); ?>/admin/job/update/<?= $job_id; ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="row">
                     <div class="col-12">
