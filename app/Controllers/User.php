@@ -7,10 +7,11 @@ use App\Models\UserModel;
 
 class User extends BaseController
 {
-    protected $userModel;
+    protected $userModel, $jobModel;
     public function __construct()
     {
         $this->userModel = new UserModel();
+        $this->jobModel = new JobModel();
         if (session()->get('level') != "employee") {
             echo 'Access denied';
             exit;
@@ -58,6 +59,13 @@ class User extends BaseController
         ];
 
         echo view('layouts/pages/User/task/index', $data);
+    }
+
+    public function TaskDetail($id) {
+        $data = [
+            'job' => $this->jobModel->where(['id' => $id])->first(),
+        ];
+        echo view('layouts/pages/User/task/detail', $data);
     }
 
     public function show()

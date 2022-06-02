@@ -27,7 +27,7 @@ class Job extends BaseController
         $job = $this->jobModel->findAll();
         $data = [
             'page' => 'job',
-            'job' => $job
+            'job' => $job,
         ];
 
         echo view('layouts/pages/admin/job/index', $data);

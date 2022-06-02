@@ -120,6 +120,7 @@
                                         <th>Job Type</th>
                                         <th>Description</th>
                                         <th>Point</th>
+                                        <th>Date Created</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -131,6 +132,7 @@
                                             <td><?= $j['type_of_work'] ?></td>
                                             <td><?= $j['description'] ?></td>
                                             <td><?= $j['point'] ?></td>
+                                            <td><?= date_format(date_create($j['created_at']), 'd M Y H:i') ?></td>
                                             <td>
                                                 <div class="row">
                                                     <div class="col-2">

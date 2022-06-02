@@ -123,49 +123,6 @@
                     </div>
                 </div>
 
-                <!-- DataTales -->
-                <div class="card shadow mt-4">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table" id="table">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Job Type</th>
-                                        <th>Description</th>
-                                        <th>Point</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $i = 1 ?>
-                                    <?php foreach ($job as $j) : ?>
-                                        <tr>
-                                            <td><?= $i++ ?></td>
-                                            <td><?= $j['type_of_work'] ?></td>
-                                            <td><?= $j['description'] ?></td>
-                                            <td><?= $j['point'] ?></td>
-                                            <td>
-                                                <div class="row">
-                                                    <div class="col-2">
-                                                        <a href="<?php echo base_url(); ?>/admin/job/edit/<?= $j['id'] ?>" class="btn btn-link"><i class="bi bi-pencil-square"></i></a>
-                                                    </div>
-                                                    <div class="col-2">
-                                                        <a class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
-                                                    </div>
-                                                    <div class="col-2">
-                                                        <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $j['id'] ?>"><i class="bi bi-trash-fill"></i></button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="float-end pt-3">
                     <a type="button" class="btn btn-secondary" href="/admin/employee">Cancel</a>
                     <button type="submit" class="btn btn-primary">Save</button>

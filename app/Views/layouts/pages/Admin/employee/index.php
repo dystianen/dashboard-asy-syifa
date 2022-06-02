@@ -32,8 +32,7 @@
                             <th>NIK</th>
                             <th>Fullname</th>
                             <th>Email</th>
-                            <th>Phone</th>
-                            <th>Action</th>
+                            <th>Phone Number</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -37,7 +37,7 @@
                             <td>
                                 <div class="row">
                                     <div class="col-2">
-                                        <a class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
+                                        <a class="btn btn-link" href="<?= base_url()?>/user/task/detail/<?=$j['id'] ?>"><i class="bi bi-eye-fill"></i></a>
                                     </div>
                                 </div>
                             </td>
