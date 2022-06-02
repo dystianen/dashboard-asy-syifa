@@ -17,7 +17,7 @@
     <div class="row h-100">
         <div class="col-lg-5 col-12" style="align-self: center">
             <div id="auth-left">
-                <h1 class="auth-title">Log in.</h1>
+                <h1 class="auth-title"><i class="bi bi-alarm" style="font-size: 50px;"></i> ABSENSI.</h1>
 
                 <?php if (session()->getFlashData('failed')) : ?>
                     <div class="alert alert-danger" role="alert">
@@ -46,9 +46,8 @@
                 </form>
             </div>
         </div>
-        <div class="col-lg-7 d-none d-lg-block">
-            <div id="auth-right">
-            </div>
+        <div class="col-lg-7 d-none d-lg-block h-100">
+            <img src="<?= base_url() ?>/assets/images/img-login.jpg" style="width: 100%; height: 100%">
         </div>
     </div>
 </div>
