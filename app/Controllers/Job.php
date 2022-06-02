@@ -14,6 +14,7 @@ class Job extends BaseController
     {
         $this->jobModel = new JobModel();
         $this->userModel = new UserModel();
+        $this->session = session();
 
         if (session()->get('level') != "admin") {
             echo 'Access denied';
@@ -40,7 +41,7 @@ class Job extends BaseController
         $data = [
             'page' => 'job',
             'validation' => Services::validation(),
-            'user' => $dataUser
+            'user' => $dataUser,
         ];
 
         echo view('layouts/pages/admin/job/create', $data);
@@ -69,7 +70,7 @@ class Job extends BaseController
             ];
 
             $jobModel->save($data);
-
+            $this->session->setFlashdata('success_job', 'Create Job successfully.');
             return redirect()->to("/job");
         } else {
             $validation = Services::validation();
@@ -80,6 +81,7 @@ class Job extends BaseController
     public function delete($id)
     {
         $this->jobModel->delete($id);
+        $this->session->setFlashdata('success_job', 'Delete Job successfully.');
         return redirect()->to('/admin/job');
     }
 
@@ -90,7 +92,8 @@ class Job extends BaseController
             'page' => 'job',
             'validation' => Services::validation(),
             'job' => $this->jobModel->getJob($id),
-            'user' => $this->userModel->findAll()
+            'user' => $this->userModel->findAll(),
+            'job_id' => $id
         ];
 
         echo view('layouts/pages/admin/job/edit', $data);
@@ -100,38 +103,28 @@ class Job extends BaseController
     {
         helper(['form']);
         $rules = [
-            'nik' => 'required|min_length[16]|max_length[16]',
-            'fullname' => 'required|min_length[2]|max_length[50]',
-            'email' => 'required|min_length[4]|max_length[100]|valid_email',
-            'date_of_birth' => 'required',
-            'place_of_birth' => 'required',
-            'gender' => 'required',
-            'age' => 'required',
-            'phone_number' => 'required',
-            'address' => 'required',
-            'password' => 'required',
+            'user_id'       => 'required',
+            'type_of_work'  => 'required',
+            'description'   => 'required',
+            'point'         => 'required',
         ];
 
         if ($this->validate($rules)) {
             $data = [
-                'id' => $id,
-                'nik' => $this->request->getVar('nik'),
-                'fullname' => $this->request->getVar('fullname'),
-                'email' => $this->request->getVar('email'),
-                'date_of_birth' => $this->request->getVar('date_of_birth'),
-                'place_of_birth' => $this->request->getVar('place_of_birth'),
-                'gender' => $this->request->getVar('gender'),
-                'age' => $this->request->getVar('age'),
-                'phone_number' => $this->request->getVar('phone_number'),
-                'address' => $this->request->getVar('address'),
-                'updated_at' => date('Y-m-d H:i:s'),
+                'id'            => $id,
+                'user_id'       => $this->request->getVar('user_id'),
+                'type_of_work'  => $this->request->getVar('type_of_work'),
+                'description'   => $this->request->getVar('description'),
+                'point'         => $this->request->getVar('point'),
+                'updated_at'    => date('Y-m-d H:i:s')
             ];
 
-            $this->userModel->save($data);
-            return redirect()->to("/admin/employee");
+            $this->jobModel->save($data);
+            $this->session->setFlashdata('success_job', 'Update Job successfully.');
+            return redirect()->to("/admin/job");
         } else {
             $validation = Services::validation();
-            return redirect()->to('/admin/employee/edit/' . $id)->withInput()->with('validation', $validation);
+            return redirect()->to('/admin/job/edit/' . $id)->withInput()->with('validation', $validation);
         }
     }
 

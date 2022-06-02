@@ -13,6 +13,12 @@
         </nav>
     </div>
 
+    <?php if (session()->getFlashData('success_job')) : ?>
+        <div class="alert alert-success" role="alert">
+            <?php echo session("success_job") ?>
+        </div>
+    <?php endif; ?>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -124,6 +130,10 @@ $(document).ready(function() {
             }
         ]
     });
+});
+
+$(".alert").fadeTo(2000, 500).slideUp(500, function() {
+    $(".alert").slideUp(500);
 });
 </script>
 <?= $this->endSection() ?>
