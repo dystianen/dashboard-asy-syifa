@@ -56,5 +56,11 @@ class JobModel extends Model
         
         return $jobDetail;
     }
+
+    public function findJobByUserId($id)
+    {
+        $jobDetailByUserId = $this->select('id')->where("user_id", $id)->findAll();
+        return $jobDetailByUserId;
+    }
     
 }
