@@ -25,7 +25,7 @@
                     </div>
                 <?php endif; ?>
 
-                <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
+                <p class="auth-subtitle mb-5">Log in with your data that the admin entered.</p>
 
                 <form action="<?php echo base_url(); ?>/login/submit" method="post">
                     <div class="form-group position-relative has-icon-left mb-4">
