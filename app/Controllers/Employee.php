@@ -161,8 +161,26 @@ class Employee extends BaseController
 
     public function delete($id)
     {
-        $this->userModel->delete($id);
-        $this->session->setFlashdata('success', 'Delete Employee successfully.');
-        return redirect()->to('/admin/employee');
+        $queryUserExist = $this->userModel->find();
+        $queryJobExistInUser = $this->jobModel->findJobByUserId($id);
+
+        if ($queryUserExist) {
+            if ($queryJobExistInUser) {
+                foreach ($queryJobExistInUser as $job) {
+                    $this->jobModel->delete($job);
+                }
+                $this->session->setFlashdata('success', 'Delete Employee successfully.');
+                return redirect()->to('/admin/employee');
+            } else {
+                $this->userModel->delete($id);
+                $this->session->setFlashdata('success', 'Delete Employee successfully.');
+                return redirect()->to('/admin/employee');
+            }
+            $this->userModel->delete($id);
+        } else {
+            return "User Not Found!";
+            die();
+        }
+        
     }
 }
