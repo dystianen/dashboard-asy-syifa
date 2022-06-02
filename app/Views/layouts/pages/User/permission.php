@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="upload">Upload Proof <span style="color: red">*</span></label>
-                    <input name="file" class="form-control <?= ($validation->hasError('file') ? 'is-invalid' : '') ?>" id="formFileSm" type="file" value="<?= old('file') ?>">
+                    <input name="file" class="form-control <?= ($validation->hasError('file') ? 'is-invalid' : '') ?>" id="formFileSm" type="file" accept=".pdf" value="<?= old('file') ?>">
                     <div class="invalid-feedback">
                         <?= $validation->getError('file') ?>
                     </div>
