@@ -18,7 +18,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table" id="table">
+                <table class="table table-striped" id="table">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -37,7 +37,7 @@
                                 <td><?= $e['category']; ?></td>
                                 <td><?= $e['description']; ?></td>
                                 <td><?= $e['file']; ?></td>
-                                <td><?= $e['created_at']; ?></td>
+                                <td><?= date_format(date_create($e['created_at']), 'd M Y H:i') ?></td>
                                 <td>
                                     <div class="row">
                                         <div class="col-2">

@@ -25,7 +25,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table" id="table">
+                <table class="table table-striped" id="table">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -33,6 +33,7 @@
                             <th>Fullname</th>
                             <th>Email</th>
                             <th>Phone Number</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
