@@ -59,7 +59,7 @@ class UserController extends BaseController
         $this->jobModel->save($data);
 
         session()->setFlashData('index', 'Success Completed your job!');
-        return redirect()->to("/user");
+        return redirect()->to("/logout");
     }
 
     public function task()

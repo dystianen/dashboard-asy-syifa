@@ -50,6 +50,7 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
     /** JOBS **/
     $routes->get('job', 'JobController::index');
     $routes->get('job/form', 'JobController::form');
+    $routes->get('job/form/(:num)', 'JobController::form/$1');
     $routes->add('job/save', 'JobController::save');
     $routes->add('job/edit/(:num)', 'JobController::edit/$1');
     $routes->add('job/update/(:num)', 'JobController::update/$1');

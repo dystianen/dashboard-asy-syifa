@@ -33,7 +33,7 @@ class JobController extends BaseController
         echo view('layouts/pages/admin/job/index', $data);
     }
 
-    public function form()
+    public function form($id = null)
     {
         helper(['form']);
         $userModel = new UserModel();
@@ -42,6 +42,7 @@ class JobController extends BaseController
             'page' => 'job',
             'validation' => Services::validation(),
             'user' => $dataUser,
+            'userId' => $id !== null ? $id : '',
         ];
 
         echo view('layouts/pages/admin/job/create', $data);
@@ -71,7 +72,7 @@ class JobController extends BaseController
 
             $jobModel->save($data);
             $this->session->setFlashdata('success_job', 'Create Job successfully.');
-            return redirect()->to("/job");
+            return redirect()->to("/admin/job");
         } else {
             $validation = Services::validation();
             return redirect()->to('/admin/job/form')->withInput()->with('validation', $validation);

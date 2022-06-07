@@ -180,12 +180,12 @@ class AttendanceController extends BaseController
         $data = [
             'user_id' => session()->get('id'),
             'is_logged_in' => TRUE,
+            'category' => 'masuk',
             'created_at' => date('Y-m-d H:i:s')
         ];
 
         $this->attendanceModel->save($data);
 
-        $this->session->setFlashdata('success_scan');
         return redirect()->to('/user');
     }
 }

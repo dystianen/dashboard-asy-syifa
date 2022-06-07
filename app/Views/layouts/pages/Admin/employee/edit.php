@@ -191,7 +191,7 @@
             "buttons": [{
                 text: 'Create',
                 action: function(e, dt, node, config) {
-                    window.location.href = '/admin/job/form'
+                    window.location.href = '/admin/job/form/<?= $user['id'] ?>'
                 }
             }]
         });

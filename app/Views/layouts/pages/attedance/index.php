@@ -34,9 +34,25 @@
                         <?php foreach ($attedance as $e) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $e['category']; ?></td>
-                                <td><?= $e['description']; ?></td>
-                                <td><?= $e['file']; ?></td>
+
+                                <?php if ($e['category']) : ?>
+                                    <td><?= $e['category']; ?></td>
+                                <?php else : ?>
+                                    <td>-</td>
+                                <?php endif; ?>
+
+                                <?php if ($e['description']) : ?>
+                                    <td><?= $e['description']; ?></td>
+                                <?php else : ?>
+                                    <td>-</td>
+                                <?php endif; ?>
+
+                                <?php if ($e['file']) : ?>
+                                    <td><?= $e['file'] ?></td>
+                                <?php else : ?>
+                                    <td>-</td>
+                                <?php endif; ?>
+
                                 <td><?= date_format(date_create($e['created_at']), 'd M Y H:i') ?></td>
                                 <td>
                                     <div class="row">
