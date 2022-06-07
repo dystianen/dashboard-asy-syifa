@@ -75,6 +75,19 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#table').DataTable({
+            "dom": `Q
+                <'row mt-3'
+                    <'col-sm-12 col-md-4'l>
+                    <'col-sm-12 col-md-8'
+                        <'row'
+                            <'col-sm-12 col-md-9'f>
+                            <'col-sm-12 col-md-3'B>
+                        >
+                    >
+                >
+                ` +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
             "responsive": true,
             "paging": true,
             "ordering": true,
