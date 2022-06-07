@@ -4,10 +4,12 @@ namespace App\Controllers;
 
 use App\Models\JobModel;
 use App\Models\UserModel;
+use CodeIgniter\Config\Services;
 
 class User extends BaseController
 {
     protected $userModel, $jobModel;
+
     public function __construct()
     {
         $this->userModel = new UserModel();
@@ -21,11 +23,6 @@ class User extends BaseController
     public function index()
     {
         echo view('layouts/pages/User/index');
-    }
-
-    public function scanner()
-    {
-        echo view('layouts/pages/User/scan');
     }
 
     public function profile()
@@ -51,7 +48,7 @@ class User extends BaseController
     public function task()
     {
         $jobModel = new JobModel();
-        $userId =  session()->get('id');
+        $userId = session()->get('id');
         $job = $jobModel->where('user_id', $userId)->findAll();
         $data = [
             'page' => 'job',
@@ -61,7 +58,8 @@ class User extends BaseController
         echo view('layouts/pages/User/task/index', $data);
     }
 
-    public function TaskDetail($id) {
+    public function TaskDetail($id)
+    {
         $data = [
             'job' => $this->jobModel->where(['id' => $id])->first(),
         ];

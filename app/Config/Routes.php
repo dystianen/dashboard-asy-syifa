@@ -57,7 +57,7 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
     $routes->delete('job/delete/(:num)', 'Job::delete/$1');
 
     /** ATTEDANCE **/
-    $routes->get('attedance', 'AttedanceController::index');
+    $routes->get('attedance', 'AttendanceController::index');
 
     /** CATEGORIES **/
     $routes->get('category', 'CategoryController::index');
@@ -79,11 +79,13 @@ $routes->group('user', ['filter' => 'authGuard'], function ($routes) {
 
     /** ABSENT **/
     $routes->get('absent', 'User::absent', ['filter' => 'authGuard']);
-    $routes->get('scan', 'User::scanner', ['filter' => 'authGuard']);
+    $routes->get('scan', 'AttendanceController::scanner', ['filter' => 'authGuard']);
+    $routes->get('scan/form', 'AttendanceController::scannerForm', ['filter' => 'authGuard']);
+    $routes->add('scan/form/submit', 'AttendanceController::scannerSave', ['filter' => 'authGuard']);
 
     /** PERMISSIONS **/
-    $routes->get('permission', 'AttedanceController::permission', ['filter' => 'authGuard']);
-    $routes->add('permission/submit', 'AttedanceController::permissionSave', ['filter' => 'authGuard']);
+    $routes->get('permission', 'AttendanceController::permission', ['filter' => 'authGuard']);
+    $routes->add('permission/submit', 'AttendanceController::permissionSave', ['filter' => 'authGuard']);
 
     /** REPORT TASK **/
     $routes->get('report', 'User::report', ['filter' => 'authGuard']);

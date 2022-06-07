@@ -37,9 +37,9 @@ class SigninController extends BaseController
                 $session->set($ses_data);
 
                 if ($data['level'] == 'employee') {
-                    return redirect()->to('/user');
+                    return redirect()->to(base_url('/user'));
                 } else {
-                    return redirect()->to('/admin/dashboard');
+                    return redirect()->to(base_url('/admin/dashboard'));
                 }
             } else {
                 $session->setFlashdata('failed', 'Password is incorrect.');

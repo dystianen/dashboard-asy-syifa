@@ -7,7 +7,7 @@ use App\Models\AttendanceModel;
 use App\Models\CategoryModel;
 use CodeIgniter\Config\Services;
 
-class AttedanceController extends BaseController
+class AttendanceController extends BaseController
 {
     protected $attendanceModel, $categoryModel;
     public function __construct()
@@ -166,5 +166,30 @@ class AttedanceController extends BaseController
             $validation = Services::validation();
             return redirect()->to('/user/permission')->withInput()->with('validation', $validation);
         }
+    }
+
+    public function scanner()
+    {
+        echo view('layouts/pages/User/scan/index');
+    }
+
+    public function scannerForm()
+    {
+        echo view('layouts/pages/User/scan/formSubmit');
+    }
+
+    public function scannerSave()
+    {
+        helper(['form']);
+        $data = [
+            'user_id' => session()->get('id'),
+            'is_logged_in' => TRUE,
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+
+        $this->attendanceModel->save($data);
+
+        $this->session->setFlashdata('success_scan');
+        return redirect()->to('/user');
     }
 }
