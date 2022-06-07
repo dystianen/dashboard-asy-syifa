@@ -38,23 +38,23 @@ $routes->get('/register', 'SignupController::index');
 
 $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
     /** EMPLOYEE **/
-    $routes->get('dashboard', 'Home::index');
-    $routes->get('employee', 'Employee::index');
-    $routes->add('employee/form', 'Employee::create');
-    $routes->add('employee/save', 'Employee::save');
-    $routes->add('employee/edit/(:num)', 'Employee::edit/$1');
-    $routes->add('employee/update/(:num)', 'Employee::update/$1');
-    $routes->add('employee/detail/(:num)', 'Employee::detail/$1');
-    $routes->delete('employee/delete/(:num)', 'Employee::delete/$1');
+    $routes->get('dashboard', 'HomeController::index');
+    $routes->get('employee', 'EmployeeController::index');
+    $routes->add('employee/form', 'EmployeeController::create');
+    $routes->add('employee/save', 'EmployeeController::save');
+    $routes->add('employee/edit/(:num)', 'EmployeeController::edit/$1');
+    $routes->add('employee/update/(:num)', 'EmployeeController::update/$1');
+    $routes->add('employee/detail/(:num)', 'EmployeeController::detail/$1');
+    $routes->delete('employee/delete/(:num)', 'EmployeeController::delete/$1');
 
     /** JOBS **/
-    $routes->get('job', 'Job::index');
-    $routes->get('job/form', 'Job::form');
-    $routes->add('job/save', 'Job::save');
-    $routes->add('job/edit/(:num)', 'Job::edit/$1');
-    $routes->add('job/update/(:num)', 'Job::update/$1');
-    $routes->add('job/detail/(:num)', 'Job::detail/$1');
-    $routes->delete('job/delete/(:num)', 'Job::delete/$1');
+    $routes->get('job', 'JobController::index');
+    $routes->get('job/form', 'JobController::form');
+    $routes->add('job/save', 'JobController::save');
+    $routes->add('job/edit/(:num)', 'JobController::edit/$1');
+    $routes->add('job/update/(:num)', 'JobController::update/$1');
+    $routes->add('job/detail/(:num)', 'JobController::detail/$1');
+    $routes->delete('job/delete/(:num)', 'JobController::delete/$1');
 
     /** ATTEDANCE **/
     $routes->get('attedance', 'AttendanceController::index');
@@ -74,11 +74,11 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
 // })
 
 $routes->group('user', ['filter' => 'authGuard'], function ($routes) {
-    $routes->get('/', 'User::index', ['filter' => 'authGuard']);
-    $routes->get('profile', 'User::profile', ['filter' => 'authGuard']);
+    $routes->get('/', 'UserController::index', ['filter' => 'authGuard']);
+    $routes->get('profile', 'UserController::profile', ['filter' => 'authGuard']);
 
     /** ABSENT **/
-    $routes->get('absent', 'User::absent', ['filter' => 'authGuard']);
+    $routes->get('absent', 'UserController::absent', ['filter' => 'authGuard']);
     $routes->get('scan', 'AttendanceController::scanner', ['filter' => 'authGuard']);
     $routes->add('scan/submit', 'AttendanceController::scannerSave', ['filter' => 'authGuard']);
 
@@ -87,9 +87,10 @@ $routes->group('user', ['filter' => 'authGuard'], function ($routes) {
     $routes->add('permission/submit', 'AttendanceController::permissionSave', ['filter' => 'authGuard']);
 
     /** REPORT TASK **/
-    $routes->get('report', 'User::report', ['filter' => 'authGuard']);
-    $routes->get('task', 'User::task', ['filter' => 'authGuard']);
-    $routes->get('task/detail/(:num)', 'User::TaskDetail/$1', ['filter' => 'authGuard']);
+    $routes->get('report', 'UserController::report', ['filter' => 'authGuard']);
+    $routes->add('report/submit/(:num)', 'UserController::completeReport/$1', ['filter' => 'authGuard']);
+    $routes->get('task', 'UserController::task', ['filter' => 'authGuard']);
+    $routes->get('task/detail/(:num)', 'UserController::TaskDetail/$1', ['filter' => 'authGuard']);
 });
 
 /*

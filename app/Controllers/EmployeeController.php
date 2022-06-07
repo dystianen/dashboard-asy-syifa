@@ -6,7 +6,7 @@ use App\Models\JobModel;
 use App\Models\UserModel;
 use Config\Services;
 
-class Employee extends BaseController
+class EmployeeController extends BaseController
 {
     protected $userModel, $jobModel, $session;
     public function __construct()
@@ -181,6 +181,5 @@ class Employee extends BaseController
             return "User Not Found!";
             die();
         }
-        
     }
 }

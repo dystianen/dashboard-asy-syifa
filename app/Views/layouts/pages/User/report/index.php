@@ -2,42 +2,63 @@
 
 <?= $this->section('content') ?>
 <section>
-    <div class="text-center">
-        <span style="color: gray">Please report your Task today!</span>
+    <div class="card">
+        <div class="card-header" style="background-color: #435ebe; text-align: center">
+            <h5 style="color: white">Detail Your Task today</h5>
+        </div>
+        <div class="row p-4">
+            <div class="col-12 col-md-4 detail-task">
+                <h5>Task</h5>
+                <span><?= $job['description'] ?></span>
+            </div>
+            <div class="col-12 col-md-2 detail-task">
+                <h5>Point</h5>
+                <span><?= $job['point'] ?></span>
+            </div>
+            <?php if ($job['is_completed'] == 0) : ?>
+                <div class="col-12 col-md-2 detail-task">
+                    <h5>Date Created</h5>
+                    <span><?= date_format(date_create($job['created_at']), 'd M Y H:i') ?></span>
+                </div>
+            <?php else : ?>
+                <div class="col-12 col-md-4 detail-task">
+                    <h5>Date Created</h5>
+                    <span><?= date_format(date_create($job['created_at']), 'd M Y H:i') ?></span>
+                </div>
+            <?php endif; ?>
+            <div class="col-12 col-md-2 detail-task">
+                <h5>Status</h5>
+                <?php if ($job['is_completed'] == 0) : ?>
+                    <span class="badge bg-danger">NOT DONE</span>
+                <?php else : ?>
+                    <span class="badge bg-success">DONE</span>
+                <?php endif; ?>
+            </div>
+            <?php if ($job['is_completed'] == 0) : ?>
+                <div class="col-12 col-md-2 detail-task">
+                    <h5>Action</h5>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#FinishModal">Finish Task?</button>
+                </div>
+            <?php endif; ?>
+        </div>
     </div>
 </section>
 
-<section>
-    <h5>List Task</h5>
-    <form>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                Create Employee
-            </label>
+<div class=" modal fade" id="FinishModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h3>Are you sure?</h3>
+                Do you really Complete your Job?
+                </br>
+                <div class="pt-3">
+                    <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
+                    <form class="d-inline" method="post" action="<?= base_url(); ?>/user/report/submit/<?= $job['id'] ?>">
+                        <button type="submit" class="btn btn-primary m-2">Yes</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                Update Employee
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                Read Employee
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                Delete Employee
-            </label>
-        </div>
-        <div class="mt-4">
-            <a class="btn btn-secondary" href="/user/absent">Cancel</a>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
-</section>
+    </div>
+</div>
 <?= $this->endSection() ?>

@@ -6,7 +6,7 @@ use App\Models\JobModel;
 use App\Models\UserModel;
 use Config\Services;
 
-class Job extends BaseController
+class JobController extends BaseController
 {
     protected $jobModel, $userModel;
 

@@ -7,7 +7,7 @@ use App\Models\JobModel;
 use App\Models\UserModel;
 use DateTime;
 
-class Home extends BaseController
+class HomeController extends BaseController
 {
     protected $jobModel, $userModel, $attedanceModel;
 
@@ -27,42 +27,42 @@ class Home extends BaseController
     {
         // Get Today Date + 1
         $todayPlusOne = date('Y-m-d H:i:s');
-        
+
         $data = [
             // Sidebar
             'page' => 'dashboard',
 
             // Employees
             'task_completed' => $this
-            ->jobModel
-            ->where("is_completed", 1)
-            ->where('DATE(created_at)',$todayPlusOne)
-            ->countAllResults(),
+                ->jobModel
+                ->where("is_completed", 1)
+                ->where('DATE(created_at)', $todayPlusOne)
+                ->countAllResults(),
 
             'task_unfinished' => $this
-            ->jobModel
-            ->where("is_completed", 0)
-            ->where('DATE(created_at)',$todayPlusOne)
-            ->countAllResults(),
+                ->jobModel
+                ->where("is_completed", 0)
+                ->where('DATE(created_at)', $todayPlusOne)
+                ->countAllResults(),
 
             'total_employees' => $this
-            ->userModel
-            ->countAllResults(),
+                ->userModel
+                ->countAllResults(),
 
             // Attendances
             'employee_presence' => $this
-            ->attedanceModel
-            ->where("category", "Hadir")
-            ->where('DATE(created_at)',$todayPlusOne)
-            ->countAllResults(),
+                ->attedanceModel
+                ->where("category", "Hadir")
+                ->where('DATE(created_at)', $todayPlusOne)
+                ->countAllResults(),
 
             'employee_sick' => $this
-            ->attedanceModel
-            ->where("category", "Sakit")
-            ->where('DATE(created_at)',$todayPlusOne)
-            ->countAllResults(),
+                ->attedanceModel
+                ->where("category", "Sakit")
+                ->where('DATE(created_at)', $todayPlusOne)
+                ->countAllResults(),
         ];
-        
+
         echo view('layouts/pages/admin/dashboard/index', $data);
     }
 }

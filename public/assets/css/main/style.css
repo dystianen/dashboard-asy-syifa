@@ -105,6 +105,10 @@ section svg {
   .title {
     font-size: 14px;
   }
+
+  .detail-task {
+    margin-top: 20px;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -119,5 +123,9 @@ section svg {
 
   .title {
     font-size: 20px;
+  }
+
+  .detail-task {
+    margin-top: 20px;
   }
 }

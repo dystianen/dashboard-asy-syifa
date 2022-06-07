@@ -6,7 +6,7 @@ use App\Models\JobModel;
 use App\Models\UserModel;
 use CodeIgniter\Config\Services;
 
-class User extends BaseController
+class UserController extends BaseController
 {
     protected $userModel, $jobModel;
 
@@ -42,7 +42,24 @@ class User extends BaseController
 
     public function report()
     {
-        echo view('layouts/pages/User/report/index');
+        $id = session()->get('id');
+        $data = [
+            'job' => $this->jobModel->where(['user_id' => $id])->first(),
+        ];
+        echo view('layouts/pages/User/report/index', $data);
+    }
+
+    public function completeReport($id)
+    {
+        $data = [
+            'id' => $id,
+            'is_completed' => 1,
+        ];
+
+        $this->jobModel->save($data);
+
+        session()->setFlashData('index', 'Success Completed your job!');
+        return redirect()->to("/user");
     }
 
     public function task()
@@ -64,25 +81,5 @@ class User extends BaseController
             'job' => $this->jobModel->where(['id' => $id])->first(),
         ];
         echo view('layouts/pages/User/task/detail', $data);
-    }
-
-    public function show()
-    {
-        // Your Code...    
-    }
-
-    public function edit()
-    {
-        // Your Code...    
-    }
-
-    public function update()
-    {
-        // Your Code...    
-    }
-
-    public function destroy()
-    {
-        // Your Code...    
     }
 }

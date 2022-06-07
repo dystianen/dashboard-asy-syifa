@@ -8,6 +8,12 @@
     </div>
 </section>
 
+<?php if (session()->getFlashData('index')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?php echo session("index") ?>
+    </div>
+<?php endif; ?>
+
 <section class="mt-4">
     <div class="row">
         <div class="col">
@@ -66,6 +72,10 @@
         }
 
         setInterval(dateTime, 100);
+    });
+
+    $(".alert").fadeTo(2000, 500).slideUp(500, function() {
+        $(".alert").slideUp(500);
     });
 </script>
 <?= $this->endSection() ?>
