@@ -33,7 +33,7 @@
                                         ); ?>
                                 </td>
                                 <td><?= $j['point'] ?></td>
-                                <td><?= $j['created_at'] ?></td>
+                                <td><?= date_format(date_create($j['created_at']), 'd M Y H:i') ?></td>
                                 <td>
                                     <div class="row">
                                         <div class="col-2">

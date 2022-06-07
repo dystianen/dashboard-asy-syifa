@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <section>
     <div class="card">
-        <div class="card-header" style="background-color: #435ebe; text-align: center">
+        <div class="card-header" style="background-color: #435ebe;">
             <h5 style="color: white">Detail Your Task today</h5>
         </div>
         <div class="row p-4">

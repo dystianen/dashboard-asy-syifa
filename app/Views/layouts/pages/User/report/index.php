@@ -2,46 +2,53 @@
 
 <?= $this->section('content') ?>
 <section>
-    <div class="card">
-        <div class="card-header" style="background-color: #435ebe; text-align: center">
-            <h5 style="color: white">Detail Your Task today</h5>
+    <?php if ($job['is_completed'] == 1) : ?>
+        <div class="card card-success d-flex align-items-center p-5">
+            <span><i class="bi bi-check-circle" style="font-size: 50px; color: green"></i></span>
+            <h5 class="text-center">Your task for today is done!</h5>
         </div>
-        <div class="row p-4">
-            <div class="col-12 col-md-4 detail-task">
-                <h5>Task</h5>
-                <span><?= $job['description'] ?></span>
+    <?php else : ?>
+        <div class="card">
+            <div class="card-header" style="background-color: #435ebe;">
+                <h5 style="color: white">Report Your Task today</h5>
             </div>
-            <div class="col-12 col-md-2 detail-task">
-                <h5>Point</h5>
-                <span><?= $job['point'] ?></span>
-            </div>
-            <?php if ($job['is_completed'] == 0) : ?>
-                <div class="col-12 col-md-2 detail-task">
-                    <h5>Date Created</h5>
-                    <span><?= date_format(date_create($job['created_at']), 'd M Y H:i') ?></span>
-                </div>
-            <?php else : ?>
+            <div class="row p-4">
                 <div class="col-12 col-md-4 detail-task">
-                    <h5>Date Created</h5>
-                    <span><?= date_format(date_create($job['created_at']), 'd M Y H:i') ?></span>
+                    <h5>Task</h5>
+                    <span><?= $job['description'] ?></span>
                 </div>
-            <?php endif; ?>
-            <div class="col-12 col-md-2 detail-task">
-                <h5>Status</h5>
+                <div class="col-12 col-md-2 detail-task">
+                    <h5>Point</h5>
+                    <span><?= $job['point'] ?></span>
+                </div>
                 <?php if ($job['is_completed'] == 0) : ?>
-                    <span class="badge bg-danger">NOT DONE</span>
+                    <div class="col-12 col-md-2 detail-task">
+                        <h5>Date Created</h5>
+                        <span><?= date_format(date_create($job['created_at']), 'd M Y H:i') ?></span>
+                    </div>
                 <?php else : ?>
-                    <span class="badge bg-success">DONE</span>
+                    <div class="col-12 col-md-4 detail-task">
+                        <h5>Date Created</h5>
+                        <span><?= date_format(date_create($job['created_at']), 'd M Y H:i') ?></span>
+                    </div>
+                <?php endif; ?>
+                <div class="col-12 col-md-2 detail-task">
+                    <h5>Status</h5>
+                    <?php if ($job['is_completed'] == 0) : ?>
+                        <span class="badge bg-danger">NOT DONE</span>
+                    <?php else : ?>
+                        <span class="badge bg-success">DONE</span>
+                    <?php endif; ?>
+                </div>
+                <?php if ($job['is_completed'] == 0) : ?>
+                    <div class="col-12 col-md-2 detail-task">
+                        <h5>Action</h5>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#FinishModal">Finish Task?</button>
+                    </div>
                 <?php endif; ?>
             </div>
-            <?php if ($job['is_completed'] == 0) : ?>
-                <div class="col-12 col-md-2 detail-task">
-                    <h5>Action</h5>
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#FinishModal">Finish Task?</button>
-                </div>
-            <?php endif; ?>
         </div>
-    </div>
+    <?php endif; ?>
 </section>
 
 <div class=" modal fade" id="FinishModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
