@@ -32,17 +32,17 @@ class User extends BaseController
         $data = [
             'user' => $this->userModel->where(['id' => $id])->first(),
         ];
-        return view('layouts/pages/User/profile', $data);
+        return view('layouts/pages/User/profile/index', $data);
     }
 
     public function absent()
     {
-        echo view('layouts/pages/User/absent');
+        echo view('layouts/pages/User/absent/index');
     }
 
     public function report()
     {
-        echo view('layouts/pages/User/report');
+        echo view('layouts/pages/User/report/index');
     }
 
     public function task()

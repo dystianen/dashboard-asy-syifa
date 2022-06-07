@@ -17,7 +17,7 @@
                             <th>No.</th>
                             <th>Task</th>
                             <th>Point</th>
-                            <th>Date</th>
+                            <th>Date Created</th>
                             <th>Action</th>
                         </tr>
                     </thead>

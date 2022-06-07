@@ -137,7 +137,7 @@ class AttendanceController extends BaseController
             'category' => $this->categoryModel->findAll()
         ];
 
-        echo view('layouts/pages/User/permission', $data);
+        echo view('layouts/pages/User/permission/index', $data);
     }
 
     public function permissionSave()
