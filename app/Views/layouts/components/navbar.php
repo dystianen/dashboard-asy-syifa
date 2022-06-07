@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/user"><i class="bi bi-alarm" style="font-size: 26px;"></i> <span style="font-size: 26px; font-weight: bold">Absensi.</span></a>
+            <a class="navbar-brand" href="/user" style="color: #25396f;"><i class="bi bi-alarm" style="font-size: 26px;"></i> <span style="font-size: 26px; font-weight: bold">Absensi.</span></a>
             <div class="justify-content-end">
                 <div class="dropdown">
                     <button class="btn btn-link dropdown-toggle p-0" style="display: flex; align-items: center; text-decoration: none;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

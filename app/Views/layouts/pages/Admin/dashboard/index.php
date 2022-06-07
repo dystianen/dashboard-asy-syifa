@@ -7,7 +7,22 @@
     </div>
     <!-- Content Row -->
     <div class="row">
-        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card shadow h-100 py-2" style="border: none; border-radius: 10px;">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Employees</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_employees ?> People</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="col-xl-4 col-md-6 mb-4">
             <div class="card shadow h-100 py-2" style="border: none; border-radius: 10px;">
                 <div class="card-body">
@@ -15,7 +30,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks Completed Today
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $task_completed?> Tasks</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $task_completed ?> Tasks</div>
                             <!-- <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">90%</div>
@@ -35,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <!-- Earnings (Monthly) Card Example -->
+
         <div class="col-xl-4 col-md-6 mb-4">
             <div class="card shadow h-100 py-2" style="border: none; border-radius: 10px;">
                 <div class="card-body">
@@ -44,7 +59,7 @@
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Tasks not Completed
                                 Today
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $task_unfinished?> Tasks</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $task_unfinished ?> Tasks</div>
                             <!-- <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">20%</div>
@@ -58,22 +73,6 @@
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card shadow h-100 py-2" style="border: none; border-radius: 10px;">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Employees</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_employees?> People</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -94,7 +93,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Attendees Today</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $employee_presence?> People</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $employee_presence ?> People</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -109,9 +108,26 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Sick Employee Today
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Employee is Leave Today
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $employee_sick?> People</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $employee_leave ?> People</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card shadow h-100 py-2" style="border: none; border-radius: 10px;">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Employee is Sick Today
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $employee_sick ?> People</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

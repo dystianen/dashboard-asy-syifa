@@ -180,7 +180,7 @@ class AttendanceController extends BaseController
         $data = [
             'user_id' => session()->get('id'),
             'is_logged_in' => TRUE,
-            'category' => 'masuk',
+            'category' => 'hadir',
             'created_at' => date('Y-m-d H:i:s')
         ];
 

@@ -26,7 +26,7 @@ class HomeController extends BaseController
     public function index()
     {
         // Get Today Date + 1
-        $todayPlusOne = date('Y-m-d H:i:s');
+        $todayPlusOne = date('Y-m-d');
 
         $data = [
             // Sidebar
@@ -52,13 +52,19 @@ class HomeController extends BaseController
             // Attendances
             'employee_presence' => $this
                 ->attedanceModel
-                ->where("category", "Hadir")
+                ->where("category", "hadir")
                 ->where('DATE(created_at)', $todayPlusOne)
                 ->countAllResults(),
 
             'employee_sick' => $this
                 ->attedanceModel
-                ->where("category", "Sakit")
+                ->where("category", "sakit")
+                ->where('DATE(created_at)', $todayPlusOne)
+                ->countAllResults(),
+
+            'employee_leave' => $this
+                ->attedanceModel
+                ->where("category", "cuti")
                 ->where('DATE(created_at)', $todayPlusOne)
                 ->countAllResults(),
         ];

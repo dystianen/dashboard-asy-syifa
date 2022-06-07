@@ -26,7 +26,7 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between flex-column align-items-center">
                         <div class="logo">
-                            <a><i class="bi bi-alarm"></i> <span style="font-size: 26px">Absensi.</span></a>
+                            <a style="color: #25396f"><i class="bi bi-alarm"></i> <span style="font-size: 26px">Absensi.</span></a>
                         </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--system-uicons" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
