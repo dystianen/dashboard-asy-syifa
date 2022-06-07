@@ -9,12 +9,13 @@ use CodeIgniter\Config\Services;
 
 class AttendanceController extends BaseController
 {
-    protected $attendanceModel, $categoryModel;
+    protected $attendanceModel, $categoryModel, $session;
     public function __construct()
     {
         helper(['form']);
         $this->attendanceModel = new AttendanceModel();
         $this->categoryModel = new CategoryModel();
+        $this->session = session();
     }
 
     public function index()
@@ -171,11 +172,6 @@ class AttendanceController extends BaseController
     public function scanner()
     {
         echo view('layouts/pages/User/scan/index');
-    }
-
-    public function scannerForm()
-    {
-        echo view('layouts/pages/User/scan/formSubmit');
     }
 
     public function scannerSave()

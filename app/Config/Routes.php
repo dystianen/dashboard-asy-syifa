@@ -80,8 +80,7 @@ $routes->group('user', ['filter' => 'authGuard'], function ($routes) {
     /** ABSENT **/
     $routes->get('absent', 'User::absent', ['filter' => 'authGuard']);
     $routes->get('scan', 'AttendanceController::scanner', ['filter' => 'authGuard']);
-    $routes->get('scan/form', 'AttendanceController::scannerForm', ['filter' => 'authGuard']);
-    $routes->add('scan/form/submit', 'AttendanceController::scannerSave', ['filter' => 'authGuard']);
+    $routes->add('scan/submit', 'AttendanceController::scannerSave', ['filter' => 'authGuard']);
 
     /** PERMISSIONS **/
     $routes->get('permission', 'AttendanceController::permission', ['filter' => 'authGuard']);
