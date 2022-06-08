@@ -46,6 +46,15 @@
             </a>
         </li>
 
+        <li class="sidebar-item <?php if ($page == 'performance') {
+            echo 'active';
+        } ?>">
+            <a href="/admin/performance" class='sidebar-link'>
+                <i class="bi bi-graph-up-arrow"></i>
+                <span>Performance</span>
+            </a>
+        </li>
+
         <div class="d-grid gap-2">
             <a class='btn btn-outline-danger mt-5' block href="<?php echo base_url(); ?>/logout">
                 <i class="bi bi-lock-fill" style="padding-right: 10px"></i>Log Out
