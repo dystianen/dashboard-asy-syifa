@@ -1,13 +1,44 @@
 <?= $this->extend('layouts/base_employee') ?>
 
+<?= $this->section('styles') ?>
+<style>
+    .scan {
+        position: absolute;
+        z-index: 2;
+        width: 60%;
+        height: 200px;
+        margin: 0;
+        background: transparent;
+        border: 2px solid #ffffff;
+        border-style: dashed
+    }
+
+    .caption {
+        position: absolute;
+        font-size: 12px;
+        color: #fff;
+        z-index: 1;
+        width: 100%;
+        text-align: center;
+    }
+
+    @media only screen and (min-width: 600px) {
+        .scan {
+            width: 60%;
+            height: 400px;
+        }
+    }
+</style>
+<?= $this->endSection() ?>
+
 <?= $this->section('content') ?>
 <section>
-    <div style="display: flex; justify-content: center; position: relative; text-align: center">
-        <div class="card" style="position: absolute; z-index: 2; width: 60%; height: 200px; margin-top: 10em; background: transparent; border: 2px solid #ffffff; border-style: dashed"></div>
-        <h5 class="text-center" style="position: absolute; font-size: 12px; color: #fff; z-index: 1; width: 100%; margin-top: 31em;">
+    <div style="display: flex; justify-content: center; position: relative; text-align: center; align-items: center">
+        <div class="card scan"></div>
+        <h5 class="caption">
             Please QR
             Code inside this square</h5>
-        <video id="preview" width="100%" style="object-fit: fill; z-index: 0; height: 80vh"></video>
+        <video id="preview" width="100%" style="object-fit: fill; z-index: 0; height: 80vh; border-radius: 10px"></video>
     </div>
 </section>
 

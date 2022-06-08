@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/main/style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <?= $this->renderSection('styles') ?>
 </head>
 
 <body>
