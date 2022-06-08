@@ -20,11 +20,17 @@ class AttendanceController extends BaseController
 
     public function index()
     {
+        $attedanceUser = $this->attendanceModel
+        ->join('users', 'users.id = attendance.user_id')
+        ->findAll();
+
         $data = [
             'page' => 'attedance',
-            'attedance' => $this->attendanceModel->findAll()
+            'attedance' => $this->attendanceModel->findAll(),
+            'attedanceUser' => $attedanceUser,
         ];
 
+        // var_dump($attedanceUser);
         echo view('layouts/pages/attedance/index', $data);
     }
 

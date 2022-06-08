@@ -25,11 +25,21 @@ class JobController extends BaseController
     public function index()
     {
         $job = $this->jobModel->findAll();
+
+        $pointAllJobs = $this->jobModel->selectSum('point')->first();
+
+        $jobUser = $this->jobModel
+        ->join('users', 'users.id = jobs.user_id')
+        ->findAll();
+
         $data = [
             'page' => 'job',
             'job' => $job,
+            'jobUser' => $jobUser,
+            'points' => $pointAllJobs,
         ];
 
+        // var_dump($pointAllJobs);
         echo view('layouts/pages/admin/job/index', $data);
     }
 

@@ -55,4 +55,19 @@ class UserModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getUsersJob($id)
+    {
+        $jobDetail = $this
+        ->join('users', 'users.id = jobs.user_id')
+        ->find($id);
+        
+        return $jobDetail;
+    }
+
+    public function findJobByUserId($id)
+    {
+        $jobDetailByUserId = $this->select('id')->where("user_id", $id)->findAll();
+        return $jobDetailByUserId;
+    }
 }
