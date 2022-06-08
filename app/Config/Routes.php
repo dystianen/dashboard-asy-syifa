@@ -68,6 +68,14 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
     $routes->add('category/update/(:num)', 'CategoryController::update/$1');
     $routes->add('category/detail/(:num)', 'CategoryController::detail/$1');
     $routes->delete('category/delete/(:num)', 'CategoryController::delete/$1');
+
+    /** EMPLOYEE PERFORMANCE **/
+    $routes->get('performance', 'PerformanceController::index');
+    $routes->get('performance/create', 'PerformanceController::create');
+    $routes->post('performance/create/submit', 'PerformanceController::createSave');
+    $routes->get('performance/edit/(:num)', 'PerformanceController::edit/$1');
+    $routes->get('performance/edit/submit/(:num)', 'PerformanceController::editSave/$1');
+    $routes->get('performance/detail/(:num)', 'PerformanceController::detail/$1');
 });
 
 // $routes->group('employee', static function ($routes) {
