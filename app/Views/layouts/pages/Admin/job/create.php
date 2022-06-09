@@ -32,7 +32,7 @@
                                 <select name="user_id" class="form-select <?= ($validation->hasError('user_id') ? 'is-invalid' : '') ?>" id="basicSelect">
                                     <option value="">--please select--</option>
                                     <?php foreach ($user as $e) : ?>
-                                        <option value="<?= $e['id'] ?>" <?php if ($userId == $e['id']) {
+                                        <option value="<?= $e['userId'] ?>" <?php if ($userId == $e['userId']) {
                                                                             echo 'selected';
                                                                         } ?>><?= $e['fullname'] ?></option>
                                     <?php endforeach; ?>

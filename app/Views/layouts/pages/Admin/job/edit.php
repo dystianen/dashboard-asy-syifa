@@ -21,7 +21,7 @@
         </div>
 
         <div class="card-body mt-2">
-            <form action="<?php echo base_url(); ?>/admin/job/update/<?= $job_id; ?>" method="post">
+            <form action="<?php echo base_url(); ?>/admin/job/update/<?= $job['jobId']; ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="row">
                     <div class="col-12">
@@ -34,7 +34,7 @@
                                         id="basicSelect">
                                         <option value="">--please select--</option>
                                         <?php foreach ($user as $e) : ?>
-                                        <option value="<?= $e['id'] ?>" selected><?= $e['fullname'] ?></option>
+                                        <option value="<?= $e['userId'] ?>" selected><?= $e['fullname'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <div class="invalid-feedback">

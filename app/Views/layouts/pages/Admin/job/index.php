@@ -27,6 +27,7 @@
                     <thead>
                         <tr>
                             <th>No.</th>
+                            <th>Employee</th>
                             <th>Job Type</th>
                             <th>Description</th>
                             <th>Point</th>
@@ -34,11 +35,13 @@
                             <th>Action</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <?php $i = 1; ?>
                         <?php foreach ($job as $j) : ?>
                             <tr>
                                 <td><?= $i++ ?></td>
+                                <td><?= $j['fullname'] ?></td>
                                 <td><?= $j['type_of_work'] ?></td>
                                 <td><?= (strlen(htmlspecialchars($j['description'])) > 13)
                                         ? substr(htmlspecialchars($j['description']), 0, 10) . '...'
@@ -51,13 +54,13 @@
                                 <td>
                                     <div class="row">
                                         <div class="col-2">
-                                            <a href="<?php echo base_url(); ?>/admin/job/edit/<?= $j['id'] ?>" class="btn btn-link"><i class="bi bi-pencil-square"></i></a>
+                                            <a href="<?php echo base_url(); ?>/admin/job/edit/<?= $j['jobId'] ?>" class="btn btn-link"><i class="bi bi-pencil-square"></i></a>
                                         </div>
                                         <div class="col-2">
-                                            <a href="<?= base_url(); ?>/admin/job/detail/<?= $j['id'] ?>" class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
+                                            <a href="<?= base_url(); ?>/admin/job/detail/<?= $j['jobId'] ?>" class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
                                         </div>
                                         <div class="col-2">
-                                            <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $j['id'] ?>"><i class="bi bi-trash-fill"></i></button>
+                                            <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $j['jobId'] ?>"><i class="bi bi-trash-fill"></i></button>
                                         </div>
                                     </div>
                                 </td>
@@ -71,7 +74,7 @@
 
     <!-- Modal Delete -->
     <?php foreach ($job as $j) : ?>
-        <div class="modal fade" id="deleteModal<?= $j['id'] ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteModal<?= $j['jobId'] ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body text-center">
@@ -80,7 +83,7 @@
                         </br>
                         <div class="pt-3">
                             <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
-                            <form class="d-inline" method="post" action="<?= base_url(); ?>/admin/job/delete/<?= $j['id'] ?>">
+                            <form class="d-inline" method="post" action="<?= base_url(); ?>/admin/job/delete/<?= $j['jobId'] ?>">
                                 <?= csrf_field() ?>
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-danger m-2">Yes</button>

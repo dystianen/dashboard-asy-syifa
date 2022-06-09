@@ -65,7 +65,7 @@
 
                 <div class="float-end pt-3">
                     <button onclick="history.back()" type="button" class="btn btn-secondary">Back</button>
-                    <a href="<?php echo base_url(); ?>/admin/job/edit/<?= $job['id'] ?>"
+                    <a href="<?php echo base_url(); ?>/admin/job/edit/<?= $job['jobId'] ?>"
                         class="btn btn-primary">Edit</a>
                 </div>
 

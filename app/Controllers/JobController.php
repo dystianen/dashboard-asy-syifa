@@ -14,7 +14,6 @@ class JobController extends BaseController
     {
         $this->jobModel = new JobModel();
         $this->userModel = new UserModel();
-        $this->session = session();
 
         if (session()->get('level') != "admin") {
             echo 'Access denied';
@@ -24,18 +23,11 @@ class JobController extends BaseController
 
     public function index()
     {
-        $job = $this->jobModel->findAll();
-
         $pointAllJobs = $this->jobModel->selectSum('point')->first();
-
-        $jobUser = $this->jobModel
-        ->join('users', 'users.id = jobs.user_id')
-        ->findAll();
 
         $data = [
             'page' => 'job',
-            'job' => $job,
-            'jobUser' => $jobUser,
+            'job' => $this->jobModel->getJob(),
             'points' => $pointAllJobs,
         ];
 
@@ -46,8 +38,7 @@ class JobController extends BaseController
     public function form($id = null)
     {
         helper(['form']);
-        $userModel = new UserModel();
-        $dataUser = $userModel->findAll();
+        $dataUser = $this->userModel->findAll();
         $data = [
             'page' => 'job',
             'validation' => Services::validation(),
@@ -62,26 +53,24 @@ class JobController extends BaseController
     {
         helper(['form']);
         $rules = [
-            'user_id'       => 'required',
-            'type_of_work'  => 'required',
-            'description'   => 'required',
-            'point'         => 'required',
+            'user_id' => 'required',
+            'type_of_work' => 'required',
+            'description' => 'required',
+            'point' => 'required',
         ];
 
         if ($this->validate($rules)) {
-            $jobModel = new JobModel();
-
             $data = [
-                'user_id'       => $this->request->getVar('user_id'),
-                'type_of_work'  => $this->request->getVar('type_of_work'),
-                'description'   => $this->request->getVar('description'),
-                'point'         => $this->request->getVar('point'),
-                'is_completed'  => 0,
-                'created_at'  => date('Y-m-d H:i:s'),
+                'user_id' => $this->request->getVar('user_id'),
+                'type_of_work' => $this->request->getVar('type_of_work'),
+                'description' => $this->request->getVar('description'),
+                'point' => $this->request->getVar('point'),
+                'is_completed' => 0,
+                'created_at' => date('Y-m-d H:i:s'),
             ];
 
-            $jobModel->save($data);
-            $this->session->setFlashdata('success_job', 'Create Job successfully.');
+            $this->jobModel->save($data);
+            session()->setFlashdata('success_job', 'Create Job successfully.');
             return redirect()->to("/admin/job");
         } else {
             $validation = Services::validation();
@@ -89,20 +78,18 @@ class JobController extends BaseController
         }
     }
 
-    public function delete($id)
-    {
-        $this->jobModel->delete($id);
-        $this->session->setFlashdata('success_job', 'Delete Job successfully.');
-        return redirect()->to('/admin/job');
-    }
-
     public function edit($id)
     {
         helper(['form']);
+        $dataJob = $this->jobModel
+            ->join('users', 'users.userId = jobs.user_id')
+            ->where(['jobId' => $id])
+            ->first();
+
         $data = [
             'page' => 'job',
             'validation' => Services::validation(),
-            'job' => $this->jobModel->getJob($id),
+            'job' => $dataJob,
             'user' => $this->userModel->findAll(),
             'job_id' => $id
         ];
@@ -114,24 +101,24 @@ class JobController extends BaseController
     {
         helper(['form']);
         $rules = [
-            'user_id'       => 'required',
-            'type_of_work'  => 'required',
-            'description'   => 'required',
-            'point'         => 'required',
+            'user_id' => 'required',
+            'type_of_work' => 'required',
+            'description' => 'required',
+            'point' => 'required',
         ];
 
         if ($this->validate($rules)) {
             $data = [
-                'id'            => $id,
-                'user_id'       => $this->request->getVar('user_id'),
-                'type_of_work'  => $this->request->getVar('type_of_work'),
-                'description'   => $this->request->getVar('description'),
-                'point'         => $this->request->getVar('point'),
-                'updated_at'    => date('Y-m-d H:i:s')
+                'jobId' => $id,
+                'user_id' => $this->request->getVar('user_id'),
+                'type_of_work' => $this->request->getVar('type_of_work'),
+                'description' => $this->request->getVar('description'),
+                'point' => $this->request->getVar('point'),
+                'updated_at' => date('Y-m-d H:i:s')
             ];
 
-            $this->jobModel->save($data);
-            $this->session->setFlashdata('success_job', 'Update Job successfully.');
+            $this->jobModel->replace($data);
+            session()->setFlashdata('success_job', 'Update Job successfully.');
             return redirect()->to("/admin/job");
         } else {
             $validation = Services::validation();
@@ -142,13 +129,24 @@ class JobController extends BaseController
     public function detail($id)
     {
         helper(['form']);
+        $dataJob = $this->jobModel
+            ->join('users', 'users.userId = jobs.user_id')
+            ->where(['jobId' => $id])
+            ->first();
+
         $data = [
             'page' => 'job',
             'validation' => Services::validation(),
-            'job' => $this->jobModel->getJob($id),
-            'job_id' => $id
+            'job' => $dataJob,
         ];
 
         echo view('layouts/pages/admin/job/detail', $data);
+    }
+
+    public function delete($id)
+    {
+        $this->jobModel->where(['jobId' => $id])->delete();
+        session()->setFlashdata('success_job', 'Delete Job successfully.');
+        return redirect()->to('/admin/job');
     }
 }
