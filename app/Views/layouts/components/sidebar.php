@@ -19,7 +19,7 @@
             </a>
         </li>
 
-        <li class="sidebar-item <?php if ($page == 'attedance') {
+        <li class="sidebar-item <?php if ($page == 'attendance') {
             echo 'active';
         } ?>">
             <a href="/admin/attedance" class='sidebar-link'>

@@ -10,7 +10,7 @@ class Attendance extends Migration
     {
         $this->db->disableForeignKeyChecks();
         $this->forge->addField([
-            'id' => [
+            'attendanceId' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
@@ -56,13 +56,13 @@ class Attendance extends Migration
         ]);
 
         // Primary Key Table ID
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('attendanceId', true);
 
         // Added Relation
-        $this->forge->addForeignKey('user_id', 'users', 'id');
+        $this->forge->addForeignKey('user_id', 'users', 'userId');
 
         // Create Table Attendance
-        $this->forge->createTable('attendance');
+        $this->forge->createTable('attendances');
         $this->db->enableForeignKeyChecks();
     }
 
@@ -70,6 +70,6 @@ class Attendance extends Migration
     {
         // Drop Table Attendance
         $forge = \Config\Database::forge();
-        $this->forge->dropTable('attendance');
+        $this->forge->dropTable('attendances');
     }
 }

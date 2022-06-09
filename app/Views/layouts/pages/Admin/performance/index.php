@@ -45,17 +45,9 @@
                                 <td><?= $p['score'] ?></td>
                                 <td><?= date_format(date_create($p['created_at']), 'd M Y H:i') ?></td>
                                 <td>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <a href="<?php echo base_url(); ?>/admin/performance/edit/<?= $p['performanceId'] ?>" class="btn btn-link"><i class="bi bi-pencil-square"></i></a>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="<?= base_url(); ?>/admin/performance/detail/<?= $p['performanceId'] ?>" class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
-                                        </div>
-                                        <div class="col-2">
-                                            <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $p['performanceId'] ?>"><i class="bi bi-trash-fill"></i></button>
-                                        </div>
-                                    </div>
+                                    <a class="btn btn-info btn-sm" href="<?php echo base_url(); ?>/admin/performance/edit/<?= $p['performanceId'] ?>"><i class="bi bi-pencil-square"></i></a>
+                                    <a class="btn btn-warning btn-sm" href="<?= base_url(); ?>/admin/performance/detail/<?= $p['performanceId'] ?>"><i class="bi bi-eye-fill"></i></a>
+                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $p['performanceId'] ?>"><i class="bi bi-trash-fill"></i></button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

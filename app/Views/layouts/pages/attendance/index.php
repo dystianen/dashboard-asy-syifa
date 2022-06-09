@@ -22,6 +22,7 @@
                     <thead>
                         <tr>
                             <th>No.</th>
+                            <th>Employee</th>
                             <th>Category</th>
                             <th>Reason</th>
                             <th>File</th>
@@ -31,10 +32,10 @@
                     </thead>
                     <tbody>
                         <?php $i = 1; ?>
-                        <?php foreach ($attedance as $e) : ?>
+                        <?php foreach ($attendance as $e) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-
+                                <td><?= $e['fullname']; ?></td>
                                 <?php if ($e['category']) : ?>
                                     <td><?= $e['category']; ?></td>
                                 <?php else : ?>
@@ -54,13 +55,18 @@
                                 <?php endif; ?>
 
                                 <td><?= date_format(date_create($e['created_at']), 'd M Y H:i') ?></td>
-                                <td>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <a href="#" class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
+
+                                <?php if ($e['category'] !== 'hadir') : ?>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <a href="#" class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
+                                    </td>
+                                <?php else : ?>
+                                    <td>No action</td>
+                                <?php endif; ?>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

@@ -30,7 +30,7 @@ class UserController extends BaseController
         helper(['form']);
         $id = session()->get('id');
         $data = [
-            'user' => $this->userModel->where(['id' => $id])->first(),
+            'user' => $this->userModel->where(['userId' => $id])->first(),
         ];
         return view('layouts/pages/User/profile/index', $data);
     }
@@ -43,20 +43,27 @@ class UserController extends BaseController
     public function report()
     {
         $id = session()->get('id');
+        $detail = $this->jobModel
+            ->join('users', 'users.userId = jobs.user_id')
+            ->where(['user_id' => $id])
+            ->first();
         $data = [
-            'job' => $this->jobModel->where(['user_id' => $id])->first(),
+            'job' => $detail,
         ];
         echo view('layouts/pages/User/report/index', $data);
     }
 
     public function completeReport($id)
     {
+        $id_user = session()->get('id');
         $data = [
-            'id' => $id,
+            'jobId' => $id,
+            'user_id' => $id_user,
             'is_completed' => 1,
+            'updated_at' => 'Y-m-d H:i:s',
         ];
 
-        $this->jobModel->save($data);
+        $this->jobModel->replace($data);
 
         session()->setFlashData('index', 'Success Completed your job!');
         return redirect()->to("/logout");
@@ -78,7 +85,7 @@ class UserController extends BaseController
     public function TaskDetail($id)
     {
         $data = [
-            'job' => $this->jobModel->where(['id' => $id])->first(),
+            'job' => $this->jobModel->where(['jobId' => $id])->first(),
         ];
         echo view('layouts/pages/User/task/detail', $data);
     }

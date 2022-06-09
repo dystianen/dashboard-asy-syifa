@@ -29,7 +29,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="user" class="form-label">User <span style="color: red">*</span></label>
-                                <select name="user_id" class="form-select <?= ($validation->hasError('user_id') ? 'is-invalid' : '') ?>" id="basicSelect">
+                                <select <?php if ($userId !== "") echo 'disabled' ?> name="user_id" class="form-select <?= ($validation->hasError('user_id') ? 'is-invalid' : '') ?>" id="basicSelect">
                                     <option value="">--please select--</option>
                                     <?php foreach ($user as $e) : ?>
                                         <option value="<?= $e['userId'] ?>" <?php if ($userId == $e['userId']) {

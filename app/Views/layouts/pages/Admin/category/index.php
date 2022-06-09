@@ -42,17 +42,9 @@
                                 <td><?= $e['name']; ?></td>
                                 <td><?= $e['slug']; ?></td>
                                 <td>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <a href="<?= base_url(); ?>/admin/category/edit/<?= $e['id'] ?>" class="btn btn-link"><i class="bi bi-pencil-square"></i></a>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="<?= base_url(); ?>/admin/category/detail/<?= $e['id'] ?>" class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
-                                        </div>
-                                        <div class="col-2">
-                                            <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $e['id'] ?>"><i class="bi bi-trash-fill"></i></button>
-                                        </div>
-                                    </div>
+                                    <a class="btn btn-info btn-sm" href="<?= base_url(); ?>/admin/category/edit/<?= $e['categoryId'] ?>"><i class="bi bi-pencil-square"></i></a>
+                                    <a class="btn btn-warning btn-sm" href="<?= base_url(); ?>/admin/category/detail/<?= $e['categoryId'] ?>"><i class="bi bi-eye-fill"></i></a>
+                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $e['categoryId'] ?>"><i class="bi bi-trash-fill"></i></button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -64,7 +56,7 @@
 
     <!-- Modal Delete -->
     <?php foreach ($categories as $e) : ?>
-        <div class="modal fade" id="deleteModal<?= $e['id'] ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteModal<?= $e['categoryId'] ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body text-center">
@@ -73,7 +65,7 @@
                         </br>
                         <div class="pt-3">
                             <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
-                            <form class="d-inline" method="post" action="<?= base_url(); ?>/admin/category/delete/<?= $e['id'] ?>">
+                            <form class="d-inline" method="post" action="<?= base_url(); ?>/admin/category/delete/<?= $e['categoryId'] ?>">
                                 <?= csrf_field() ?>
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-danger m-2">Yes</button>

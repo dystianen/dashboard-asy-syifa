@@ -10,7 +10,7 @@ class Users extends Migration
     {
         $forge = \Config\Database::forge();
         $this->forge->addField([
-            'id' => [
+            'userId' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
@@ -97,7 +97,7 @@ class Users extends Migration
         ]);
 
         // Primary Key Table ID
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('userId', true);
 
         // Create Table Users
         $this->forge->createTable('users');

@@ -13,7 +13,6 @@ class EmployeeController extends BaseController
     {
         $this->userModel = new UserModel();
         $this->jobModel = new JobModel();
-        $this->session = session();
 
         if (session()->get('level') != "admin") {
             echo 'Access denied';
@@ -29,8 +28,6 @@ class EmployeeController extends BaseController
             'user' => $user
         ];
 
-        $data['data'] = $data;
-
         return view('layouts/pages/admin/employee/index', $data);
     }
 
@@ -40,7 +37,6 @@ class EmployeeController extends BaseController
         $data = [
             'page' => 'employee',
             'validation' => Services::validation(),
-            'job' => $this->jobModel->findAll()
         ];
 
         echo view('layouts/pages/admin/employee/create', $data);
@@ -65,8 +61,6 @@ class EmployeeController extends BaseController
         ];
 
         if ($this->validate($rules)) {
-            $userModel = new UserModel();
-
             $data = [
                 'nik' => $this->request->getVar('nik'),
                 'fullname' => $this->request->getVar('fullname'),
@@ -83,8 +77,8 @@ class EmployeeController extends BaseController
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 
-            $userModel->save($data);
-            $this->session->setFlashdata('success', 'Create Employee successfully.');
+            $this->userModel->save($data);
+            session()->setFlashdata('success', 'Create Employee successfully.');
             return redirect()->to("/admin/employee");
         } else {
             $validation = Services::validation();
@@ -98,7 +92,7 @@ class EmployeeController extends BaseController
         $data = [
             'page' => 'employee',
             'validation' => Services::validation(),
-            'user' => $this->userModel->where(['id' => $id])->first(),
+            'user' => $this->userModel->where(['userId' => $id])->first(),
             'job' => $this->jobModel->where(['user_id' => $id])->findAll(),
         ];
 
@@ -123,7 +117,7 @@ class EmployeeController extends BaseController
 
         if ($this->validate($rules)) {
             $data = [
-                'id' => $id,
+                'userId' => $id,
                 'nik' => $this->request->getVar('nik'),
                 'fullname' => $this->request->getVar('fullname'),
                 'email' => $this->request->getVar('email'),
@@ -137,8 +131,8 @@ class EmployeeController extends BaseController
                 'updated_at' => date('Y-m-d H:i:s')
             ];
 
-            $this->userModel->save($data);
-            $this->session->setFlashdata('success', 'Update Employee successfully.');
+            $this->userModel->replace($data);
+            session()->setFlashdata('success', 'Update Employee successfully.');
             return redirect()->to("/admin/employee");
         } else {
             $validation = Services::validation();
@@ -152,7 +146,7 @@ class EmployeeController extends BaseController
         $data = [
             'page' => 'employee',
             'validation' => Services::validation(),
-            'user' => $this->userModel->where(['id' => $id])->first(),
+            'user' => $this->userModel->where(['userId' => $id])->first(),
             'job' => $this->jobModel->where(['user_id' => $id])->findAll(),
         ];
 
@@ -169,11 +163,11 @@ class EmployeeController extends BaseController
                 foreach ($queryJobExistInUser as $job) {
                     $this->jobModel->delete($job);
                 }
-                $this->session->setFlashdata('success', 'Delete Employee successfully.');
+                session()->setFlashdata('success', 'Delete Employee successfully.');
                 return redirect()->to('/admin/employee');
             } else {
                 $this->userModel->delete($id);
-                $this->session->setFlashdata('success', 'Delete Employee successfully.');
+                session()->setFlashdata('success', 'Delete Employee successfully.');
                 return redirect()->to('/admin/employee');
             }
             $this->userModel->delete($id);
