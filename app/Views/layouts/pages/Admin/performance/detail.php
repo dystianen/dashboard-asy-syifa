@@ -31,7 +31,7 @@
                                     <select disabled name="user_id" class="form-select" id="basicSelect">
                                         <option value="">--please select--</option>
                                         <?php foreach ($user as $e) : ?>
-                                            <option value="<?= $e['id'] ?>" selected><?= $e['fullname'] ?></option>
+                                            <option value="<?= $e['userId'] ?>" selected><?= $e['fullname'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -59,7 +59,7 @@
 
                     <div class="float-end pt-3">
                         <button onclick="history.back()" type="button" class="btn btn-secondary">Back</button>
-                        <a href="<?php echo base_url(); ?>/admin/performance/edit/<?= $performance['id'] ?>" class="btn btn-primary">Edit</a>
+                        <a href="<?php echo base_url(); ?>/admin/performance/edit/<?= $performance['performanceId'] ?>" class="btn btn-primary">Edit</a>
                     </div>
 
             </form>

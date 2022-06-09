@@ -25,10 +25,9 @@ class PerformanceController extends BaseController
 
     public function index()
     {
-        $performance = $this->performanceModel->findAll();
         $data = [
             'page' => 'performance',
-            'performance' => $performance,
+            'performance' => $this->performanceModel->getPerformances(),
         ];
 
         echo view('layouts/pages/admin/performance/index', $data);
@@ -49,18 +48,18 @@ class PerformanceController extends BaseController
     public function createSave()
     {
         $rules = [
-            'user_id'       => 'required',
-            'description'  => 'required',
+            'user_id' => 'required',
+            'description' => 'required',
             // 'score'   => 'required',
         ];
 
         if ($this->validate($rules)) {
             $data = [
-                'user_id'       => $this->request->getVar('user_id'),
-                'description'   => $this->request->getVar('description'),
-                'score'         => 'A',
+                'user_id' => $this->request->getVar('user_id'),
+                'description' => $this->request->getVar('description'),
+                'score' => 'A',
                 //                'score'         => $this->request->getVar('score'),
-                'created_at'  => date('Y-m-d H:i:s'),
+                'created_at' => date('Y-m-d H:i:s'),
             ];
 
             $this->performanceModel->save($data);
@@ -74,7 +73,7 @@ class PerformanceController extends BaseController
 
     public function edit($id)
     {
-        $dataPerformance = $this->performanceModel->where(['id' => $id])->first();
+        $dataPerformance = $this->performanceModel->where(['performanceId' => $id])->first();
         $dataUser = $this->userModel->findAll();
         $data = [
             'page' => 'performance',
@@ -89,22 +88,22 @@ class PerformanceController extends BaseController
     public function editSave($id)
     {
         $rules = [
-            'user_id'       => 'required',
-            'description'  => 'required',
+            'user_id' => 'required',
+            'description' => 'required',
             // 'score'   => 'required',
         ];
 
         if ($this->validate($rules)) {
             $data = [
-                'id'            => $id,
-                'user_id'       => $this->request->getVar('user_id'),
-                'description'   => $this->request->getVar('description'),
-                'score'         => 'A',
+                'performanceId' => $id,
+                'user_id' => $this->request->getVar('user_id'),
+                'description' => $this->request->getVar('description'),
+                'score' => 'A',
                 //                'score'         => $this->request->getVar('score'),
-                'updated_at'    => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ];
 
-            $this->performanceModel->save($data);
+            $this->performanceModel->replace($data);
             session()->setFlashdata('success_performance', 'Update Performance Employee successfully.');
             return redirect()->to("/admin/performance");
         } else {
@@ -115,7 +114,7 @@ class PerformanceController extends BaseController
 
     public function detail($id)
     {
-        $dataPerformance = $this->performanceModel->where(['id' => $id])->first();
+        $dataPerformance = $this->performanceModel->where(['performanceId' => $id])->first();
         $dataUser = $this->userModel->findAll();
         $data = [
             'page' => 'performance',
@@ -128,7 +127,7 @@ class PerformanceController extends BaseController
 
     public function delete($id)
     {
-        $this->performanceModel->delete($id);
+        $this->performanceModel->where(['performanceId' => $id])->delete();
         session()->setFlashdata('success_performance', 'Delete Performance Employee successfully.');
         return redirect()->to('/admin/performance');
     }

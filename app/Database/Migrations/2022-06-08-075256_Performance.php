@@ -10,7 +10,7 @@ class Performance extends Migration
     {
         $forge = \Config\Database::forge();
         $this->forge->addField([
-            'id' => [
+            'performanceId' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
@@ -48,10 +48,10 @@ class Performance extends Migration
         ]);
 
         // Primary Key Table ID
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('performanceId', true);
 
         // Relations
-        $this->forge->addForeignKey('user_id', 'users', 'id');
+        $this->forge->addForeignKey('user_id', 'users', 'userId');
 
         // Create Table Categories
         $this->forge->createTable('performances');

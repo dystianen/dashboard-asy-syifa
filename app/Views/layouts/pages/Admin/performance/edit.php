@@ -21,7 +21,7 @@
         </div>
 
         <div class="card-body mt-2">
-            <form action="<?php echo base_url(); ?>/admin/performance/edit/submit/<?= $performance['id']; ?>" method="post">
+            <form action="<?php echo base_url(); ?>/admin/performance/edit/submit/<?= $performance['performanceId']; ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="row">
                     <div class="col-12">
@@ -32,7 +32,7 @@
                                     <select name="user_id" class="form-select <?= ($validation->hasError('user_id') ? 'is-invalid' : '') ?>" id="basicSelect">
                                         <option value="">--please select--</option>
                                         <?php foreach ($user as $e) : ?>
-                                            <option value="<?= $e['id'] ?>" selected><?= $e['fullname'] ?></option>
+                                            <option value="<?= $e['userId'] ?>" selected><?= $e['fullname'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <div class="invalid-feedback">
@@ -46,7 +46,7 @@
                                     <label for="score" class="form-label">Score <span style="color: red">*</span></label>
                                     <input name="score" class="form-control <?= ($validation->hasError('score') ? 'is-invalid' : '') ?>" id="score" placeholder="example: 500" value="<?= $performance['score'] ?>">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('point') ?>
+                                        <?= $validation->getError('score') ?>
                                     </div>
                                 </div>
                             </div>

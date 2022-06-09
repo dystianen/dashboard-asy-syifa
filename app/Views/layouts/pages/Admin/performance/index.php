@@ -27,32 +27,33 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>User</th>
+                            <th>Employee</th>
                             <th>Description Performance Employee</th>
                             <th>Score</th>
                             <th>Date Created</th>
                             <th>Action</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <?php $i = 1; ?>
                         <?php foreach ($performance as $p) : ?>
                             <tr>
                                 <td><?= $i++ ?></td>
-                                <td><?= $p['user_id'] ?></td>
+                                <td><?= $p['fullname'] ?></td>
                                 <td><?= $p['description'] ?></td>
                                 <td><?= $p['score'] ?></td>
                                 <td><?= date_format(date_create($p['created_at']), 'd M Y H:i') ?></td>
                                 <td>
                                     <div class="row">
                                         <div class="col-2">
-                                            <a href="<?php echo base_url(); ?>/admin/performance/edit/<?= $p['id'] ?>" class="btn btn-link"><i class="bi bi-pencil-square"></i></a>
+                                            <a href="<?php echo base_url(); ?>/admin/performance/edit/<?= $p['performanceId'] ?>" class="btn btn-link"><i class="bi bi-pencil-square"></i></a>
                                         </div>
                                         <div class="col-2">
-                                            <a href="<?= base_url(); ?>/admin/performance/detail/<?= $p['id'] ?>" class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
+                                            <a href="<?= base_url(); ?>/admin/performance/detail/<?= $p['performanceId'] ?>" class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
                                         </div>
                                         <div class="col-2">
-                                            <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $p['id'] ?>"><i class="bi bi-trash-fill"></i></button>
+                                            <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $p['performanceId'] ?>"><i class="bi bi-trash-fill"></i></button>
                                         </div>
                                     </div>
                                 </td>
@@ -66,7 +67,7 @@
 
     <!-- Modal Delete -->
     <?php foreach ($performance as $p) : ?>
-        <div class="modal fade" id="deleteModal<?= $p['id'] ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteModal<?= $p['performanceId'] ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body text-center">
@@ -75,7 +76,7 @@
                         </br>
                         <div class="pt-3">
                             <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
-                            <form class="d-inline" method="post" action="<?= base_url(); ?>/admin/performance/delete/<?= $p['id'] ?>">
+                            <form class="d-inline" method="post" action="<?= base_url(); ?>/admin/performance/delete/<?= $p['performanceId'] ?>">
                                 <?= csrf_field() ?>
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-danger m-2">Yes</button>
