@@ -29,8 +29,15 @@ class UserController extends BaseController
     {
         helper(['form']);
         $id = session()->get('id');
+        $pointAllJobs = $this->jobModel
+            ->where(['user_id' => $id])
+            ->where(['is_completed' => 1])
+            ->selectSum('point')
+            ->first();
+
         $data = [
             'user' => $this->userModel->where(['userId' => $id])->first(),
+            'point' => $pointAllJobs
         ];
         return view('layouts/pages/User/profile/index', $data);
     }
