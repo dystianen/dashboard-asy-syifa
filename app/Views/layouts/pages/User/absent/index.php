@@ -7,6 +7,12 @@
     </div>
 </section>
 
+<?php if (session()->getFlashData('success_absent')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?php echo session("success_absent") ?>
+    </div>
+<?php endif; ?>
+
 <section>
     <div class="row">
         <a class="card card-menu stretched-link text-decoration-none" href="/user/scan">
@@ -30,4 +36,12 @@
         </a>
     </div>
 </section>
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+<script>
+    $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+        $(".alert").slideUp(500);
+    });
+</script>
 <?= $this->endSection() ?>

@@ -96,6 +96,7 @@ class AttendanceController extends BaseController
             $this->attendanceModel->save($data);
 
             // TBD
+            session()->setFlashdata('success_absent', 'Permission submit successfully!');
             return redirect()->to('/user/absent');
         } else {
             $validation = Services::validation();
