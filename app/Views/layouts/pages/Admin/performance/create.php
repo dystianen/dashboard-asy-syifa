@@ -3,7 +3,7 @@
 <div class="container-fluid">
 
     <div class="d-sm-flex flex-column mb-4">
-        <h1 class="h3 mb-3 text-gray-800">Performances</h1>
+        <h1 class="h3 mb-3 text-gray-800">Performance Employee</h1>
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -29,7 +29,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="user" class="form-label">User <span style="color: red">*</span></label>
-                                <select name="user_id" class="form-select <?= ($validation->hasError('user_id') ? 'is-invalid' : '') ?>" id="basicSelect">
+                                <select id="employee" name="user_id" class="form-select <?= ($validation->hasError('user_id') ? 'is-invalid' : '') ?>" id="basicSelect">
                                     <option value="">--please select--</option>
                                     <?php foreach ($user as $e) : ?>
                                         <option value="<?= $e['userId'] ?>" <?php if (old('user_id') == $e['userId']) {
@@ -85,5 +85,9 @@
         .catch(error => {
             console.error(error);
         });
+
+    $( "#employee" ).change(function() {
+        console.log(this.value);
+    });
 </script>
 <?= $this->endSection() ?>
