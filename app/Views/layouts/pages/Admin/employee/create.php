@@ -40,6 +40,13 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="password" class="form-label">Password <span style="color: red">*</span></label>
+                            <input name="password" class="form-control <?= ($validation->hasError('password') ? 'is-invalid' : '') ?>" id="password" type="password" placeholder="Input password" value="<?= old('password') ?>">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('password') ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="confirmPassword" class="form-label">Confirm Password <span style="color: red">*</span></label>
                             <input name="confirmPassword" class="form-control <?= ($validation->hasError('confirmPassword') ? 'is-invalid' : '') ?>" id="confirmPassword" type="password" placeholder="Input confirm password" value="<?= old('confirmPassword') ?>">
                             <div class="invalid-feedback">
@@ -60,13 +67,6 @@
                                 <?= $validation->getError('age') ?>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number <span style="color: red">*</span></label>
-                            <input name="phone_number" class="form-control <?= ($validation->hasError('phone_number') ? 'is-invalid' : '') ?>" id="phone" placeholder="example: 08146635529" value="<?= old('phone_number') ?>">
-                            <div class="invalid-feedback">
-                                <?= $validation->getError('phone_number') ?>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="col-md-6 col-12">
@@ -78,10 +78,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="password" class="form-label">Password <span style="color: red">*</span></label>
-                            <input name="password" class="form-control <?= ($validation->hasError('password') ? 'is-invalid' : '') ?>" id="password" type="password" placeholder="Input password" value="<?= old('password') ?>">
+                            <label for="phone" class="form-label">Phone Number <span style="color: red">*</span></label>
+                            <input name="phone_number" class="form-control <?= ($validation->hasError('phone_number') ? 'is-invalid' : '') ?>" id="phone" placeholder="example: 08146635529" value="<?= old('phone_number') ?>">
                             <div class="invalid-feedback">
-                                <?= $validation->getError('password') ?>
+                                <?= $validation->getError('phone_number') ?>
                             </div>
                         </div>
                         <div class="form-group">
