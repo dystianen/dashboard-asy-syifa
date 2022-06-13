@@ -60,6 +60,13 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
     /** ATTEDANCE **/
     $routes->get('attedance', 'AttendanceController::index');
 
+    /** Quick Response Code **/
+    $routes->get('qr', 'QRCodeController::index');
+    $routes->get('qr/form', 'QRCodeController::create');
+    $routes->post('qr/save', 'QRCodeController::add_data');
+    $routes->post('qr/update(:num)', 'QRCodeController::edit_data');
+    $routes->delete('qr/delete(:num)', 'QRCodeController::remove_data');
+
     /** CATEGORIES **/
     $routes->get('category', 'CategoryController::index');
     $routes->get('category/form', 'CategoryController::create');

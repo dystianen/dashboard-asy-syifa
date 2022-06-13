@@ -3,13 +3,59 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\QRModel;
+use Config\Services;
+use App\Libraries\Ciqrcode;
+
+use function bin2hex;
+use function file_exists;
+use function mkdir;
+
+/**
+ * @property Home_model $home_model
+ * @property Ciqrcode $ciqrcode
+ * @property CI_Input $input
+ */
 
 class QRCodeController extends BaseController
 {
+
+    public function __construct()
+    {
+        $this->qrModel = new QRModel();
+
+        if (session()->get('level') != "admin") {
+            echo 'Access denied';
+            exit;
+        }
+    }
+
+    public function index() {
+        $qrs = $this->qrModel->findAll();
+        $data = [
+            'page' => 'qr',
+            'qr' => $qrs
+        ];
+
+        return view('layouts/pages/admin/qr/index', $data);
+    }
+
+    public function create()
+    {
+        helper(['form']);
+        $data = [
+            'page' => 'qr',
+            'validation' => Services::validation(),
+        ];
+
+        echo view('layouts/pages/admin/qr/create', $data);
+    }
+
     function generate_qrcode($data)
     {
         /* Load QR Code Library */
-        $this->load->library('ciqrcode');
+        // $this->load->library('Ciqrcode');
+        $ciqrcode = new Ciqrcode;
 
         /* Data */
         $hex_data   = bin2hex($data);
@@ -28,7 +74,7 @@ class QRCodeController extends BaseController
         $config['size']         = '1024';
         $config['black']        = [255, 255, 255];
         $config['white']        = [255, 255, 255];
-        $this->ciqrcode->initialize($config);
+        $this->$ciqrcode->initialize($config);
 
         /* QR Data  */
         $params['data']     = $data;
@@ -36,7 +82,7 @@ class QRCodeController extends BaseController
         $params['size']     = 10;
         $params['savename'] = FCPATH . $config['imagedir'] . $save_name;
 
-        $this->ciqrcode->generate($params);
+        $this->$ciqrcode->generate($params);
 
         /* Return Data */
         return [
@@ -48,7 +94,7 @@ class QRCodeController extends BaseController
     function add_data()
     {
         /* Generate QR Code */
-        $data = $this->input->post('content');
+        $data = $this->request->getVar('content');
         $qr   = $this->generate_qrcode($data);
 
         /* Add Data */
@@ -95,5 +141,32 @@ class QRCodeController extends BaseController
         }
 
         return redirect()->to(site_url('/'));
+    }
+
+    protected function modal_feedback($type, $title, $desc, $button): void
+    {
+        $message = '
+            <div id="modalFeedback" class="modal fade">
+                <div class="modal-dialog modal-dialog-centered modal-confirm">
+                    <div class="modal-content">
+            
+                        <div class="modal-header-' . $type . '">
+                            <div class="icon-box">
+                                <i class="material-icons">' . ($type == 'success' ? '&#xE876;' : '&#xE5CD;') . '</i>
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        
+                        <div class="modal-body text-center">
+                            <h4>' . $title . '</h4>	
+                            <p>' . $desc . '</p>
+                            <button class="btn" data-dismiss="modal">' . $button . '</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>  
+        ';
+        $this->session->set_flashdata('modal_message', $message);
     }
 }
