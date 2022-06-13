@@ -2,18 +2,20 @@
 
 namespace App\Controllers;
 
+use App\Models\AttendanceModel;
 use App\Models\JobModel;
 use App\Models\UserModel;
 use CodeIgniter\Config\Services;
 
 class UserController extends BaseController
 {
-    protected $userModel, $jobModel;
+    protected $userModel, $jobModel, $attendanceModel;
 
     public function __construct()
     {
         $this->userModel = new UserModel();
         $this->jobModel = new JobModel();
+        $this->attendanceModel = new AttendanceModel();
         if (session()->get('level') != "employee") {
             echo 'Access denied';
             exit;
@@ -22,7 +24,18 @@ class UserController extends BaseController
 
     public function index()
     {
-        echo view('layouts/pages/User/index');
+        $id = session()->get('id');
+
+        $isLoggedIn = $this->attendanceModel
+            ->where(['user_id' => $id])
+            ->where('DATE(created_at)', date('Y-m-d'))
+            ->first();
+
+        $data = [
+            'isLoggedIn' => $isLoggedIn
+        ];
+
+        echo view('layouts/pages/User/index', $data);
     }
 
     public function profile()
