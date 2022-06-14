@@ -14,7 +14,7 @@ class QRModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ["content", "file"];
 
     // Dates
     protected $useTimestamps = false;
@@ -48,11 +48,11 @@ class QRModel extends Model
     |-------------------------------------------------------------------
     |
     */
-    function fetch_datas()
+    public function fetch_datas()
     {
-        $query = $this->db->get($this->tbl_qr);
+        $query = $this->get($this->tbl_qr);
 
-        return $query->result_array();
+        return;
     }
 
     /*
@@ -61,13 +61,12 @@ class QRModel extends Model
     |-------------------------------------------------------------------
     |
     */
-    function fetch_data($id)
+    public function fetch_data($id)
     {
-        $this->db->where('id', $id);
+        $this->where('id', $id);
+        $query = $this->get($this->tbl_qr);
 
-        $query = $this->db->get($this->tbl_qr);
-
-        return $query->row_array();
+        return;
     }
 
     /*
@@ -78,11 +77,10 @@ class QRModel extends Model
     | @param $qr  Array QR Data
     |
     */
-    function insert_data($qr)
+    public function insert_data($qr)
     {
-        $this->db->insert($this->tbl_qr, $qr);
-
-        return $this->db->affected_rows();
+        $this->insert($qr);
+        return;
     }
 
     /*
@@ -95,18 +93,17 @@ class QRModel extends Model
     | @param $qr          Array New QR Data
     |
     */
-    function update_data($id, $old_file, $qr)
+    public function update_data($id, $old_file, $qr)
     {
         /* Delete Old QR Image from Directory */
         unlink($old_file);
 
         /* Update Data from Database */
-        $this->db->trans_start();
-        $this->db->where('id', $id);
-        $this->db->update($this->tbl_qr, $qr);
-        $this->db->trans_complete();
-
-        return $this->db->affected_rows() || $this->db->trans_status();
+        $this->trans_start();
+        $this->where('id', $id);
+        $this->update($this->tbl_qr, $qr);
+        $this->trans_complete();
+        return;
     }
 
     /*
@@ -118,16 +115,16 @@ class QRModel extends Model
     | @param $qr_file   QR Image File Path
     |
     */
-    function delete_data($id, $qr_file)
+    public function delete_data($id, $qr_file)
     {
         /* Delete QR Code Image from Directory */
         unlink($qr_file);
 
         /* Delete QR Code from Database  */
-        $this->db->where('id', $id);
-        $this->db->delete($this->tbl_qr);
+        $this->where('id', $id);
+        $this->delete($this->tbl_qr);
 
-        return $this->db->affected_rows();
+        return;
     }
 
 }

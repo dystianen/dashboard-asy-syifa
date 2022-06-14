@@ -11,12 +11,6 @@ use function bin2hex;
 use function file_exists;
 use function mkdir;
 
-/**
- * @property Home_model $home_model
- * @property Ciqrcode $ciqrcode
- * @property CI_Input $input
- */
-
 class QRCodeController extends BaseController
 {
 
@@ -51,7 +45,7 @@ class QRCodeController extends BaseController
         echo view('layouts/pages/admin/qr/create', $data);
     }
 
-    function generate_qrcode($data)
+    public function generate_qrcode($data)
     {
         /* Load QR Code Library */
         // $this->load->library('Ciqrcode');
@@ -74,7 +68,7 @@ class QRCodeController extends BaseController
         $config['size']         = '1024';
         $config['black']        = [255, 255, 255];
         $config['white']        = [255, 255, 255];
-        $this->$ciqrcode->initialize($config);
+        $ciqrcode->initialize($config);
 
         /* QR Data  */
         $params['data']     = $data;
@@ -82,7 +76,7 @@ class QRCodeController extends BaseController
         $params['size']     = 10;
         $params['savename'] = FCPATH . $config['imagedir'] . $save_name;
 
-        $this->$ciqrcode->generate($params);
+        $ciqrcode->generate($params);
 
         /* Return Data */
         return [
@@ -91,26 +85,28 @@ class QRCodeController extends BaseController
         ];
     }
 
-    function add_data()
+    public function add_data()
     {
         /* Generate QR Code */
         $data = $this->request->getVar('content');
         $qr   = $this->generate_qrcode($data);
 
         /* Add Data */
-        if ($this->home_model->insert_data($qr)) {
-            $this->modal_feedback('success', 'Success', 'Add Data Success', 'OK');
+        if ($this->qrModel->insert_data($qr)) {
+            // $this->modal_feedback('success', 'Success', 'Add Data Success', 'OK');
+            session()->setFlashdata('success_qr', 'Create QR Success.');
         } else {
-            $this->modal_feedback('error', 'Error', 'Add Data Failed', 'Try again');
+            session()->setFlashdata('failed_qr', 'Create QR Failed.');
+            // $this->modal_feedback('error', 'Error', 'Add Data Failed', 'Try again');
         }
 
         return redirect()->to(site_url('/'));
     }
 
-    function edit_data($id)
+    public function edit_data($id)
     {
         /* Old QR Data */
-        $old_data = $this->home_model->fetch_data($id);
+        $old_data = $this->qrModel->qrModel($id);
         $old_file = FCPATH . $old_data['file'];
 
         /* Generate New QR Code */
@@ -118,7 +114,7 @@ class QRCodeController extends BaseController
         $qr   = $this->generate_qrcode($data);
 
         /* Edit Data */
-        if ($this->home_model->update_data($id, $old_file, $qr)) {
+        if ($this->qrModel->qrModel($id, $old_file, $qr)) {
             $this->modal_feedback('success', 'Success', 'Edit Data Success', 'OK');
         } else {
             $this->modal_feedback('error', 'Error', 'Edit Data Failed', 'Try again');
@@ -127,14 +123,14 @@ class QRCodeController extends BaseController
         return redirect()->to(site_url('/'));
     }
 
-    function remove_data($id)
+    public function remove_data($id)
     {
         /* Current QR Data */
-        $qr_data = $this->home_model->fetch_data($id);
+        $qr_data = $this->qrModel->qrModel($id);
         $qr_file = $qr_data['file'];
 
         /* Delete Data */
-        if ($this->home_model->delete_data($id, $qr_file)) {
+        if ($this->qrModel->qrModel($id, $qr_file)) {
             $this->modal_feedback('success', 'Success', 'Delete Data Success', 'OK');
         } else {
             $this->modal_feedback('error', 'Error', 'Delete Data Failed', 'Try again');
