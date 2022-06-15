@@ -42,11 +42,11 @@
                                 <td><?= $q['file'] ?></td>
                                 <td>
                                     <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#editModal<?= $q['id'] ?>">
+                                        data-bs-target="#editModal<?= $q['qrId'] ?>">
                                         <i class="bi bi-pen"></i>
                                     </button>
                                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal<?= $q['id'] ?>">
+                                        data-bs-target="#deleteModal<?= $q['qrId'] ?>">
                                         <i class="bi bi-trash-fill"></i>
                                     </button>
                                 </td>
@@ -60,7 +60,7 @@
 
         <!-- Modal Edit -->
         <?php foreach ($qr as $q) : ?>
-            <div class="modal fade" id="editModal<?= $q['id'] ?>" data-bs-backdrop="static" tabindex="-1">
+            <div class="modal fade" id="editModal<?= $q['qrId'] ?>" data-bs-backdrop="static" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-body text-center">
@@ -70,7 +70,7 @@
                             <div class="pt-3">
                                 <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
                                 <form class="d-inline" method="post"
-                                      action="<?= base_url(); ?>/admin/job/delete/<?= $q['id'] ?>">
+                                      action="<?= base_url(); ?>/admin/job/delete/<?= $q['qrId'] ?>">
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="btn btn-danger m-2">Yes</button>
@@ -84,7 +84,7 @@
 
         <!-- Modal Delete -->
         <?php foreach ($qr as $q) : ?>
-            <div class="modal fade" id="deleteModal<?= $q['id'] ?>" data-bs-backdrop="static" tabindex="-1">
+            <div class="modal fade" id="deleteModal<?= $q['qrId'] ?>" data-bs-backdrop="static" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-body text-center">
@@ -94,7 +94,7 @@
                             <div class="pt-3">
                                 <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
                                 <form class="d-inline" method="post"
-                                      action="<?= base_url(); ?>/admin/job/delete/<?= $q['id'] ?>">
+                                      action="<?= base_url(); ?>/admin/job/delete/<?= $q['qrId'] ?>">
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="btn btn-danger m-2">Yes</button>
