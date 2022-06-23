@@ -46,7 +46,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="point" class="form-label">Score <span style="color: red">*</span></label>
-                                <input disabled name="point" class="form-control <?= ($validation->hasError('score') ? 'is-invalid' : '') ?>" placeholder="example: A" value="<?= old('score') ?>">
+                                <select name="point" class="form-select <?= ($validation->hasError('score') ? 'is-invalid' : '') ?>" placeholder="example: A" value="<?= old('score') ?>">
+                                    <option value="">--please select--</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                </select>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('score') ?>
                                 </div>
