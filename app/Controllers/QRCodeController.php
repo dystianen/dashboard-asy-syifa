@@ -27,7 +27,7 @@ class QRCodeController extends BaseController
     public function index() {
         $qrs = $this->qrModel->findAll();
         $data = [
-            'page' => 'qr',
+            'page' => 'QR',
             'qr' => $qrs
         ];
 
@@ -38,7 +38,7 @@ class QRCodeController extends BaseController
     {
         helper(['form']);
         $data = [
-            'page' => 'qr',
+            'page' => 'QR',
             'validation' => Services::validation(),
         ];
 
@@ -100,7 +100,7 @@ class QRCodeController extends BaseController
             // $this->modal_feedback('error', 'Error', 'Add Data Failed', 'Try again');
         }
 
-        return redirect()->to(site_url('/'));
+        return redirect()->to(site_url('/qr'));
     }
 
     public function edit_data($id)

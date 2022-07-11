@@ -27,7 +27,7 @@
                         <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Employee</th>
+<!--                            <th>Employee</th>-->
                             <th>Job Type</th>
                             <th>Description</th>
                             <th>Point</th>
@@ -41,7 +41,7 @@
                         <?php foreach ($job as $j) : ?>
                             <tr>
                                 <td><?= $i++ ?></td>
-                                <td><?= $j['fullname'] ?></td>
+<!--                                <td>--><?//= $j['fullname'] ?><!--</td>-->
                                 <td><?= $j['type_of_work'] ?></td>
                                 <td><?= (strlen(htmlspecialchars($j['description'])) > 13)
                                         ? substr(htmlspecialchars($j['description']), 0, 10) . '...'

@@ -39,12 +39,6 @@ class HomeController extends BaseController
                 ->where('DATE(created_at)', $todayPlusOne)
                 ->countAllResults(),
 
-            'task_unfinished' => $this
-                ->jobModel
-                ->where("is_completed", 0)
-                ->where('DATE(created_at)', $todayPlusOne)
-                ->countAllResults(),
-
             'total_employees' => $this
                 ->userModel
                 ->countAllResults(),
