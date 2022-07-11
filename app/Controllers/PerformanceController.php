@@ -50,15 +50,14 @@ class PerformanceController extends BaseController
         $rules = [
             'user_id' => 'required',
             'description' => 'required',
-            // 'score'   => 'required',
+            'score'   => 'required',
         ];
 
         if ($this->validate($rules)) {
             $data = [
                 'user_id' => $this->request->getVar('user_id'),
                 'description' => $this->request->getVar('description'),
-                'score' => 'A',
-                //                'score'         => $this->request->getVar('score'),
+                'score' => $this->request->getVar('score'),
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 
@@ -90,7 +89,7 @@ class PerformanceController extends BaseController
         $rules = [
             'user_id' => 'required',
             'description' => 'required',
-            // 'score'   => 'required',
+            'score'   => 'required',
         ];
 
         if ($this->validate($rules)) {
@@ -98,8 +97,7 @@ class PerformanceController extends BaseController
                 'performanceId' => $id,
                 'user_id' => $this->request->getVar('user_id'),
                 'description' => $this->request->getVar('description'),
-                'score' => 'A',
-                //                'score'         => $this->request->getVar('score'),
+                'score' => $this->request->getVar('score'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ];
 

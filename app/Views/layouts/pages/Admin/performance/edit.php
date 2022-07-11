@@ -44,7 +44,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="score" class="form-label">Score <span style="color: red">*</span></label>
-                                    <input name="score" class="form-control <?= ($validation->hasError('score') ? 'is-invalid' : '') ?>" id="score" placeholder="example: 500" value="<?= $performance['score'] ?>">
+                                    <select name="score" class="form-select <?= ($validation->hasError('score') ? 'is-invalid' : '') ?>" placeholder="example: A" value="<?= old('score') ?>">
+                                        <option value="">--please select--</option>
+                                        <option value="A" <?php if ($performance['score'] == 'A') {echo 'selected';} ?>>A</option>
+                                        <option value="B" <?php if ($performance['score'] == 'B') {echo 'selected';} ?>>B</option>
+                                        <option value="C" <?php if ($performance['score'] == 'C') {echo 'selected';} ?>>C</option>
+                                        <option value="D" <?php if ($performance['score'] == 'D') {echo 'selected';} ?>>D</option>
+                                    </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('score') ?>
                                     </div>
