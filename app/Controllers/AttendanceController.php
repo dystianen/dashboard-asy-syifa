@@ -5,16 +5,18 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\AttendanceModel;
 use App\Models\CategoryModel;
+use App\Models\QRModel;
 use CodeIgniter\Config\Services;
 
 class AttendanceController extends BaseController
 {
-    protected $attendanceModel, $categoryModel, $session;
+    protected $attendanceModel, $categoryModel, $qrModel, $session;
     public function __construct()
     {
         helper(['form']);
         $this->attendanceModel = new AttendanceModel();
         $this->categoryModel = new CategoryModel();
+        $this->qrModel = new QRModel();
         $this->session = session();
     }
 
@@ -106,7 +108,14 @@ class AttendanceController extends BaseController
 
     public function scanner()
     {
-        echo view('layouts/pages/User/scan/index');
+        $today = date('Y-m-d');
+        $qrToday =  $this->qrModel->where('DATE(created_at)', $today)->first();
+
+        $data = [
+          'qrToday' => $qrToday['content'],
+        ];
+
+        echo view('layouts/pages/User/scan/index', $data);
     }
 
     public function scannerSave()

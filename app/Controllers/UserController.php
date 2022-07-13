@@ -70,7 +70,7 @@ class UserController extends BaseController
         $data = [
             'job' => $detail,
         ];
-        echo view('layouts/pages/User/report/index', $data);
+        echo view('layouts/pages/User/report/index2', $data);
     }
 
     public function completeReport($id)

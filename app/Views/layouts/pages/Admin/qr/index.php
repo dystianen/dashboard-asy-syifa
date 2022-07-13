@@ -13,9 +13,9 @@
             </nav>
         </div>
 
-        <?php if (session()->getFlashData('success_job')) : ?>
+        <?php if (session()->getFlashData('success_qr')) : ?>
             <div class="alert alert-success" role="alert">
-                <?php echo session("success_job") ?>
+                <?php echo session("success_qr") ?>
             </div>
         <?php endif; ?>
 
@@ -29,6 +29,7 @@
                             <th>No.</th>
                             <th>Content</th>
                             <th>File</th>
+                            <th>Created</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -40,11 +41,11 @@
                                 <td><?= $i++ ?></td>
                                 <td><?= $q['content'] ?></td>
                                 <td><?= $q['file'] ?></td>
+                                <td><?= date_format(date_create($q['created_at']), 'd M Y H:i') ?></td>
                                 <td>
-                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#editModal<?= $q['qrId'] ?>">
-                                        <i class="bi bi-pen"></i>
-                                    </button>
+                                    <a class="btn btn-warning btn-sm" href="<?= base_url($q['file']) ?>" target="_blank">
+                                        <i class="bi bi-eye-fill"></i>
+                                    </a>
                                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#deleteModal<?= $q['qrId'] ?>">
                                         <i class="bi bi-trash-fill"></i>
@@ -57,30 +58,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Modal Edit -->
-        <?php foreach ($qr as $q) : ?>
-            <div class="modal fade" id="editModal<?= $q['qrId'] ?>" data-bs-backdrop="static" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body text-center">
-                            <h3>Are you sure?</h3>
-                            Edit
-                            </br>
-                            <div class="pt-3">
-                                <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
-                                <form class="d-inline" method="post"
-                                      action="<?= base_url(); ?>/admin/job/delete/<?= $q['qrId'] ?>">
-                                    <?= csrf_field() ?>
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <button type="submit" class="btn btn-danger m-2">Yes</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
 
         <!-- Modal Delete -->
         <?php foreach ($qr as $q) : ?>

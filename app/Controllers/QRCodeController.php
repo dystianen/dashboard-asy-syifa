@@ -24,7 +24,8 @@ class QRCodeController extends BaseController
         }
     }
 
-    public function index() {
+    public function index()
+    {
         $qrs = $this->qrModel->findAll();
         $data = [
             'page' => 'QR',
@@ -52,28 +53,28 @@ class QRCodeController extends BaseController
         $ciqrcode = new Ciqrcode;
 
         /* Data */
-        $hex_data   = bin2hex($data);
-        $save_name  = $hex_data . '.png';
+        $hex_data = bin2hex($data);
+        $save_name = $hex_data . '.png';
 
         /* QR Code File Directory Initialize */
         $dir = 'assets/media/qrcode/';
-        if (! file_exists($dir)) {
+        if (!file_exists($dir)) {
             mkdir($dir, 0775, true);
         }
 
         /* QR Configuration  */
-        $config['cacheable']    = true;
-        $config['imagedir']     = $dir;
-        $config['quality']      = true;
-        $config['size']         = '1024';
-        $config['black']        = [255, 255, 255];
-        $config['white']        = [255, 255, 255];
+        $config['cacheable'] = true;
+        $config['imagedir'] = $dir;
+        $config['quality'] = true;
+        $config['size'] = '1024';
+        $config['black'] = [255, 255, 255];
+        $config['white'] = [255, 255, 255];
         $ciqrcode->initialize($config);
 
         /* QR Data  */
-        $params['data']     = $data;
-        $params['level']    = 'L';
-        $params['size']     = 10;
+        $params['data'] = $data;
+        $params['level'] = 'L';
+        $params['size'] = 10;
         $params['savename'] = FCPATH . $config['imagedir'] . $save_name;
 
         $ciqrcode->generate($params);
@@ -81,26 +82,29 @@ class QRCodeController extends BaseController
         /* Return Data */
         return [
             'content' => $data,
-            'file'    => $dir . $save_name,
+            'file' => $dir . $save_name,
+            'created_at' => date('Y-m-d H:i:s')
         ];
     }
 
     public function add_data()
     {
+        $rules = [
+            'content' => 'required|min_length[36]|max_length[36]',
+        ];
+
         /* Generate QR Code */
-        $data = $this->request->getVar('content');
-        $qr   = $this->generate_qrcode($data);
+        if ($this->validate($rules)) {
+            $data = $this->request->getVar('content');
+            $qr = $this->generate_qrcode($data);
 
-        /* Add Data */
-        if ($this->qrModel->insert_data($qr)) {
-            // $this->modal_feedback('success', 'Success', 'Add Data Success', 'OK');
-            session()->setFlashdata('success_qr', 'Create QR Success.');
+            $this->qrModel->insert_data($qr);
+            session()->setFlashdata('success_qr', 'Create QR Successfully.');
+            return redirect()->to(site_url('/admin/qr'));
         } else {
-            session()->setFlashdata('failed_qr', 'Create QR Failed.');
-            // $this->modal_feedback('error', 'Error', 'Add Data Failed', 'Try again');
+            $validation = Services::validation();
+            return redirect()->to('/admin/qr/form')->withInput()->with('validation', $validation);
         }
-
-        return redirect()->to(site_url('/qr'));
     }
 
     public function edit_data($id)
@@ -111,7 +115,7 @@ class QRCodeController extends BaseController
 
         /* Generate New QR Code */
         $data = $this->input->post('content');
-        $qr   = $this->generate_qrcode($data);
+        $qr = $this->generate_qrcode($data);
 
         /* Edit Data */
         if ($this->qrModel->qrModel($id, $old_file, $qr)) {

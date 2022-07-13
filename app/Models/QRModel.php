@@ -14,7 +14,7 @@ class QRModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ["content", "file"];
+    protected $allowedFields    = ["content", "file", "created_at"];
 
     // Dates
     protected $useTimestamps = false;

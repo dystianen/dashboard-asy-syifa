@@ -25,11 +25,13 @@
                 <div class="modal-body mb-3">
 
                     <!-- Content -->
-                    <textarea name="content" class="form-control" required></textarea>
-
+                    <textarea name="content" class="form-control <?= ($validation->hasError('content') ? 'is-invalid' : '') ?>" required></textarea>
+                    <div class="invalid-feedback">
+                        <?= $validation->getError('content') ?>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button onclick="history.back()">Cancel</button>
+                    <button class="btn btn-secondary" onclick="history.back()">Cancel</button>
                     <button class="btn btn-primary">Save</button>
                 </div>
             </form>
