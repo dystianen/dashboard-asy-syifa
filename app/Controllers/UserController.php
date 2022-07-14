@@ -4,18 +4,20 @@ namespace App\Controllers;
 
 use App\Models\AttendanceModel;
 use App\Models\JobModel;
+use App\Models\ReportModel;
 use App\Models\UserModel;
 use CodeIgniter\Config\Services;
 
 class UserController extends BaseController
 {
-    protected $userModel, $jobModel, $attendanceModel;
+    protected $userModel, $jobModel, $reportModel, $attendanceModel;
 
     public function __construct()
     {
         $this->userModel = new UserModel();
         $this->jobModel = new JobModel();
         $this->attendanceModel = new AttendanceModel();
+        $this->reportModel = new ReportModel();
         if (session()->get('level') != "employee") {
             echo 'Access denied';
             exit;
@@ -63,14 +65,15 @@ class UserController extends BaseController
     public function report()
     {
         $id = session()->get('id');
-        $detail = $this->jobModel
-            ->join('users', 'users.userId = jobs.user_id')
+        $detail = $this->reportModel
             ->where(['user_id' => $id])
+            ->where(['DATE(created_at)' => date('Y-m-d')])
             ->first();
+
         $data = [
-            'job' => $detail,
+            'report' => $detail,
         ];
-        echo view('layouts/pages/User/report/index2', $data);
+        echo view('layouts/pages/User/report/index', $data);
     }
 
     public function completeReport($id)

@@ -76,7 +76,7 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('category/detail/(:num)', 'CategoryController::detail/$1');
     $routes->delete('category/delete/(:num)', 'CategoryController::delete/$1');
 
-    /** EMPLOYEE PERFORMANCE **/
+    /** PERFORMANCE **/
     $routes->get('performance', 'PerformanceController::index');
     $routes->get('performance/create', 'PerformanceController::create');
     $routes->post('performance/create/submit', 'PerformanceController::createSave');
@@ -84,11 +84,12 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
     $routes->post('performance/edit/submit/(:num)', 'PerformanceController::editSave/$1');
     $routes->get('performance/detail/(:num)', 'PerformanceController::detail/$1');
     $routes->delete('performance/delete/(:num)', 'PerformanceController::delete/$1');
-});
 
-// $routes->group('employee', static function ($routes) {
-//     $routes->get('dashboard', 'H')
-// })
+    /** EVALUATION **/
+    $routes->get('report', 'ReportController::index');
+    $routes->get('report/detail/(:num)', 'ReportController::detail/$1');
+    $routes->delete('report/delete/(:num)', 'ReportController::delete/$1');
+});
 
 $routes->group('user', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('/', 'UserController::index', ['filter' => 'authGuard']);
@@ -105,7 +106,7 @@ $routes->group('user', ['filter' => 'authGuard'], function ($routes) {
 
     /** REPORT TASK **/
     $routes->get('report', 'UserController::report', ['filter' => 'authGuard']);
-    $routes->post('report/submit/(:num)', 'UserController::completeReport/$1', ['filter' => 'authGuard']);
+    $routes->post('report/create/submit', 'ReportController::createSave', ['filter' => 'authGuard']);
     $routes->get('task', 'UserController::task', ['filter' => 'authGuard']);
     $routes->get('task/detail/(:num)', 'UserController::TaskDetail/$1', ['filter' => 'authGuard']);
 });

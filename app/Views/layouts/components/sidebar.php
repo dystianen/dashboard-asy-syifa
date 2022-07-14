@@ -46,6 +46,15 @@
             </a>
         </li>
 
+        <li class="sidebar-item <?php if ($page == 'report') {
+            echo 'active';
+        } ?>">
+            <a href="/admin/report" class='sidebar-link'>
+                <i class="bi bi-file-earmark-person"></i>
+                <span>Report</span>
+            </a>
+        </li>
+
         <li class="sidebar-item <?php if ($page == 'performance') {
             echo 'active';
         } ?>">
