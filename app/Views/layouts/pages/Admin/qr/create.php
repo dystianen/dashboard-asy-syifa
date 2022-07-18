@@ -25,10 +25,12 @@
                 <div class="modal-body mb-3">
 
                     <!-- Content -->
-                    <textarea name="content" class="form-control <?= ($validation->hasError('content') ? 'is-invalid' : '') ?>" required></textarea>
+                    <textarea name="content" placeholder="aaaf4932-bb49-4e95-a5dd-b641719b7ec9" class="form-control <?= ($validation->hasError('content') ? 'is-invalid' : '') ?>" required></textarea>
                     <div class="invalid-feedback">
                         <?= $validation->getError('content') ?>
                     </div>
+
+                    <span>* for content take from <a href="https://www.uuidgenerator.net/" target="_blank">https://www.uuidgenerator.net/</a></span>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" onclick="history.back()">Cancel</button>
