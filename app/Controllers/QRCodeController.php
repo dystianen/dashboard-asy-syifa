@@ -100,7 +100,7 @@ class QRCodeController extends BaseController
 
             $this->qrModel->insert_data($qr);
             session()->setFlashdata('success_qr', 'Create QR Successfully.');
-            return redirect()->to(site_url('/admin/qr'));
+            return redirect()->to('/admin/qr');
         } else {
             $validation = Services::validation();
             return redirect()->to('/admin/qr/form')->withInput()->with('validation', $validation);

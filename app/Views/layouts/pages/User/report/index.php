@@ -26,26 +26,6 @@
                 </div>
             </form>
         </div>
-
-        <div class=" modal fade" id="FinishModal" data-bs-backdrop="static" tabindex="-1"
-             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-body text-center">
-                        <h3>Are you sure?</h3>
-                        Do you really Complete your Job?
-                        </br>
-                        <div class="pt-3">
-                            <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
-                            <form class="d-inline" method="post"
-                                  action="<?= base_url(); ?>/user/report/submit/<?= $job['jobId'] ?>">
-                                <button type="submit" class="btn btn-primary m-2">Yes</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <?php endif; ?>
     </section>
 <?= $this->endSection() ?>

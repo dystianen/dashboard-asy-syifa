@@ -19,14 +19,6 @@
                 <h5>Date Created</h5>
                 <span><?= date_format(date_create($job['created_at']), 'd M Y H:i') ?></span>
             </div>
-            <div class="col-12 col-md-2">
-                <h5>Status</h5>
-                <?php if ($job['is_completed'] == 0) : ?>
-                    <span class="badge bg-danger">NOT DONE</span>
-                <?php else : ?>
-                    <span class="badge bg-success">DONE</span>
-                <?php endif; ?>
-            </div>
         </div>
     </div>
 </section>

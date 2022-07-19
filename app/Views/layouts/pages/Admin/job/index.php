@@ -43,11 +43,7 @@
                                 <td><?= $i++ ?></td>
 <!--                                <td>--><?//= $j['fullname'] ?><!--</td>-->
                                 <td><?= $j['type_of_work'] ?></td>
-                                <td><?= (strlen(htmlspecialchars($j['description'])) > 13)
-                                        ? substr(htmlspecialchars($j['description']), 0, 10) . '...'
-                                        : htmlspecialchars(
-                                            $j['description']
-                                        ); ?>
+                                <td><?= strip_tags($j['description']) ?>
                                 </td>
                                 <td><?= $j['point'] ?></td>
                                 <td><?= date_format(date_create($j['created_at']), 'd M Y H:i') ?></td>
