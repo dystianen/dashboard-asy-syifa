@@ -99,13 +99,17 @@ class UserController extends BaseController
     {
         $jobModel = new JobModel();
         $userId = session()->get('id');
-        $job = $jobModel->where('user_id', $userId)->findAll();
+        $job = $jobModel
+            ->where('user_id', $userId)
+            ->where('DATE(created_at)', date('Y-m-d'))
+            ->first();
+
         $data = [
             'page' => 'job',
             'job' => $job
         ];
 
-        echo view('layouts/pages/User/task/index', $data);
+        echo view('layouts/pages/User/task/detail', $data);
     }
 
     public function TaskDetail($id)

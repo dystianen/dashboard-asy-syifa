@@ -114,6 +114,7 @@ class JobController extends BaseController
                 'type_of_work' => $this->request->getVar('type_of_work'),
                 'description' => $this->request->getVar('description'),
                 'point' => $this->request->getVar('point'),
+                'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
 
