@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\AttendanceModel;
+use App\Models\EvaluationModel;
 use App\Models\JobModel;
 use App\Models\ReportModel;
 use App\Models\UserModel;
@@ -10,7 +11,7 @@ use CodeIgniter\Config\Services;
 
 class UserController extends BaseController
 {
-    protected $userModel, $jobModel, $reportModel, $attendanceModel;
+    protected $userModel, $jobModel, $reportModel, $attendanceModel, $evaluationModel;
 
     public function __construct()
     {
@@ -18,6 +19,7 @@ class UserController extends BaseController
         $this->jobModel = new JobModel();
         $this->attendanceModel = new AttendanceModel();
         $this->reportModel = new ReportModel();
+        $this->evaluationModel = new EvaluationModel();
         if (session()->get('level') != "employee") {
             echo 'Access denied';
             exit;
@@ -44,11 +46,12 @@ class UserController extends BaseController
     {
         helper(['form']);
         $id = session()->get('id');
-        $pointAllJobs = $this->jobModel
-            ->where(['user_id' => $id])
-            ->where(['is_completed' => 1])
-            ->selectSum('point')
-            ->first();
+//        $pointAllJobs = $this->jobModel
+//            ->where(['user_id' => $id])
+//            ->where(['is_completed' => 1])
+//            ->selectSum('point')
+//            ->first();
+        $pointAllJobs = $this->evaluationModel->where(['evaluationId' => $id])->first();
 
         $data = [
             'user' => $this->userModel->where(['userId' => $id])->first(),
