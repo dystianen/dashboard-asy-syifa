@@ -4,13 +4,13 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Performance extends Migration
+class Evaluation extends Migration
 {
     public function up()
     {
         $forge = \Config\Database::forge();
         $this->forge->addField([
-            'performanceId' => [
+            'evaluationId' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
@@ -18,21 +18,40 @@ class Performance extends Migration
             ],
             'user_id' => [
                 'type' => 'INT',
-                'constraint' => 12,
+                'constraint' => 10,
                 'unsigned' => true,
                 'null' => true,
             ],
-            'description' => [
+            'disiplin' => [
                 'type' => 'INT',
-                'type' => 'TEXT',
-                'null' => true,
-            ],
-            'score' => [
-                'type' => 'VARCHAR',
                 'constraint' => 10,
                 'null' => true,
             ],
-
+            'loyalitas' => [
+                'type' => 'INT',
+                'constraint' => 10,
+                'null' => true,
+            ],
+            'kerjasama' => [
+                'type' => 'INT',
+                'constraint' => 10,
+                'null' => true,
+            ],
+            'perilaku' => [
+                'type' => 'INT',
+                'constraint' => 10,
+                'null' => true,
+            ],
+            'omseting' => [
+                'type' => 'INT',
+                'constraint' => 10,
+                'null' => true,
+            ],
+            'total' => [
+                'type' => 'INT',
+                'constraint' => 100,
+                'null' => true,
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
@@ -48,19 +67,19 @@ class Performance extends Migration
         ]);
 
         // Primary Key Table ID
-        $this->forge->addKey('performanceId', true);
+        $this->forge->addKey('evaluationId', true);
 
         // Relations
         $this->forge->addForeignKey('user_id', 'users', 'userId');
 
         // Create Table Categories
-        $this->forge->createTable('performances');
+        $this->forge->createTable('evaluations');
     }
 
     public function down()
     {
         // Drop Table Categories
         $forge = \Config\Database::forge();
-        $this->forge->dropTable('performances');
+        $this->forge->dropTable('evaluations');
     }
 }

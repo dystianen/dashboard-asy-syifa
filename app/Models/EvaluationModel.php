@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PerformanceModel extends Model
+class EvaluationModel extends Model
 {
     protected $DBGroup = 'default';
-    protected $table = 'performances';
+    protected $table = 'evaluations';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $insertID = 0;
@@ -17,8 +17,12 @@ class PerformanceModel extends Model
 
     protected $allowedFields = [
         "user_id",
-        "description",
-        "score",
+        "disiplin",
+        "loyalitas",
+        "kerjasama",
+        "perilaku",
+        "omseting",
+        "total",
         "created_at",
         "updated_at",
     ];
@@ -47,13 +51,4 @@ class PerformanceModel extends Model
     protected $beforeDelete = [];
     protected $afterDelete = [];
 
-
-    public function getPerformances()
-    {
-        return $this->db
-            ->table('performances')
-            ->join('users', 'users.userId = performances.user_id')
-            ->get()
-            ->getResultArray();
-    }
 }

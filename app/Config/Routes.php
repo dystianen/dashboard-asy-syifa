@@ -77,13 +77,13 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
     $routes->delete('category/delete/(:num)', 'CategoryController::delete/$1');
 
     /** PERFORMANCE **/
-    $routes->get('performance', 'PerformanceController::index');
-    $routes->get('performance/create', 'PerformanceController::create');
-    $routes->post('performance/create/submit', 'PerformanceController::createSave');
-    $routes->get('performance/edit/(:num)', 'PerformanceController::edit/$1');
-    $routes->post('performance/edit/submit/(:num)', 'PerformanceController::editSave/$1');
-    $routes->get('performance/detail/(:num)', 'PerformanceController::detail/$1');
-    $routes->delete('performance/delete/(:num)', 'PerformanceController::delete/$1');
+    $routes->get('evaluation', 'EvaluationController::index');
+    $routes->get('evaluation/create', 'EvaluationController::create');
+    $routes->post('evaluation/create/submit', 'EvaluationController::createSave');
+    $routes->get('evaluation/edit/(:num)', 'EvaluationController::edit/$1');
+    $routes->post('evaluation/edit/submit/(:num)', 'EvaluationController::editSave/$1');
+    $routes->get('evaluation/detail/(:num)', 'EvaluationController::detail/$1');
+    $routes->delete('evaluation/delete/(:num)', 'EvaluationController::delete/$1');
 
     /** EVALUATION **/
     $routes->get('report', 'ReportController::index');

@@ -3,19 +3,19 @@
 <?= $this->section('content') ?>
 <div class="container-fluid">
     <div class="d-sm-flex flex-column mb-4">
-        <h1 class="h3 mb-3 text-gray-800">Performance Employee</h1>
+        <h1 class="h3 mb-3 text-gray-800">Evaluation</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Performances
+                <li class="breadcrumb-item active" aria-current="page">Evaluation
                 </li>
             </ol>
         </nav>
     </div>
 
-    <?php if (session()->getFlashData('success_performance')) : ?>
+    <?php if (session()->getFlashData('success_evaluation')) : ?>
         <div class="alert alert-success" role="alert">
-            <?php echo session("success_performance") ?>
+            <?php echo session("success_evaluation") ?>
         </div>
     <?php endif; ?>
 
@@ -28,8 +28,12 @@
                         <tr>
                             <th>No.</th>
                             <th>Employee</th>
-                            <th>Description Performance Employee</th>
-                            <th>Score</th>
+                            <th>Disiplin</th>
+                            <th>Loyalitas</th>
+                            <th>Kerja Sama</th>
+                            <th>Perilaku</th>
+                            <th>Omseting Service</th>
+                            <th>Total</th>
                             <th>Date Created</th>
                             <th>Action</th>
                         </tr>
@@ -37,17 +41,21 @@
 
                     <tbody>
                         <?php $i = 1; ?>
-                        <?php foreach ($performance as $p) : ?>
+                        <?php foreach ($evaluation as $p) : ?>
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td><?= $p['fullname'] ?></td>
-                                <td><?= $p['description'] ?></td>
-                                <td><?= $p['score'] ?></td>
-                                <td><?= date_format(date_create($p['created_at']), 'd M Y H:i') ?></td>
+                                <td><?= $p['disiplin'] ?></td>
+                                <td><?= $p['loyalitas'] ?></td>
+                                <td><?= $p['kerjasama'] ?></td>
+                                <td><?= $p['perilaku'] ?></td>
+                                <td>60</td>
+                                <td><?= $p['total'] ?></td>
+                                <td><?= date_format(date_create($p['created_at']), 'd M Y') ?></td>
                                 <td>
-                                    <a class="btn btn-info btn-sm" href="<?php echo base_url(); ?>/admin/performance/edit/<?= $p['performanceId'] ?>"><i class="bi bi-pencil-square"></i></a>
-                                    <a class="btn btn-warning btn-sm" href="<?= base_url(); ?>/admin/performance/detail/<?= $p['performanceId'] ?>"><i class="bi bi-eye-fill"></i></a>
-                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $p['performanceId'] ?>"><i class="bi bi-trash-fill"></i></button>
+                                    <a class="btn btn-info btn-sm" href="<?php echo base_url(); ?>/admin/evaluation/edit/<?= $p['evaluationId'] ?>"><i class="bi bi-pencil-square"></i></a>
+                                    <a class="btn btn-warning btn-sm" href="<?= base_url(); ?>/admin/evaluation/detail/<?= $p['evaluationId'] ?>"><i class="bi bi-eye-fill"></i></a>
+                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $p['evaluationId'] ?>"><i class="bi bi-trash-fill"></i></button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -58,8 +66,8 @@
     </div>
 
     <!-- Modal Delete -->
-    <?php foreach ($performance as $p) : ?>
-        <div class="modal fade" id="deleteModal<?= $p['performanceId'] ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <?php foreach ($evaluation as $p) : ?>
+        <div class="modal fade" id="deleteModal<?= $p['evaluationId'] ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body text-center">
@@ -68,7 +76,7 @@
                         </br>
                         <div class="pt-3">
                             <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
-                            <form class="d-inline" method="post" action="<?= base_url(); ?>/admin/performance/delete/<?= $p['performanceId'] ?>">
+                            <form class="d-inline" method="post" action="<?= base_url(); ?>/admin/evaluation/delete/<?= $p['evaluationId'] ?>">
                                 <?= csrf_field() ?>
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-danger m-2">Yes</button>
@@ -109,7 +117,7 @@
                 {
                     text: 'Create',
                     action: function(e, dt, node, config) {
-                        window.location.href = '/admin/performance/create'
+                        window.location.href = '/admin/evaluation/create'
                     }
                 }
             ]

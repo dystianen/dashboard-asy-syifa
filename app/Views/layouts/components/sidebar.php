@@ -55,12 +55,12 @@
             </a>
         </li>
 
-        <li class="sidebar-item <?php if ($page == 'performance') {
+        <li class="sidebar-item <?php if ($page == 'evaluation') {
             echo 'active';
         } ?>">
-            <a href="/admin/performance" class='sidebar-link'>
+            <a href="/admin/evaluation" class='sidebar-link'>
                 <i class="bi bi-graph-up-arrow"></i>
-                <span>Performance</span>
+                <span>Evaluation</span>
             </a>
         </li>
 
