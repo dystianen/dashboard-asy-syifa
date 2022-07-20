@@ -3,7 +3,7 @@
     <div class="container-fluid">
 
         <div class="d-sm-flex flex-column mb-4">
-            <h1 class="h3 mb-3 text-gray-800">Performance Employee</h1>
+            <h1 class="h3 mb-3 text-gray-800">Evaluation</h1>
 
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -17,7 +17,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-header d-flex align-items-center justify-content-between py-3">
-                <h5 class="card-title mb-0 text-gray-900">Create Performance</h5>
+                <h5 class="card-title mb-0 text-gray-900">Create Evaluation</h5>
             </div>
 
             <div class="card-body mt-2">

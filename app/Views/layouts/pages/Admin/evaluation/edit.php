@@ -17,7 +17,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-header d-flex align-items-center justify-content-between py-3">
-                <h5 class="card-title mb-0 text-gray-900">Create Evaluation</h5>
+                <h5 class="card-title mb-0 text-gray-900">Edit Evaluation</h5>
             </div>
 
             <div class="card-body mt-2">
