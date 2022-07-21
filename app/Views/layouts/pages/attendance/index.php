@@ -48,8 +48,9 @@
                                     <td>-</td>
                                 <?php endif; ?>
 
-                                <?php if ($e['file']) : ?>
-                                    <td><?= $e['file'] ?></td>
+                                <?php if ($e['user_proof_file']) : ?>
+                                    <td><?= substr($e['user_proof_file'], 0, 15) ?></td>
+                                    <!-- <td><?= $e['user_proof_file'] ?></td> -->
                                 <?php else : ?>
                                     <td>-</td>
                                 <?php endif; ?>
