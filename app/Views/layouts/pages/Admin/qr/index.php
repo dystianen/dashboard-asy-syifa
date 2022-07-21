@@ -39,8 +39,16 @@
                         <?php foreach ($qr as $q) : ?>
                             <tr>
                                 <td><?= $i++ ?></td>
-                                <td><?= $q['content'] ?></td>
-                                <td><?= $q['file'] ?></td>
+                                <td><?= (strlen(htmlspecialchars($q['content'])) > 13)
+                                        ? substr(htmlspecialchars($q['content']), 0, 10) . '...'
+                                        : htmlspecialchars(
+                                            $q['content']
+                                        ); ?>
+                                <td><?= (strlen(htmlspecialchars($q['file'])) > 13)
+                                        ? substr(htmlspecialchars($q['file']), 0, 10) . '...'
+                                        : htmlspecialchars(
+                                            $q['file']
+                                        ); ?>
                                 <td><?= date_format(date_create($q['created_at']), 'd M Y H:i') ?></td>
                                 <td>
                                     <a class="btn btn-warning btn-sm" href="<?= base_url($q['file']) ?>" target="_blank">

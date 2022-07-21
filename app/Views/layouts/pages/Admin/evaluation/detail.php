@@ -95,7 +95,7 @@
                                     <div class="card-header">A. HASIL PEKERJAAN (60%)</div>
                                     <div class="card-body">
                                         <div class="mt-3 row">
-                                            <label for="omseting" class="col-sm-4 col-form-label">Omseting
+                                            <label for="omseting" class="col-sm-6 col-form-label">Omseting
                                                 Service</label>
                                             <div class="col-sm-2">
                                                 <input name="omseting" type="text" readonly
@@ -105,8 +105,8 @@
                                         </div>
 
                                         <div class="row" style="padding-top: 13rem">
-                                            <label for="total" class="col-sm-4 col-form-label font-bold">Total</label>
-                                            <div class="col-sm-6">
+                                            <label for="total" class="col-sm-6 col-form-label font-bold">Total</label>
+                                            <div class="col-sm-2">
                                                 <input type="text" readonly class="form-control-plaintext" id="total"
                                                        value="60">
                                             </div>
