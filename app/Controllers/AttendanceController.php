@@ -34,6 +34,13 @@ class AttendanceController extends BaseController
         echo view('layouts/pages/attendance/index', $data);
     }
 
+    // public function myPdfPage()
+    // {
+    //     $url = base_url('assets/your.pdf');
+    //     $html = '<iframe src="' . $url . '" style="border:none; width: 100%; height: 100%"></iframe>';
+    //     echo $html;
+    // }
+
     public function permission()
     {
         $data = [

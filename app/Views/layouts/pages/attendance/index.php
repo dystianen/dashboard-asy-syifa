@@ -50,7 +50,6 @@
 
                                 <?php if ($e['user_proof_file']) : ?>
                                     <td><?= substr($e['user_proof_file'], 0, 15) ?></td>
-                                    <!-- <td><?= $e['user_proof_file'] ?></td> -->
                                 <?php else : ?>
                                     <td>-</td>
                                 <?php endif; ?>
@@ -61,7 +60,7 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-2">
-                                                <a href="<?= base_url($e['user_proof_file']) ?>" target="_blank" class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
+                                                <a href="<?= base_url() . "/assets/media/berkas/" . $e['user_proof_file'] ?>" target="_blank" class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
                                             </div>
                                         </div>
                                     </td>
