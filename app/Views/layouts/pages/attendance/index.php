@@ -60,7 +60,7 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-2">
-                                                <a href="<?= base_url() . "/assets/media/berkas/" . $e['user_proof_file'] ?>" target="_blank" class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
+                                                <a href="<?= base_url() . "/assets/media/berkas/" . $e['user_proof_file'] ?>" target="_blank" class="btn btn-link"><i class="bi bi-cloud-arrow-down-fill"></i></a>
                                             </div>
                                         </div>
                                     </td>
