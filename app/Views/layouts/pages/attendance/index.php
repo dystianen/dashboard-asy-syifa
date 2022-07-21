@@ -61,7 +61,7 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-2">
-                                                <a href="#" class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
+                                                <a href="<?= base_url($e['user_proof_file']) ?>" target="_blank" class="btn btn-link"><i class="bi bi-eye-fill"></i></a>
                                             </div>
                                         </div>
                                     </td>
