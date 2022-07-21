@@ -36,7 +36,7 @@ class Attendance extends Migration
                 'type' => 'TEXT',
                 'null' => true
             ],
-            'file' => [
+            'user_proof_file' => [
                 'type' => 'TEXT',
                 'null' => true
             ],

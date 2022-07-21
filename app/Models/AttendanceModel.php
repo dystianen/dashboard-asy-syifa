@@ -19,7 +19,7 @@ class AttendanceModel extends Model
         "is_logged_in",
         "category",
         "description",
-        "file",
+        "user_proof_file",
         "created_at",
         "updated_at",
     ];

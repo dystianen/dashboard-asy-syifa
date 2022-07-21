@@ -23,47 +23,15 @@ class AttendanceController extends BaseController
     public function index()
     {
         $attedance = $this->attendanceModel
-        ->join('users', 'users.userId = attendances.user_id', 'left')
-        ->findAll();
+            ->join('users', 'users.userId = attendances.user_id', 'left')
+            ->findAll();
 
         $data = [
             'page' => 'attendance',
             'attendance' => $attedance,
         ];
 
-        // var_dump($attedanceUser);
         echo view('layouts/pages/attendance/index', $data);
-    }
-
-    public function store()
-    {
-        helper(['form']);
-        $rules = [
-            'user_id' => 'required',
-            'is_logged_in' => 'required',
-            'description' => 'required',
-            'file' => 'required',
-        ];
-
-        if ($this->validate($rules)) {
-            $data = [
-                'user_id' => $this->request->getVar('user_id'),
-                'is_logged_in' => $this->request->getVar('is_logged_in'),
-                'description' => $this->request->getVar('description'),
-                'file' => $this->request->getVar('file'),
-                'created_at' => date('Y-m-d H:i:s'),
-            ];
-
-            $this->attendanceModel->save($data);
-
-            // TBD
-            return redirect()->to("/attendance/create");
-        } else {
-            $data['validation'] = $this->validator;
-
-            // TBD
-            echo view("/attendance/create", $data);
-        }
     }
 
     public function permission()
@@ -82,15 +50,20 @@ class AttendanceController extends BaseController
         $rules = [
             'category' => 'required',
             'description' => 'required',
-            'file' => 'required',
+            // 'user_proof_file' => 'required',
         ];
 
         if ($this->validate($rules)) {
+
+            $dataUserProofFile = $this->request->getFile('user_proof_file');
+            $fileName = $dataUserProofFile->getRandomName();
+            $dataUserProofFile->move('assets/media/berkas', $fileName);
+
             $data = [
                 'user_id' => session()->get('id'),
                 'category' => $this->request->getVar('category'),
                 'description' => $this->request->getVar('description'),
-                'file' => $this->request->getVar('file'),
+                'user_proof_file' => $fileName,
                 'is_logged_in' => TRUE,
                 'created_at' => date('Y-m-d H:i:s')
             ];
@@ -106,13 +79,43 @@ class AttendanceController extends BaseController
         }
     }
 
+    // public function permissionSave()
+    // {
+    //     helper(['form']);
+    //     $rules = [
+    //         'category' => 'required',
+    //         'description' => 'required',
+    //         'user_proof_file' => 'required',
+    //     ];
+
+    //     if ($this->validate($rules)) {
+    //         $data = [
+    //             'user_id' => session()->get('id'),
+    //             'category' => $this->request->getVar('category'),
+    //             'description' => $this->request->getVar('description'),
+    //             'file' => $this->request->getVar('file'),
+    //             'is_logged_in' => TRUE,
+    //             'created_at' => date('Y-m-d H:i:s')
+    //         ];
+
+    //         $this->attendanceModel->save($data);
+
+    //         // TBD
+    //         session()->setFlashdata('success_absent', 'Permission submit successfully!');
+    //         return redirect()->to('/user/absent');
+    //     } else {
+    //         $validation = Services::validation();
+    //         return redirect()->to('/user/permission')->withInput()->with('validation', $validation);
+    //     }
+    // }
+
     public function scanner()
     {
         $today = date('Y-m-d');
         $qrToday =  $this->qrModel->where('DATE(created_at)', $today)->first();
 
         $data = [
-          'qrToday' => $qrToday['content'],
+            'qrToday' => $qrToday['content'],
         ];
 
         echo view('layouts/pages/User/scan/index', $data);
