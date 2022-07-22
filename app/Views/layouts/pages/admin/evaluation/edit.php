@@ -157,12 +157,11 @@
             let perilaku = document.getElementById('perilaku').value;
 
             let total = null;
-            if (disiplin && loyalitas && kerjasama) {
+            if (disiplin && loyalitas && kerjasama && perilaku) {
                 total = Number(disiplin) + Number(loyalitas) + Number(kerjasama) + Number(perilaku);
+                document.getElementById("total").value = total;
+                document.getElementById("totalNilai").value = total + 60;
             }
-            document.getElementById("total").value = total;
-
-            document.getElementById("totalNilai").value = total + 60;
         });
 
         let maximum = new RegExp('^(?:[0123456789]|1[0]?)$');
