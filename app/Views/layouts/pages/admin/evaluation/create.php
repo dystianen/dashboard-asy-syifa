@@ -17,7 +17,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-header d-flex align-items-center justify-content-between py-3">
-                <h5 class="card-title mb-0 text-gray-900">Edit Evaluation</h5>
+                <h5 class="card-title mb-0 text-gray-900">Create Evaluation</h5>
             </div>
 
             <div class="card-body mt-2">
@@ -34,7 +34,9 @@
                                             id="basicSelect">
                                         <option value="">--please select--</option>
                                         <?php foreach ($user as $e) : ?>
-                                            <option value="<?= $e['userId'] ?>" selected><?= $e['fullname'] ?></option>
+                                            <option value="<?= $e['userId'] ?>" <?php if (old('user_id') == $e['userId']) {
+                                                echo 'selected';
+                                            } ?>><?= $e['fullname'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <div class="invalid-feedback">
@@ -54,40 +56,39 @@
                                         <div class="mt-3 row">
                                             <label for="disiplin" class="col-sm-4 col-form-label">Disiplin</label>
                                             <div class="col-sm-6">
-                                                <input name="disiplin" type="number" min="0" max="10"
-                                                       class="form-control"
-                                                       id="disiplin" value="<?= $evaluation['disiplin'] ?>">
+                                                <input name="disiplin" type="number" min="0" max="10" class="form-control"
+                                                       id="disiplin">
+                                                <div class="disiplin-invalid-feedback" style="color: #dc3545; font-size: 12px"></div>
                                             </div>
                                         </div>
                                         <div class="mt-3 row">
                                             <label for="loyalitas" class="col-sm-4 col-form-label">Loyalitas</label>
                                             <div class="col-sm-6">
-                                                <input name="loyalitas" type="number" min="0" max="10"
-                                                       class="form-control"
-                                                       id="loyalitas" value="<?= $evaluation['loyalitas'] ?>">
+                                                <input name="loyalitas" type="number" min="0" max="10" class="form-control"
+                                                       id="loyalitas">
+                                                <div class="loyalitas-invalid-feedback" style="color: #dc3545; font-size: 12px"></div>
                                             </div>
                                         </div>
                                         <div class="mt-3 row">
                                             <label for="kerjasama" class="col-sm-4 col-form-label">Kerja Sama</label>
                                             <div class="col-sm-6">
-                                                <input name="kerjasama" type="number" min="0" max="10"
-                                                       class="form-control"
-                                                       id="kerjasama" value="<?= $evaluation['kerjasama'] ?>">
+                                                <input name="kerjasama" type="number" min="0" max="10" class="form-control"
+                                                       id="kerjasama">
+                                                <div class="kerjasama-invalid-feedback" style="color: #dc3545; font-size: 12px"></div>
                                             </div>
                                         </div>
                                         <div class="mt-3 row">
                                             <label for="perilaku" class="col-sm-4 col-form-label">Perilaku</label>
                                             <div class="col-sm-6">
-                                                <input name="perilaku" type="number" min="0" max="10"
-                                                       class="form-control"
-                                                       id="perilaku" value="<?= $evaluation['perilaku'] ?>">
+                                                <input name="perilaku" type="number" min="0" max="10" class="form-control"
+                                                       id="perilaku">
+                                                <div class="perilaku-invalid-feedback" style="color: #dc3545; font-size: 12px"></div>
                                             </div>
                                         </div>
                                         <div class="mt-5 row">
                                             <label for="total" class="col-sm-4 col-form-label font-bold">Total</label>
                                             <div class="col-sm-6">
-                                                <input type="number" class="form-control" id="total"
-                                                       value="<?= $evaluation['total'] - 60 ?>" disabled>
+                                                <input type="number" class="form-control" id="total" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -102,8 +103,7 @@
                                             <label for="omseting" class="col-sm-4 col-form-label">Omseting
                                                 Service</label>
                                             <div class="col-sm-2">
-                                                <input name="omseting" type="text" readonly
-                                                       class="form-control-plaintext" id="omseting"
+                                                <input name="omseting" type="text" readonly class="form-control-plaintext" id="omseting"
                                                        value="60">
                                             </div>
                                         </div>
@@ -125,8 +125,7 @@
                         <div class="mt-3 row">
                             <label for="totalNilai" class="col-sm-2 col-form-label">Total Nilai (A+B)</label>
                             <div class="col-sm-3">
-                                <input name="totalNilai" type="number" class="form-control" id="totalNilai"
-                                       value="<?= $evaluation['total'] ?>" disabled>
+                                <input name="totalNilai" type="number" class="form-control" id="totalNilai" disabled>
                             </div>
                         </div>
                     </div>
@@ -160,5 +159,51 @@
 
             document.getElementById("totalNilai").value = total + 60;
         });
+
+        let maximum = new RegExp('^(?:[0123456789]|1[0]?)$');
+
+        $("#disiplin").change(function () {
+            let disiplin = document.getElementById('disiplin').value;
+            if (!maximum.test(disiplin)) {
+                $(this).addClass('is-invalid');
+                $('.disiplin-invalid-feedback').text("Max 10!");
+            } else {
+                $(this).removeClass('is-invalid')
+                $('.disiplin-invalid-feedback').remove();
+            }
+        })
+
+        $("#loyalitas").change(function () {
+            let loyalitas = document.getElementById('loyalitas').value;
+            if (!maximum.test(loyalitas)) {
+                $(this).addClass('is-invalid');
+                $('.loyalitas-invalid-feedback').text("Max 10!");
+            } else {
+                $(this).removeClass('is-invalid');
+                $('.loyalitas-invalid-feedback').remove();
+            }
+        })
+
+        $("#kerjasama").change(function () {
+            let kerjasama = document.getElementById('kerjasama').value;
+            if (!maximum.test(kerjasama)) {
+                $(this).addClass('is-invalid');
+                $('.kerjasama-invalid-feedback').text("Max 10!");
+            } else {
+                $(this).removeClass('is-invalid');
+                $('.kerjasama-invalid-feedback').remove();
+            }
+        })
+
+        $("#perilaku").change(function () {
+            let perilaku = document.getElementById('perilaku').value;
+            if (!maximum.test(perilaku)) {
+                $(this).addClass('is-invalid');
+                $('.perilaku-invalid-feedback').text("Max 10!")
+            } else {
+                $(this).removeClass('is-invalid')
+                $('.perilaku-invalid-feedback').remove()
+            }
+        })
     </script>
 <?= $this->endSection() ?>
