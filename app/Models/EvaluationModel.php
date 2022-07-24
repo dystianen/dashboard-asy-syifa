@@ -17,11 +17,12 @@ class EvaluationModel extends Model
 
     protected $allowedFields = [
         "user_id",
+        "job_id",
         "disiplin",
         "loyalitas",
         "kerjasama",
         "perilaku",
-        "omseting",
+        "value_job_type",
         "total",
         "created_at",
         "updated_at",

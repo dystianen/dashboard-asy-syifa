@@ -28,12 +28,8 @@
                         <tr>
                             <th>No.</th>
                             <th>Employee</th>
-                            <th>Disiplin</th>
-                            <th>Loyalitas</th>
-                            <th>Kerja Sama</th>
-                            <th>Perilaku</th>
-                            <th>Omseting Service</th>
-                            <th>Total</th>
+                            <th>Total Nilai</th>
+                            <th>Registration Date</th>
                             <th>Date Created</th>
                             <th>Action</th>
                         </tr>
@@ -45,12 +41,8 @@
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td><?= $p['fullname'] ?></td>
-                                <td><?= $p['disiplin'] ?></td>
-                                <td><?= $p['loyalitas'] ?></td>
-                                <td><?= $p['kerjasama'] ?></td>
-                                <td><?= $p['perilaku'] ?></td>
-                                <td>60</td>
                                 <td><?= $p['total'] ?></td>
+                                <td>-</td>
                                 <td><?= date_format(date_create($p['created_at']), 'd M Y') ?></td>
                                 <td>
                                     <a class="btn btn-info btn-sm" href="<?php echo base_url(); ?>/admin/evaluation/edit/<?= $p['evaluationId'] ?>"><i class="bi bi-pencil-square"></i></a>

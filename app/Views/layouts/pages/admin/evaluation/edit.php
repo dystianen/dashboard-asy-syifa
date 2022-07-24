@@ -100,7 +100,7 @@
 
                             <div class="col-md-6">
                                 <div class="card">
-                                    <div class="card-header">A. HASIL PEKERJAAN (60%)</div>
+                                    <div class="card-header">B. HASIL PEKERJAAN (60%)</div>
                                     <div class="card-body">
                                         <div class="mt-3 row">
                                             <label for="omseting" class="col-sm-6 col-form-label">Omseting
@@ -164,13 +164,13 @@
             }
         });
 
-        let maximum = new RegExp('^(?:[0123456789]|1[0]?)$');
+        let maximum = new RegExp('^[1-9][0-9]?$|^100$');
 
         $("#disiplin").change(function () {
             let disiplin = document.getElementById('disiplin').value;
             if (!maximum.test(disiplin)) {
                 $(this).addClass('is-invalid');
-                $('.disiplin-invalid-feedback').text("Max 10!");
+                $('.disiplin-invalid-feedback').text("Max 100!");
             } else {
                 $(this).removeClass('is-invalid')
                 $('.disiplin-invalid-feedback').remove();
@@ -181,7 +181,7 @@
             let loyalitas = document.getElementById('loyalitas').value;
             if (!maximum.test(loyalitas)) {
                 $(this).addClass('is-invalid');
-                $('.loyalitas-invalid-feedback').text("Max 10!");
+                $('.loyalitas-invalid-feedback').text("Max 100!");
             } else {
                 $(this).removeClass('is-invalid');
                 $('.loyalitas-invalid-feedback').remove();
@@ -192,7 +192,7 @@
             let kerjasama = document.getElementById('kerjasama').value;
             if (!maximum.test(kerjasama)) {
                 $(this).addClass('is-invalid');
-                $('.kerjasama-invalid-feedback').text("Max 10!");
+                $('.kerjasama-invalid-feedback').text("Max 100!");
             } else {
                 $(this).removeClass('is-invalid');
                 $('.kerjasama-invalid-feedback').remove();
@@ -203,7 +203,7 @@
             let perilaku = document.getElementById('perilaku').value;
             if (!maximum.test(perilaku)) {
                 $(this).addClass('is-invalid');
-                $('.perilaku-invalid-feedback').text("Max 10!")
+                $('.perilaku-invalid-feedback').text("Max 100!")
             } else {
                 $(this).removeClass('is-invalid')
                 $('.perilaku-invalid-feedback').remove()

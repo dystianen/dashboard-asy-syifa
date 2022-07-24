@@ -22,6 +22,18 @@ class Evaluation extends Migration
                 'unsigned' => true,
                 'null' => true,
             ],
+            'job_id' => [
+                'type' => 'INT',
+                'constraint' => 10,
+                'unsigned' => true,
+                'null' => true,
+            ],
+            'user_id' => [
+                'type' => 'INT',
+                'constraint' => 12,
+                'unsigned' => true,
+                'null' => true,
+            ],
             'disiplin' => [
                 'type' => 'INT',
                 'constraint' => 10,
@@ -42,14 +54,39 @@ class Evaluation extends Migration
                 'constraint' => 10,
                 'null' => true,
             ],
-            'omseting' => [
+            'value_job_type' => [
                 'type' => 'INT',
                 'constraint' => 10,
+                'null' => true,
+            ],
+            'total_sikap' => [
+                'type' => 'INT',
+                'constraint' => 100,
+                'null' => true,
+            ],
+            'total_percentage_sikap' => [
+                'type' => 'INT',
+                'constraint' => 100,
+                'null' => true,
+            ],
+            'total_working_result' => [
+                'type' => 'INT',
+                'constraint' => 100,
+                'null' => true,
+            ],
+            'total_percentage_working_result' => [
+                'type' => 'INT',
+                'constraint' => 100,
                 'null' => true,
             ],
             'total' => [
                 'type' => 'INT',
                 'constraint' => 100,
+                'null' => true,
+            ],
+            'predikat' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
                 'null' => true,
             ],
             'created_at' => [
@@ -71,6 +108,7 @@ class Evaluation extends Migration
 
         // Relations
         $this->forge->addForeignKey('user_id', 'users', 'userId');
+        $this->forge->addForeignKey('job_id', 'jobs', 'jobId');
 
         // Create Table Categories
         $this->forge->createTable('evaluations');
