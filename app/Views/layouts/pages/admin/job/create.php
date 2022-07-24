@@ -55,7 +55,7 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="point" class="form-label">Point <span style="color: red">*</span></label>
+                                <label for="point" class="form-label">Goals per Day <span style="color: red">*</span></label>
                                 <input name="point" class="form-control <?= ($validation->hasError('point') ? 'is-invalid' : '') ?>" id="point" placeholder="example: 500" value="<?= old('point') ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('point') ?>

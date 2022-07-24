@@ -27,10 +27,9 @@
                         <thead>
                         <tr>
                             <th>No.</th>
-<!--                            <th>Employee</th>-->
                             <th>Job Type</th>
                             <th>Description</th>
-                            <th>Point</th>
+                            <th>Goals per Day</th>
                             <th>Date Created</th>
                             <th>Action</th>
                         </tr>
