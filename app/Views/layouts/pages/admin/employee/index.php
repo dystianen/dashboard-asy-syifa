@@ -115,12 +115,12 @@
                 "buttons": [
                     'excel',
                     // 'pdf',
-                    {
-                        text: 'Create',
-                        action: function (e, dt, node, config) {
-                            window.location.href = '/admin/employee/form'
-                        }
-                    }
+                    // {
+                    //     text: 'Create',
+                    //     action: function (e, dt, node, config) {
+                    //         window.location.href = '/admin/employee/form'
+                    //     }
+                    // }
                 ]
             });
         });

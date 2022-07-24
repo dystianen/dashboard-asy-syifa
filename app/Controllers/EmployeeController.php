@@ -52,11 +52,7 @@ class EmployeeController extends BaseController
             'password' => 'required|min_length[4]|max_length[50]',
             'confirmPassword' => 'matches[password]',
             'date_of_birth' => 'required',
-            'place_of_birth' => 'required',
-            'gender' => 'required',
-            'age' => 'required',
             'phone_number' => 'required',
-            'address' => 'required',
             'position' => 'required',
         ];
 
@@ -67,11 +63,7 @@ class EmployeeController extends BaseController
                 'email' => $this->request->getVar('email'),
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
                 'date_of_birth' => $this->request->getVar('date_of_birth'),
-                'place_of_birth' => $this->request->getVar('place_of_birth'),
-                'gender' => $this->request->getVar('gender'),
-                'age' => $this->request->getVar('age'),
                 'phone_number' => $this->request->getVar('phone_number'),
-                'address' => $this->request->getVar('address'),
                 'position' => $this->request->getVar('position'),
                 'level' => 'employee',
                 'created_at' => date('Y-m-d H:i:s'),
@@ -93,7 +85,6 @@ class EmployeeController extends BaseController
             'page' => 'employee',
             'validation' => Services::validation(),
             'user' => $this->userModel->where(['userId' => $id])->first(),
-            'job' => $this->jobModel->where(['user_id' => $id])->findAll(),
         ];
 
         echo view('layouts/pages/admin/employee/edit', $data);
@@ -102,17 +93,14 @@ class EmployeeController extends BaseController
     public function update($id)
     {
         helper(['form']);
+        $currentData = $this->userModel->where(['userId' => $id])->first();
         $rules = [
             'nik' => 'required|min_length[16]|max_length[16]',
             'fullname' => 'required|min_length[2]|max_length[50]',
             'email' => 'required|min_length[4]|max_length[100]|valid_email',
             'date_of_birth' => 'required',
-            'place_of_birth' => 'required',
-            'gender' => 'required',
-            'age' => 'required',
-            'phone_number' => 'required',
-            'address' => 'required',
             'position' => 'required',
+            'phone_number' => 'required',
         ];
 
         if ($this->validate($rules)) {
@@ -122,12 +110,9 @@ class EmployeeController extends BaseController
                 'fullname' => $this->request->getVar('fullname'),
                 'email' => $this->request->getVar('email'),
                 'date_of_birth' => $this->request->getVar('date_of_birth'),
-                'place_of_birth' => $this->request->getVar('place_of_birth'),
-                'gender' => $this->request->getVar('gender'),
-                'age' => $this->request->getVar('age'),
                 'phone_number' => $this->request->getVar('phone_number'),
-                'address' => $this->request->getVar('address'),
                 'position' => $this->request->getVar('position'),
+                'created_at' => $currentData['created_at'],
                 'updated_at' => date('Y-m-d H:i:s')
             ];
 
@@ -147,7 +132,6 @@ class EmployeeController extends BaseController
             'page' => 'employee',
             'validation' => Services::validation(),
             'user' => $this->userModel->where(['userId' => $id])->first(),
-            'job' => $this->jobModel->where(['user_id' => $id])->findAll(),
         ];
 
         echo view('layouts/pages/admin/employee/detail', $data);

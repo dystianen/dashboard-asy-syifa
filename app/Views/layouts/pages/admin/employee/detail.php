@@ -33,16 +33,6 @@
                                        value="<?= $user['email'] ?>">
                             </div>
                             <div class="form-group">
-                                <label for="place_of_birth" class="form-label">Place of Birth <span
-                                            style="color: red">*</span></label>
-                                <input disabled name="place_of_birth" class="form-control" id="place_of_birth"
-                                       value="<?= $user['place_of_birth'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="age" class="form-label">Age <span style="color: red">*</span></label>
-                                <input disabled name="age" class="form-control" id="age" value="<?= $user['age'] ?>">
-                            </div>
-                            <div class="form-group">
                                 <label for="phone" class="form-label">Phone Number <span
                                             style="color: red">*</span></label>
                                 <input disabled name="phone_number" class="form-control" id="phone"
@@ -68,56 +58,6 @@
                                             style="color: red">*</span></label>
                                 <input disabled name="position" class="form-control" id="position"
                                        value="<?= $user['position'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="gender" class="form-label">Gender <span style="color: red">*</span></label>
-                                <input disabled name="gender" class="form-control" id="gender"
-                                       value="<?= $user['gender'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="address" class="form-label">Address <span
-                                            style="color: red">*</span></label>
-                                <textarea disabled name="address" class="form-control"
-                                          id="address"><?= $user['address'] ?></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- DataTales -->
-                    <div class="card shadow mt-4">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table" id="table">
-                                    <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Job Type</th>
-                                        <th>Description</th>
-                                        <th>Point</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php $i = 1 ?>
-                                    <?php foreach ($job as $j) : ?>
-                                        <tr>
-                                            <td><?= $i++ ?></td>
-                                            <td><?= $j['type_of_work'] ?></td>
-                                            <td><?= (
-                                                    strlen(htmlspecialchars($j['description'])) > 13)
-                                                    ? substr(htmlspecialchars($j['description']), 0, 10) . '...'
-                                                    : htmlspecialchars($j['description']
-                                                    ); ?>
-                                            </td>
-                                            <td><?= $j['point'] ?></td>
-                                            <td>
-                                                <a href="<?= base_url(); ?>/admin/job/detail/<?= $j['jobId'] ?>"
-                                                   class="btn btn-warning btn-sm"><i class="bi bi-eye-fill"></i></a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>

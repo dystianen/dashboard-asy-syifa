@@ -31,26 +31,6 @@ class Users extends Migration
                 'constraint' => 255,
                 'null' => true,
             ],
-            'place_of_birth' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true,
-            ],
-            'age' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true,
-            ],
-            'gender' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true,
-            ],
-            'address' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true,
-            ],
             'phone_number' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
@@ -76,12 +56,6 @@ class Users extends Migration
                 'constraint' => 255,
                 'null' => true,
             ],
-            'last_signed_in' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true,
-            ],
-
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,

@@ -45,26 +45,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="place_of_birth" class="form-label">Place of Birth <span
-                                            style="color: red">*</span></label>
-                                <input name="place_of_birth"
-                                       class="form-control <?= ($validation->hasError('place_of_birth') ? 'is-invalid' : '') ?>"
-                                       id="place_of_birth" placeholder="example: Malang"
-                                       value="<?= $user['place_of_birth'] ?>">
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('place_of_birth') ?>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="age" class="form-label">Age <span style="color: red">*</span></label>
-                                <input name="age"
-                                       class="form-control <?= ($validation->hasError('age') ? 'is-invalid' : '') ?>"
-                                       id="age" placeholder="example: 20" value="<?= $user['age'] ?>">
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('age') ?>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label for="phone" class="form-label">Phone Number <span
                                             style="color: red">*</span></label>
                                 <input name="phone_number"
@@ -108,76 +88,6 @@
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('position') ?>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="gender" class="form-label">Gender <span style="color: red">*</span></label>
-                                <select name="gender"
-                                        class="form-select <?= ($validation->hasError('gender') ? 'is-invalid' : '') ?>"
-                                        id="basicSelect" value="<?= $user['gender'] ?>">
-                                    <option value="">--please select--</option>
-                                    <option value="Male" <?php if ($user['gender'] == 'Male') {
-                                        echo 'selected';
-                                    } ?>>Male
-                                    </option>
-                                    <option value="Female" <?php if ($user['gender'] == 'Female') {
-                                        echo 'selected';
-                                    } ?>>Female
-                                    </option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('gender') ?>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="address" class="form-label">Address <span
-                                            style="color: red">*</span></label>
-                                <textarea name="address"
-                                          class="form-control <?= ($validation->hasError('address') ? 'is-invalid' : '') ?>"
-                                          id="address"
-                                          placeholder="example: Jl. Danau Ranau, Sawojajar, Kec. Kedungkandang, Kota Malang, Jawa Timur 65139"><?= $user['address'] ?></textarea>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('address') ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- DataTales -->
-                    <div class="card shadow mt-4">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table" id="table">
-                                    <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Job Type</th>
-                                        <th>Description</th>
-                                        <th>Point</th>
-                                        <th>Date Created</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php $i = 1 ?>
-                                    <?php foreach ($job as $j) : ?>
-                                        <tr>
-                                            <td><?= $i++ ?></td>
-                                            <td><?= $j['type_of_work'] ?></td>
-                                            <td><?= $j['description'] ?></td>
-                                            <td><?= $j['point'] ?></td>
-                                            <td><?= date_format(date_create($j['created_at']), 'd M Y H:i') ?></td>
-                                            <td>
-                                                <a href="<?php echo base_url(); ?>/admin/job/edit/<?= $j['jobId'] ?>"
-                                                   class="btn btn-info btn-sm"><i class="bi bi-pencil-square"></i></a>
-                                                <a class="btn btn-warning btn-sm"><i class="bi bi-eye-fill"></i></a>
-                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#deleteModal<?= $j['jobId'] ?>"><i
-                                                            class="bi bi-trash-fill"></i></button>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
