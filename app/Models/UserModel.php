@@ -25,6 +25,7 @@ class UserModel extends Model
         "password",
         "school_origin",
         "internship_length",
+        "registration_at",
         "created_at",
         "updated_at",
     ];

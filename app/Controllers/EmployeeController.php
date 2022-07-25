@@ -129,23 +129,29 @@ class EmployeeController extends BaseController
         helper(['form']);
         $currentData = $this->userModel->where(['userId' => $id])->first();
         $rules = [
-            'nik' => 'required|min_length[16]|max_length[16]',
             'fullname' => 'required|min_length[2]|max_length[50]',
             'email' => 'required|min_length[4]|max_length[100]|valid_email',
             'date_of_birth' => 'required',
             'position' => 'required',
             'phone_number' => 'required',
+            'school_origin' => 'required',
+            'internship_length' => 'required',
         ];
 
         if ($this->validate($rules)) {
             $data = [
                 'userId' => $id,
-                'nik' => $this->request->getVar('nik'),
+                'ID_PKL' => $currentData['ID_PKL'],
                 'fullname' => $this->request->getVar('fullname'),
                 'email' => $this->request->getVar('email'),
                 'date_of_birth' => $this->request->getVar('date_of_birth'),
                 'phone_number' => $this->request->getVar('phone_number'),
                 'position' => $this->request->getVar('position'),
+                'password' => $currentData['password'],
+                'school_origin' => $currentData['school_origin'],
+                'internship_length' => $currentData['internship_length'],
+                'level' => $currentData['level'],
+                'registration_at' => $currentData['registration_at'],
                 'created_at' => $currentData['created_at'],
                 'updated_at' => date('Y-m-d H:i:s')
             ];

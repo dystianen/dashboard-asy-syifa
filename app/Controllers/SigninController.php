@@ -124,6 +124,7 @@ class SigninController extends BaseController
                 'position' => $this->request->getVar('position'),
                 'level' => 'employee',
                 'created_at' => date('Y-m-d H:i:s'),
+                'registration_at' => date('Y-m-d H:i:s'),
             ];
 
             $userModel->save($data);

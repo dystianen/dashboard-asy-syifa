@@ -38,6 +38,12 @@
                                 <input disabled name="phone_number" class="form-control" id="phone"
                                        value="<?= $user['phone_number'] ?>">
                             </div>
+                            <div class="form-group">
+                                <label for="school_origin" class="form-label">School Origin <span
+                                            style="color: red">*</span></label>
+                                <input disabled name="school_origin" class="form-control" id="school_origin"
+                                       value="<?= $user['school_origin'] ?>">
+                            </div>
                         </div>
 
                         <div class="col-md-6 col-12">
@@ -58,6 +64,12 @@
                                             style="color: red">*</span></label>
                                 <input disabled name="position" class="form-control" id="position"
                                        value="<?= $user['position'] ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="internship_length" class="form-label">Internship Length <span
+                                            style="color: red">*</span></label>
+                                <input disabled name="internship_length" class="form-control" id="internship_length"
+                                       value="<?= $user['internship_length'] ?>">
                             </div>
                         </div>
                     </div>

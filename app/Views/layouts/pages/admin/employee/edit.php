@@ -47,6 +47,17 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="school_origin" class="form-label">School Origin <span
+                                            style="color: red">*</span></label>
+                                <input name="school_origin"
+                                       class="form-control <?= ($validation->hasError('school_origin') ? 'is-invalid' : '') ?>"
+                                       id="school_origin" placeholder="example: SMK TELKOM MALANG"
+                                       value="<?= $user['school_origin'] ?>">
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('school_origin') ?>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="position" class="form-label">Position <span
                                             style="color: red">*</span></label>
                                 <input name="position"
@@ -78,6 +89,19 @@
                                        id="date_of_birth" type="date" value="<?= $user['date_of_birth'] ?>">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('date_of_birth') ?>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="internship_length" class="form-label">Internship Length <span
+                                            style="color: red">*</span></label>
+                                <div class="input-group">
+                                    <input name="internship_length" class="form-control <?= ($validation->hasError('internship_length') ? 'is-invalid' : '') ?>" placeholder="example: 3" value="<?= $user['internship_length'] ?>">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2">Bln</span>
+                                    </div>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('internship_length') ?>
                                 </div>
                             </div>
                         </div>
