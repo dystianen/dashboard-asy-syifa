@@ -29,6 +29,7 @@
                             <th>No.</th>
                             <th>Employee</th>
                             <th>Total Nilai</th>
+                            <th>Predicate</th>
                             <th>Registration Date</th>
                             <th>Date Created</th>
                             <th>Action</th>
@@ -42,7 +43,8 @@
                                 <td><?= $i++ ?></td>
                                 <td><?= $p['fullname'] ?></td>
                                 <td><?= $p['total'] ?></td>
-                                <td>-</td>
+                                <td><?= $p['predikat'] ?></td>
+                                <td><?= date_format(date_create($p['created_at']), 'd M Y') ?></td>
                                 <td><?= date_format(date_create($p['created_at']), 'd M Y') ?></td>
                                 <td>
                                     <a class="btn btn-info btn-sm" href="<?php echo base_url(); ?>/admin/evaluation/edit/<?= $p['evaluationId'] ?>"><i class="bi bi-pencil-square"></i></a>

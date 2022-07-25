@@ -33,7 +33,7 @@
                             <th>Fullname</th>
                             <th>Email</th>
                             <th>Phone Number</th>
-                            <th>registration date</th>
+                            <th>Registration Date</th>
                             <th>Action</th>
                         </tr>
                         </thead>
