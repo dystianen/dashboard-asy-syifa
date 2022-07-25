@@ -64,8 +64,8 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('qr', 'QRCodeController::index');
     $routes->get('qr/form', 'QRCodeController::create');
     $routes->post('qr/save', 'QRCodeController::add_data');
-    $routes->post('qr/update(:num)', 'QRCodeController::edit_data');
-    $routes->delete('qr/delete(:num)', 'QRCodeController::remove_data');
+    $routes->post('qr/update/(:num)', 'QRCodeController::edit_data/$1');
+    $routes->delete('qr/delete/(:num)', 'QRCodeController::remove_data/$1');
 
     /** CATEGORIES **/
     $routes->get('category', 'CategoryController::index');

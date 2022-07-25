@@ -14,8 +14,14 @@
         </div>
 
         <?php if (session()->getFlashData('success_qr')) : ?>
-            <div class="alert alert-success" role="alert">
+            <div class="alert success alert-success" role="alert">
                 <?php echo session("success_qr") ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!$qrToday) : ?>
+            <div class="alert info alert-info" role="alert">
+                Please Create a QR CODE for Today!
             </div>
         <?php endif; ?>
 
@@ -79,7 +85,7 @@
                             <div class="pt-3">
                                 <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
                                 <form class="d-inline" method="post"
-                                      action="<?= base_url(); ?>/admin/job/delete/<?= $q['qrId'] ?>">
+                                      action="<?= base_url(); ?>/admin/qr/delete/<?= $q['qrId'] ?>">
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="btn btn-danger m-2">Yes</button>
@@ -126,8 +132,9 @@
             });
         });
 
-        $(".alert").fadeTo(2000, 500).slideUp(500, function () {
-            $(".alert").slideUp(500);
+        $(".success").fadeTo(2000, 500).slideUp(500, function () {
+            $(".success").slideUp(500);
         });
+
     </script>
 <?= $this->endSection() ?>

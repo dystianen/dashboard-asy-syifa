@@ -26,10 +26,13 @@ class QRCodeController extends BaseController
 
     public function index()
     {
+        $today = date('Y-m-d');
         $qrs = $this->qrModel->findAll();
+        $qrToday =  $this->qrModel->where('DATE(created_at)', $today)->first();
         $data = [
             'page' => 'QR',
-            'qr' => $qrs
+            'qr' => $qrs,
+            'qrToday' => $qrToday
         ];
 
         return view('layouts/pages/admin/qr/index', $data);
@@ -119,9 +122,9 @@ class QRCodeController extends BaseController
 
         /* Edit Data */
         if ($this->qrModel->qrModel($id, $old_file, $qr)) {
-            $this->modal_feedback('success', 'Success', 'Edit Data Success', 'OK');
+            session()->setFlashdata('success_qr', 'Delete QR Successfully.');
         } else {
-            $this->modal_feedback('error', 'Error', 'Edit Data Failed', 'Try again');
+            session()->setFlashdata('success_qr', 'Try Again!');
         }
 
         return redirect()->to(site_url('/'));
@@ -129,18 +132,14 @@ class QRCodeController extends BaseController
 
     public function remove_data($id)
     {
-        /* Current QR Data */
-        $qr_data = $this->qrModel->qrModel($id);
-        $qr_file = $qr_data['file'];
-
         /* Delete Data */
-        if ($this->qrModel->qrModel($id, $qr_file)) {
-            $this->modal_feedback('success', 'Success', 'Delete Data Success', 'OK');
+        if ($this->qrModel->where(['qrId' => $id])->delete()) {
+            session()->setFlashdata('success_qr', 'Delete QR Successfully.');
         } else {
-            $this->modal_feedback('error', 'Error', 'Delete Data Failed', 'Try again');
+            session()->setFlashdata('success_qr', 'Try Again!');
         }
 
-        return redirect()->to(site_url('/'));
+        return redirect()->to(base_url('/admin/qr'));
     }
 
     protected function modal_feedback($type, $title, $desc, $button): void
