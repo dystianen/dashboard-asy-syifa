@@ -34,7 +34,8 @@ $routes->setAutoRoute(true);
 $routes->get('/login', 'SigninController::index');
 $routes->get('/logout', 'SigninController::logout');
 $routes->post('/login/submit', 'SigninController::loginAuth');
-$routes->get('/register', 'SignupController::index');
+$routes->get('/register', 'SigninController::register');
+$routes->post('/register/submit', 'SigninController::registerSubmit');
 
 $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
     /** EMPLOYEE **/

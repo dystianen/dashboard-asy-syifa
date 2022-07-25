@@ -26,13 +26,6 @@
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <div class="form-group">
-                            <label for="nik" class="form-label">NIK <span style="color: red">*</span></label>
-                            <input name="nik" class="form-control <?= ($validation->hasError('nik') ? 'is-invalid' : '') ?>" id="nik" placeholder="example: 3521067738749" value="<?= old('nik') ?>">
-                            <div class="invalid-feedback">
-                                <?= $validation->getError('nik') ?>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="email" class="form-label">Email <span style="color: red">*</span></label>
                             <input name="email" class="form-control <?= ($validation->hasError('email') ? 'is-invalid' : '') ?>" id="email" type="email" placeholder="example: example@gmail.com" value="<?= old('email') ?>">
                             <div class="invalid-feedback">
@@ -51,6 +44,13 @@
                             <input name="confirmPassword" class="form-control <?= ($validation->hasError('confirmPassword') ? 'is-invalid' : '') ?>" id="confirmPassword" type="password" placeholder="Input confirm password" value="<?= old('confirmPassword') ?>">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('confirmPassword') ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="position" class="form-label">Position <span style="color: red">*</span></label>
+                            <input name="position" class="form-control <?= ($validation->hasError('position') ? 'is-invalid' : '') ?>" id="position" value="<?= old('position') ?>" placeholder="example: Programmer">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('position') ?>
                             </div>
                         </div>
                     </div>
@@ -75,13 +75,6 @@
                             <input name="date_of_birth" class="form-control <?= ($validation->hasError('date_of_birth') ? 'is-invalid' : '') ?>" id="date_of_birth" type="date" value="<?= old('date_of_birth') ?>">
                             <div class="invalid-feedback">
                                 <?= $validation->getError('date_of_birth') ?>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="position" class="form-label">Position <span style="color: red">*</span></label>
-                            <input name="position" class="form-control <?= ($validation->hasError('position') ? 'is-invalid' : '') ?>" id="position" value="<?= old('position') ?>" placeholder="example: Programmer">
-                            <div class="invalid-feedback">
-                                <?= $validation->getError('position') ?>
                             </div>
                         </div>
                     </div>

@@ -9,6 +9,7 @@ use Config\Services;
 class EmployeeController extends BaseController
 {
     protected $userModel, $jobModel, $session;
+
     public function __construct()
     {
         $this->userModel = new UserModel();
@@ -31,6 +32,17 @@ class EmployeeController extends BaseController
         return view('layouts/pages/admin/employee/index', $data);
     }
 
+    function append_string($str1, $str2)
+    {
+
+        // Using Concatenation assignment
+        // operator (.=)
+        $str1 .= $str2;
+
+        // Returning the result
+        return $str1;
+    }
+
     public function create()
     {
         helper(['form']);
@@ -45,29 +57,50 @@ class EmployeeController extends BaseController
     public function save()
     {
         helper(['form']);
+        $dataUser = $this->userModel->findAll();
+        $currentData = end($dataUser);
+
+        $number = substr($currentData['ID_PKL'], strpos($currentData['ID_PKL'], "L") + 1);
+        $id = (int)$number + 1;
+
+        $IDPKL = null;
+        if ((int)$number < 10) {
+            $IDPKL = $this->append_string('PKL0000', (string)$id);
+        } else if ((int)$number < 100) {
+            $IDPKL = $this->append_string('PKL000', (string)$id);
+        } else if ((int)$number < 1000) {
+            $IDPKL = $this->append_string('PKL00', (string)$id);
+        } else {
+            $IDPKL = $this->append_string('PKL0', (string)$id);
+        }
+
         $rules = [
-            'nik' => 'required|min_length[16]|max_length[16]|is_unique[users.nik]',
             'fullname' => 'required|min_length[2]|max_length[50]',
             'email' => 'required|min_length[4]|max_length[100]|valid_email|is_unique[users.email]',
             'password' => 'required|min_length[4]|max_length[50]',
-            'confirmPassword' => 'matches[password]',
             'date_of_birth' => 'required',
             'phone_number' => 'required',
             'position' => 'required',
+            'school_origin' => 'required',
+            'internship_length' => 'required',
         ];
 
         if ($this->validate($rules)) {
             $data = [
-                'nik' => $this->request->getVar('nik'),
+                'ID_PKL' => $IDPKL,
                 'fullname' => $this->request->getVar('fullname'),
                 'email' => $this->request->getVar('email'),
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
                 'date_of_birth' => $this->request->getVar('date_of_birth'),
                 'phone_number' => $this->request->getVar('phone_number'),
+                'school_origin' => $this->request->getVar('school_origin'),
+                'internship_length' => $this->request->getVar('internship_length'),
                 'position' => $this->request->getVar('position'),
                 'level' => 'employee',
                 'created_at' => date('Y-m-d H:i:s'),
             ];
+
+            d($data);
 
             $this->userModel->save($data);
             session()->setFlashdata('success', 'Create Employee successfully.');
@@ -81,6 +114,7 @@ class EmployeeController extends BaseController
     public function edit($id)
     {
         helper(['form']);
+
         $data = [
             'page' => 'employee',
             'validation' => Services::validation(),

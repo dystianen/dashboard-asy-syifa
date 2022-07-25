@@ -16,13 +16,15 @@ class UserModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         "fullname",
-        "nik",
+        "ID_PKL",
         "date_of_birth",
         "phone_number",
         "position",
         "level",
         "email",
         "password",
+        "school_origin",
+        "internship_length",
         "created_at",
         "updated_at",
     ];

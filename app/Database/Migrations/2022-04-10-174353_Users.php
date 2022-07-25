@@ -21,7 +21,7 @@ class Users extends Migration
                 'constraint' => 255,
                 'null' => true,
             ],
-            'nik' => [
+            'ID_PKL' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
                 'null' => true,
@@ -49,6 +49,16 @@ class Users extends Migration
             'position' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
+                'null' => true,
+            ],
+            'school_origin' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => true,
+            ],
+            'internship_length' => [
+                'type' => 'INT',
+                'constraint' => 10,
                 'null' => true,
             ],
             'level' => [

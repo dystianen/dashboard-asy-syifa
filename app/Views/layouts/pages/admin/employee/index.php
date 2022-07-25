@@ -42,7 +42,7 @@
                         <?php foreach ($user as $e) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $e['nik']; ?></td>
+                                <td><?= $e['ID_PKL']; ?></td>
                                 <td><?= $e['fullname']; ?></td>
                                 <td><?= $e['email']; ?></td>
                                 <td><?= $e['phone_number']; ?></td>
@@ -117,12 +117,12 @@
                 "buttons": [
                     'excel',
                     // 'pdf',
-                    // {
-                    //     text: 'Create',
-                    //     action: function (e, dt, node, config) {
-                    //         window.location.href = '/admin/employee/form'
-                    //     }
-                    // }
+                    {
+                        text: 'Create',
+                        action: function (e, dt, node, config) {
+                            window.location.href = '/admin/employee/form'
+                        }
+                    }
                 ]
             });
         });

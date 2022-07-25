@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
     {
         $data = [
             [
-                'nik' => '1099929938810012',
+                'ID_PKL' => 'PKL00001',
                 'fullname'  => 'Administrator',
                 'email'  =>  "admin@admin.com",
                 'level'  => 'admin',
@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
             [
-                'nik' => '1099929938810013',
+                'ID_PKL' => 'PKL00002',
                 'fullname'  => 'Employee',
                 'email'  =>  "employee@employee.com",
                 'level'  => 'employee',
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
             [
-                'nik' => '1099929938810013',
+                'ID_PKL' => 'PKL00003',
                 'fullname'  => 'Ridho',
                 'email'  =>  "ridho@employee.com",
                 'level'  => 'employee',

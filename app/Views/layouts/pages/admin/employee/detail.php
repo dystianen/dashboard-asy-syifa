@@ -24,8 +24,8 @@
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label for="nik" class="form-label">NIK <span style="color: red">*</span></label>
-                                <input disabled name="nik" class="form-control" id="nik" value="<?= $user['nik'] ?>">
+                                <label for="nik" class="form-label">ID PKL <span style="color: red">*</span></label>
+                                <input disabled name="ID_PKL" class="form-control" id="ID_PKL" value="<?= $user['ID_PKL'] ?>">
                             </div>
                             <div class="form-group">
                                 <label for="email" class="form-label">Email <span style="color: red">*</span></label>

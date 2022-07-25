@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/pages/auth.css">
     <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 </head>
 
@@ -22,6 +23,12 @@
                     <?php if (session()->getFlashData('failed')) : ?>
                         <div class="alert alert-danger" role="alert">
                             <?php echo session("failed") ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (session()->getFlashData('success')) : ?>
+                        <div class="alert success alert-success" role="alert">
+                            <?php echo session("success") ?>
                         </div>
                     <?php endif; ?>
 
@@ -42,6 +49,10 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
                         </button>
+
+                        <div style="display: flex; justify-content: center">
+                            <a class="text-center mt-4" href="/register">Register Account ?</a>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -51,5 +62,12 @@
         </div>
     </div>
 </body>
+
+<script type="text/javascript">
+    $(".success").fadeTo(2000, 500).slideUp(500, function () {
+        $(".success").slideUp(500);
+    });
+
+</script>
 
 </html>
