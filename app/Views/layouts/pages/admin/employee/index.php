@@ -46,7 +46,7 @@
                                 <td><?= $e['fullname']; ?></td>
                                 <td><?= $e['email']; ?></td>
                                 <td><?= $e['phone_number']; ?></td>
-                                <td><?= date_format(date_create($e['created_at']), 'd M Y H:i'); ?></td>
+                                <td><?= date_format(date_create($e['registration_at']), 'd M Y H:i'); ?></td>
                                 <td>
                                     <a href="<?php echo base_url(); ?>/admin/employee/edit/<?= $e['userId'] ?>"
                                        class="btn btn-info btn-sm"><i class="bi bi-pencil-square"></i></a>
