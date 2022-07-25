@@ -18,7 +18,7 @@
     <div class="h-100" style="display: flex; justify-content: center">
         <div class="col-lg-5 col-12">
             <div class="card my-5">
-                <div class="card-header" style="background-color: #5989ff">
+                <div class="card-header" style="background-color: #435ebe">
                     <h3 style="color: #ffffff">Register</h3>
                 </div>
 
