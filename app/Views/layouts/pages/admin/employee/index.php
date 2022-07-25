@@ -48,13 +48,13 @@
                                 <td><?= $e['phone_number']; ?></td>
                                 <td><?= date_format(date_create($e['registration_at']), 'd M Y H:i'); ?></td>
                                 <td>
-                                    <a href="<?php echo base_url(); ?>/admin/employee/edit/<?= $e['userId'] ?>"
-                                       class="btn btn-info btn-sm"><i class="bi bi-pencil-square"></i></a>
+<!--                                    <a href="--><?php //echo base_url(); ?><!--/admin/employee/edit/--><?//= $e['userId'] ?><!--"-->
+<!--                                       class="btn btn-info btn-sm"><i class="bi bi-pencil-square"></i></a>-->
                                     <a href="<?php echo base_url(); ?>/admin/employee/detail/<?= $e['userId'] ?>"
                                        class="btn btn-warning btn-sm"><i class="bi bi-eye-fill"></i></a>
-                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#deleteModal<?= $e['userId'] ?>"><i
-                                                class="bi bi-trash-fill"></i></button>
+<!--                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal"-->
+<!--                                            data-bs-target="#deleteModal--><?//= $e['userId'] ?><!--"><i-->
+<!--                                                class="bi bi-trash-fill"></i></button>-->
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -117,12 +117,12 @@
                 "buttons": [
                     'excel',
                     // 'pdf',
-                    {
-                        text: 'Create',
-                        action: function (e, dt, node, config) {
-                            window.location.href = '/admin/employee/form'
-                        }
-                    }
+                    // {
+                    //     text: 'Create',
+                    //     action: function (e, dt, node, config) {
+                    //         window.location.href = '/admin/employee/form'
+                    //     }
+                    // }
                 ]
             });
         });
