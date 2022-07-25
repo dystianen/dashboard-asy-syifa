@@ -16,8 +16,8 @@
 <body>
 <div id="auth">
     <div class="h-100" style="display: flex; justify-content: center">
-        <div class="col-lg-5 col-12" style="align-self: center;">
-            <div class="card">
+        <div class="col-lg-5 col-12">
+            <div class="card my-5">
                 <div class="card-header" style="background-color: #5989ff">
                     <h3 style="color: #ffffff">Register</h3>
                 </div>

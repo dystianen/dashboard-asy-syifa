@@ -49,11 +49,11 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
                         </button>
-
-                        <div style="display: flex; justify-content: center">
-                            <a class="text-center mt-4" href="/register">Register Account ?</a>
-                        </div>
                     </form>
+                    <div class="text-center mt-5 text-lg fs-4">
+                        <p class="text-gray-600">Don't have an account? <a href="/register" class="font-bold">Sign
+                                up</a>.</p>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-7 d-none d-lg-block h-100">
