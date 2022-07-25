@@ -44,8 +44,8 @@
                                 <td><?= $p['fullname'] ?></td>
                                 <td><?= $p['total'] ?></td>
                                 <td><?= $p['predikat'] ?></td>
-                                <td><?= date_format(date_create($p['created_at']), 'd M Y') ?></td>
-                                <td><?= date_format(date_create($p['created_at']), 'd M Y') ?></td>
+                                <td><?= date_format(date_create($p['registration_at']), 'd M Y H:i') ?></td>
+                                <td><?= date_format(date_create($p['created_at']), 'd M Y H:i') ?></td>
                                 <td>
                                     <a class="btn btn-info btn-sm" href="<?php echo base_url(); ?>/admin/evaluation/edit/<?= $p['evaluationId'] ?>"><i class="bi bi-pencil-square"></i></a>
                                     <a class="btn btn-warning btn-sm" href="<?= base_url(); ?>/admin/evaluation/detail/<?= $p['evaluationId'] ?>"><i class="bi bi-eye-fill"></i></a>
