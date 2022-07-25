@@ -122,7 +122,7 @@ class AttendanceController extends BaseController
         $qrToday =  $this->qrModel->where('DATE(created_at)', $today)->first();
 
         $data = [
-            'qrToday' => $qrToday['content'],
+            'qrToday' => $qrToday['content'] ?? null,
         ];
 
         echo view('layouts/pages/User/scan/index', $data);
