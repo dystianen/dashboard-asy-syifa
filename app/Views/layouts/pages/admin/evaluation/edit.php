@@ -54,8 +54,7 @@
                                         <div class="mt-3 row">
                                             <label for="disiplin" class="col-sm-4 col-form-label">Disiplin</label>
                                             <div class="col-sm-6">
-                                                <input name="disiplin" type="number" min="0" max="10"
-                                                       class="form-control"
+                                                <input name="disiplin" type="number" min="0" max="100" class="form-control"
                                                        id="disiplin" value="<?= $evaluation['disiplin'] ?>">
                                                 <div class="disiplin-invalid-feedback" style="color: #dc3545; font-size: 12px"></div>
                                             </div>
@@ -63,8 +62,7 @@
                                         <div class="mt-3 row">
                                             <label for="loyalitas" class="col-sm-4 col-form-label">Loyalitas</label>
                                             <div class="col-sm-6">
-                                                <input name="loyalitas" type="number" min="0" max="10"
-                                                       class="form-control"
+                                                <input name="loyalitas" type="number" min="0" max="100" class="form-control"
                                                        id="loyalitas" value="<?= $evaluation['loyalitas'] ?>">
                                                 <div class="loyalitas-invalid-feedback" style="color: #dc3545; font-size: 12px"></div>
                                             </div>
@@ -72,8 +70,7 @@
                                         <div class="mt-3 row">
                                             <label for="kerjasama" class="col-sm-4 col-form-label">Kerja Sama</label>
                                             <div class="col-sm-6">
-                                                <input name="kerjasama" type="number" min="0" max="10"
-                                                       class="form-control"
+                                                <input name="kerjasama" type="number" min="0" max="100" class="form-control"
                                                        id="kerjasama" value="<?= $evaluation['kerjasama'] ?>">
                                                 <div class="kerjasama-invalid-feedback" style="color: #dc3545; font-size: 12px"></div>
                                             </div>
@@ -81,17 +78,21 @@
                                         <div class="mt-3 row">
                                             <label for="perilaku" class="col-sm-4 col-form-label">Perilaku</label>
                                             <div class="col-sm-6">
-                                                <input name="perilaku" type="number" min="0" max="10"
-                                                       class="form-control"
+                                                <input name="perilaku" type="number" min="0" max="100" class="form-control"
                                                        id="perilaku" value="<?= $evaluation['perilaku'] ?>">
                                                 <div class="perilaku-invalid-feedback" style="color: #dc3545; font-size: 12px"></div>
                                             </div>
                                         </div>
                                         <div class="mt-5 row">
-                                            <label for="total" class="col-sm-4 col-form-label font-bold">Total</label>
+                                            <label for="total" class="col-sm-4 col-form-label">Total</label>
                                             <div class="col-sm-6">
-                                                <input type="number" class="form-control" id="total"
-                                                       value="<?= $evaluation['total'] - 60 ?>" disabled>
+                                                <input readonly name="total_sikap" type="number" class="form-control" id="total" value="<?= $evaluation['total_sikap'] ?>">
+                                            </div>
+                                        </div>
+                                        <div class="mt-2 row">
+                                            <label for="total" class="col-sm-4 col-form-label font-bold">SCORE 40%</label>
+                                            <div class="col-sm-6">
+                                                <input readonly name="total_percentage_sikap" type="number" class="form-control" id="total_percentage_sikap" value="<?= $evaluation['total_percentage_sikap'] ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -103,20 +104,33 @@
                                     <div class="card-header">B. HASIL PEKERJAAN (60%)</div>
                                     <div class="card-body">
                                         <div class="mt-3 row">
-                                            <label for="omseting" class="col-sm-6 col-form-label">Omseting
-                                                Service</label>
-                                            <div class="col-sm-2">
-                                                <input name="omseting" type="text" readonly
-                                                       class="form-control-plaintext" id="omseting"
-                                                       value="60">
+                                            <div class="col-sm-6">
+                                                <select id="job_id" name="job_id" class="form-select <?= ($validation->hasError('job_id') ? 'is-invalid' : '') ?>" id="basicSelect">
+                                                    <option value="">--please select--</option>
+                                                    <?php foreach ($job as $j) : ?>
+                                                        <option value="<?= $j['jobId'] ?>" selected><?= $j['type_of_work'] ?></option>
+                                                    <?php endforeach; ?>
+                                                    <div class="invalid-feedback">
+                                                        <?= $validation->getError('job_id') ?>
+                                                    </div>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input id="type" name="value_job_type" type="number" min="0" max="100" class="form-control" value="<?= $evaluation['value_job_type'] ?>">
+                                                <div class="type-invalid-feedback" style="color: #dc3545; font-size: 12px"></div>
                                             </div>
                                         </div>
 
                                         <div class="row" style="padding-top: 13rem">
-                                            <label for="total" class="col-sm-6 col-form-label font-bold">Total</label>
-                                            <div class="col-sm-2">
-                                                <input type="text" readonly class="form-control-plaintext" id="total"
-                                                       value="60">
+                                            <label for="total" class="col-sm-6 col-form-label">Total</label>
+                                            <div class="col-sm-6">
+                                                <input readonly name="total_working_result" class="form-control" id="total_working" value="<?= $evaluation['total_working_result'] ?>">
+                                            </div>
+                                        </div>
+                                        <div class="mt-2 row">
+                                            <label for="total" class="col-sm-6 col-form-label font-bold">SCORE 60%</label>
+                                            <div class="col-sm-6">
+                                                <input readonly name="total_percentage_working_result" class="form-control" id="total_percentage_working_result" value="<?= $evaluation['total_percentage_working_result'] ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -129,8 +143,16 @@
                         <div class="mt-3 row">
                             <label for="totalNilai" class="col-sm-2 col-form-label">Total Nilai (A+B)</label>
                             <div class="col-sm-3">
-                                <input name="totalNilai" type="number" class="form-control" id="totalNilai"
-                                       value="<?= $evaluation['total'] ?>" disabled>
+                                <input readonly name="totalNilai" type="number" class="form-control" id="totalNilai" value="<?= $evaluation['total'] ?>">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 mt-2">
+                        <div class="mt-3 row">
+                            <label for="totalNilai" class="col-sm-2 col-form-label">Predikat</label>
+                            <div class="col-sm-3">
+                                <input readonly name="predikat" class="form-control" id="predikat" value="<?= $evaluation['predikat'] ?>">
                             </div>
                         </div>
                     </div>
@@ -159,8 +181,31 @@
             let total = null;
             if (disiplin && loyalitas && kerjasama && perilaku) {
                 total = Number(disiplin) + Number(loyalitas) + Number(kerjasama) + Number(perilaku);
-                document.getElementById("total").value = total;
-                document.getElementById("totalNilai").value = total + 60;
+                document.getElementById("total").value = total / 4;
+                document.getElementById("total_percentage_sikap").value = 40 / 100 * document.getElementById("total").value;
+            }
+        });
+
+        $('#type').change(function () {
+            let totalWorking = document.getElementById('type').value;
+            let percentageSikap = document.getElementById("total_percentage_sikap").value;
+            document.getElementById("total_working").value = totalWorking / 1;
+            document.getElementById("total_percentage_working_result").value = 60 / 100 * totalWorking;
+
+            let percentageWorking = document.getElementById("total_percentage_working_result").value;
+            const res =  Number(percentageSikap) + Number(percentageWorking);
+            document.getElementById("totalNilai").value = res;
+
+            if (res) {
+                if (res > 90) {
+                    document.getElementById("predikat").value = 'Sangat Baik'
+                } else if (res > 75) {
+                    document.getElementById("predikat").value = 'Baik'
+                } else if (res > 60) {
+                    document.getElementById("predikat").value = 'Cukup'
+                } else if (res < 60) {
+                    document.getElementById("predikat").value = 'Kurang'
+                }
             }
         });
 
@@ -207,6 +252,17 @@
             } else {
                 $(this).removeClass('is-invalid')
                 $('.perilaku-invalid-feedback').remove()
+            }
+        })
+
+        $("#type").change(function () {
+            let type = document.getElementById('type').value;
+            if (!maximum.test(type)) {
+                $(this).addClass('is-invalid');
+                $('.type-invalid-feedback').text("Max 100!");
+            } else {
+                $(this).removeClass('is-invalid')
+                $('.type-invalid-feedback').remove();
             }
         })
     </script>

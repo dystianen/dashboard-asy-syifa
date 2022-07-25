@@ -65,7 +65,6 @@ class EvaluationController extends BaseController
         ];
 
         if ($this->validate($rules)) {
-            // $total = $this->request->getVar('disiplin') + $this->request->getVar('loyalitas') + $this->request->getVar('kerjasama') + $this->request->getVar('perilaku') + '60';
             $data = [
                 'user_id' => $this->request->getVar('user_id'),
                 'job_id' => $this->request->getVar('job_id'),
@@ -73,17 +72,16 @@ class EvaluationController extends BaseController
                 'loyalitas' => $this->request->getVar('loyalitas'),
                 'kerjasama' => $this->request->getVar('kerjasama'),
                 'perilaku' => $this->request->getVar('perilaku'),
-                'value_job_type' => $this->request->getVar('type'),
+                'value_job_type' => $this->request->getVar('value_job_type'),
                 'total_sikap' => $this->request->getVar('total_sikap'),
                 'total_percentage_sikap' => $this->request->getVar('total_percentage_sikap'),
                 'total_working_result' => $this->request->getVar('total_working_result'),
                 'total_percentage_working_result' => $this->request->getVar('total_percentage_working_result'),
-                'total' => $this->request->getVar('total'),
+                'total' => $this->request->getVar('totalNilai'),
                 'predikat' => $this->request->getVar('predikat'),
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 
-            dd($data);
             $this->evaluationModel->save($data);
             session()->setFlashdata('success_evaluation', 'Create Evaluation successfully.');
             return redirect()->to("/admin/evaluation");
@@ -97,10 +95,12 @@ class EvaluationController extends BaseController
     {
         $dataEvaluation = $this->evaluationModel->where(['evaluationId' => $id])->first();
         $dataUser = $this->userModel->findAll();
+        $dataJob = $this->jobModel->findAll();
         $data = [
             'page' => 'evaluation',
             'evaluation' => $dataEvaluation,
             'user' => $dataUser,
+            'job' => $dataJob,
             'validation' => Services::validation(),
         ];
 
@@ -111,22 +111,29 @@ class EvaluationController extends BaseController
     {
         $rules = [
             'user_id' => 'required',
+            'job_id' => 'required',
             'disiplin' => 'required',
             'loyalitas'   => 'required',
             'kerjasama'   => 'required',
             'perilaku'   => 'required',
+            'value_job_type' => 'required',
         ];
 
         if ($this->validate($rules)) {
-            $total = $this->request->getVar('disiplin') + $this->request->getVar('loyalitas') + $this->request->getVar('kerjasama') + $this->request->getVar('perilaku') + '60';
             $data = [
                 'user_id' => $this->request->getVar('user_id'),
+                'job_id' => $this->request->getVar('job_id'),
                 'disiplin' => $this->request->getVar('disiplin'),
                 'loyalitas' => $this->request->getVar('loyalitas'),
                 'kerjasama' => $this->request->getVar('kerjasama'),
                 'perilaku' => $this->request->getVar('perilaku'),
-                'omseting' => '60',
-                'total' => $total,
+                'value_job_type' => $this->request->getVar('value_job_type'),
+                'total_sikap' => $this->request->getVar('total_sikap'),
+                'total_percentage_sikap' => $this->request->getVar('total_percentage_sikap'),
+                'total_working_result' => $this->request->getVar('total_working_result'),
+                'total_percentage_working_result' => $this->request->getVar('total_percentage_working_result'),
+                'total' => $this->request->getVar('totalNilai'),
+                'predikat' => $this->request->getVar('predikat'),
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 
@@ -143,10 +150,12 @@ class EvaluationController extends BaseController
     {
         $dataPerformance = $this->evaluationModel->where(['evaluationId' => $id])->first();
         $dataUser = $this->userModel->findAll();
+        $dataJob = $this->jobModel->findAll();
         $data = [
             'page' => 'evaluation',
             'evaluation' => $dataPerformance,
             'user' => $dataUser,
+            'job' => $dataJob
         ];
 
         echo view('layouts/pages/admin/evaluation/detail', $data);

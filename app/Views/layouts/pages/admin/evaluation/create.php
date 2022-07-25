@@ -88,13 +88,13 @@
                                         <div class="mt-5 row">
                                             <label for="total" class="col-sm-4 col-form-label">Total</label>
                                             <div class="col-sm-6">
-                                                <input name="total_sikap" type="number" class="form-control" id="total" disabled>
+                                                <input readonly name="total_sikap" type="number" class="form-control" id="total">
                                             </div>
                                         </div>
                                         <div class="mt-2 row">
                                             <label for="total" class="col-sm-4 col-form-label font-bold">SCORE 40%</label>
                                             <div class="col-sm-6">
-                                                <input name="total_percentage_sikap" type="number" class="form-control" id="total_percentage_sikap" disabled>
+                                                <input readonly name="total_percentage_sikap" type="number" class="form-control" id="total_percentage_sikap">
                                             </div>
                                         </div>
                                     </div>
@@ -120,7 +120,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-sm-6">
-                                                <input id="type" name="type" type="number" min="0" max="100" class="form-control">
+                                                <input id="type" name="value_job_type" type="number" min="0" max="100" class="form-control">
                                                 <div class="type-invalid-feedback" style="color: #dc3545; font-size: 12px"></div>
                                             </div>
                                         </div>
@@ -128,13 +128,13 @@
                                         <div class="row" style="padding-top: 13rem">
                                             <label for="total" class="col-sm-6 col-form-label">Total</label>
                                             <div class="col-sm-6">
-                                                <input disabled name="total_working_result" class="form-control" id="total_working">
+                                                <input readonly name="total_working_result" class="form-control" id="total_working">
                                             </div>
                                         </div>
                                         <div class="mt-2 row">
                                             <label for="total" class="col-sm-6 col-form-label font-bold">SCORE 60%</label>
                                             <div class="col-sm-6">
-                                                <input disabled name="total_percentage_working_result" class="form-control" id="total_percentage_working_result">
+                                                <input readonly name="total_percentage_working_result" class="form-control" id="total_percentage_working_result">
                                             </div>
                                         </div>
                                     </div>
@@ -147,7 +147,7 @@
                         <div class="mt-3 row">
                             <label for="totalNilai" class="col-sm-2 col-form-label">Total Nilai (A+B)</label>
                             <div class="col-sm-3">
-                                <input name="totalNilai" type="number" class="form-control" id="totalNilai" disabled>
+                                <input readonly name="totalNilai" type="number" class="form-control" id="totalNilai">
                             </div>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                         <div class="mt-3 row">
                             <label for="totalNilai" class="col-sm-2 col-form-label">Predikat</label>
                             <div class="col-sm-3">
-                                <input name="predikat" class="form-control" id="predikat" disabled>
+                                <input readonly name="predikat" class="form-control" id="predikat">
                             </div>
                         </div>
                     </div>
@@ -185,15 +185,15 @@
             let total = null;
             if (disiplin && loyalitas && kerjasama && perilaku) {
                 total = Number(disiplin) + Number(loyalitas) + Number(kerjasama) + Number(perilaku);
-                document.getElementById("total").value = total;
-                document.getElementById("total_percentage_sikap").value = 40 / 100 * total;
+                document.getElementById("total").value = total / 4;
+                document.getElementById("total_percentage_sikap").value = 40 / 100 * document.getElementById("total").value;
             }
         });
 
         $('#type').change(function () {
             let totalWorking = document.getElementById('type').value;
             let percentageSikap = document.getElementById("total_percentage_sikap").value;
-            document.getElementById("total_working").value = totalWorking;
+            document.getElementById("total_working").value = totalWorking / 1;
             document.getElementById("total_percentage_working_result").value = 60 / 100 * totalWorking;
 
             let percentageWorking = document.getElementById("total_percentage_working_result").value;
