@@ -68,12 +68,14 @@ class UserController extends BaseController
     public function report()
     {
         $id = session()->get('id');
+        $dataJob = $this->jobModel->findAll();
         $detail = $this->reportModel
             ->where(['user_id' => $id])
             ->where(['DATE(created_at)' => date('Y-m-d')])
             ->first();
 
         $data = [
+            'job' => $dataJob,
             'report' => $detail,
         ];
         echo view('layouts/pages/User/report/index', $data);

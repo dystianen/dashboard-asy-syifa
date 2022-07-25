@@ -22,6 +22,17 @@ class Report extends Migration
                 'unsigned' => true,
                 'null' => true,
             ],
+            'job_id' => [
+                'type' => 'INT',
+                'constraint' => 12,
+                'unsigned' => true,
+                'null' => true,
+            ],
+            'total' => [
+                'type' => 'INT',
+                'type' => 'TEXT',
+                'null' => true,
+            ],
             'description' => [
                 'type' => 'INT',
                 'type' => 'TEXT',
@@ -46,6 +57,7 @@ class Report extends Migration
 
         // Relations
         $this->forge->addForeignKey('user_id', 'users', 'userId');
+        $this->forge->addForeignKey('job_id', 'jobs', 'jobId');
 
         // Create Table Categories
         $this->forge->createTable('reports');

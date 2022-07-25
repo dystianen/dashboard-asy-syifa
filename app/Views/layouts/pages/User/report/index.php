@@ -14,10 +14,25 @@
                 <div class="card-body">
 
                     <!-- Content -->
-                    <div class="form-label mb-4">
-                        <span>Please report your Task today!</span>
+                    <div class="form-group">
+                        <label class="form-label" for="job_type">Job Type <span style="color: red">*</span></label>
+                        <select id="job_id" name="job_id" class="form-select" id="basicSelect">
+                            <option value="">--please select--</option>
+                            <?php foreach ($job as $j) : ?>
+                                <option value="<?= $j['jobId'] ?>" <?php if (old('job_id') == $j['jobId']) {
+                                    echo 'selected';
+                                } ?>><?= $j['type_of_work'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
-                    <textarea name="description" class="form-control" rows="8" required></textarea>
+                    <div class="form-group">
+                        <label class="form-label" for="total">Total <span style="color: red">*</span></label>
+                        <input name="total" type="number" class="form-control" required value="<?= old('total') ?>">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="description">Description <span style="color: red">*</span></label>
+                        <textarea name="description" class="form-control" rows="8" required><?= old('description') ?></textarea>
+                    </div>
 
                 </div>
                 <div class="card-footer text-right">

@@ -30,6 +30,20 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label for="job_type" class="form-label">Job Type <span style="color: red">*</span></label>
+                            <input disabled name="job_type" class="form-control" id="job_type"
+                                   value="<?= $report['type_of_work'] ?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="total" class="form-label">Total <span style="color: red">*</span></label>
+                            <input disabled name="total" class="form-control" id="total"
+                                   value="<?= $report['total'] ?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
                             <label for="user" class="form-label">Description <span style="color: red">*</span></label>
                             <textarea disabled name="description" class="form-control" rows="10"><?= $report['description'] ?></textarea>
                         </div>

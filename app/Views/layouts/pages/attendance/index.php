@@ -26,7 +26,8 @@
                             <th>Category</th>
                             <th>Reason</th>
                             <th>File</th>
-                            <th>Date</th>
+                            <th>Absent Sign In</th>
+                            <th>Absent Sign Out</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -54,7 +55,8 @@
                                     <td>-</td>
                                 <?php endif; ?>
 
-                                <td><?= date_format(date_create($e['created_at']), 'd M Y H:i') ?></td>
+                                <td><?= date_format(date_create($e['created_at']), 'd M Y H:i:s') ?></td>
+                                <td><?= date_format(date_create($e['updated_at']), 'd M Y H:i:s') ?></td>
 
                                 <?php if ($e['category'] !== 'hadir') : ?>
                                     <td>

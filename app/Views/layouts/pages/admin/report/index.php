@@ -28,6 +28,8 @@
                         <tr>
                             <th>No.</th>
                             <th>Name</th>
+                            <th>Job Type</th>
+                            <th>Total</th>
                             <th>Description</th>
                             <th>Date Created</th>
                             <th>Action</th>
@@ -40,6 +42,8 @@
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td><?= $r['fullname'] ?></td>
+                                <td><?= $r['type_of_work'] ?></td>
+                                <td><?= $r['total'] ?></td>
                                 <td><?= (strlen(htmlspecialchars($r['description'])) > 13)
                                         ? substr(htmlspecialchars($r['description']), 0, 40) . '...'
                                         : htmlspecialchars(

@@ -17,7 +17,9 @@ class ReportModel extends Model
 
     protected $allowedFields = [
         "user_id",
+        "job_id",
         "description",
+        "total",
         "created_at",
         "updated_at",
     ];
