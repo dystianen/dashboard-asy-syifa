@@ -21,7 +21,7 @@
         </div>
 
         <div class="card-body mt-2">
-            <form action="<?php echo base_url(); ?>/admin/category/update/<?= $category['id'] ?>" method="post">
+            <form action="<?php echo base_url(); ?>/admin/category/update/<?= $category['categoryId'] ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="row">
                     <div class="col-md-6 col-12">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="float-end pt-3">
+                <div class="float-start pt-3">
                     <a type="button" class="btn btn-secondary" href="/admin/category">Cancel</a>
                     <button type="submit" class="btn btn-primary">Save
                     </button>

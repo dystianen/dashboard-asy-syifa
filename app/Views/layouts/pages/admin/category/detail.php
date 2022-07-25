@@ -31,9 +31,9 @@
                     </div>
                 </div>
 
-                <div class="float-end pt-3">
+                <div class="float-start pt-3">
                     <a type="button" class="btn btn-secondary" href="/admin/category">Back</a>
-                    <a href="<?php echo base_url(); ?>/admin/category/edit/<?= $category['id'] ?>"
+                    <a href="<?php echo base_url(); ?>/admin/category/edit/<?= $category['categoryId'] ?>"
                         class="btn btn-primary">Edit</a>
                 </div>
 

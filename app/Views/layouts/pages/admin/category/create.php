@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <div class="float-end pt-3">
+                <div class="float-start pt-3">
                     <a type="button" class="btn btn-secondary" href="/admin/category">Cancel</a>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>

@@ -101,7 +101,6 @@
             "ordering": true,
             "info": true,
             "buttons": [
-                'excel',
                 {
                     text: 'Create',
                     action: function(e, dt, node, config) {
