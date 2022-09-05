@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
                 'phone_number' => '081336473785',
                 'position' => 'Admin',
                 'password'  =>  password_hash("123", PASSWORD_DEFAULT),
+                'registration_at' => date("Y-m-d H:i:s"),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
@@ -31,6 +32,7 @@ class UserSeeder extends Seeder
                 'position' => 'Employee',
                 'password'  =>  password_hash("123", PASSWORD_DEFAULT),
                 'created_at' => date("Y-m-d H:i:s"),
+                'registration_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
             [
@@ -42,6 +44,7 @@ class UserSeeder extends Seeder
                 'phone_number' => '081336473755',
                 'position' => 'Programmer',
                 'password'  =>  password_hash("123", PASSWORD_DEFAULT),
+                'registration_at' => date("Y-m-d H:i:s"),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
