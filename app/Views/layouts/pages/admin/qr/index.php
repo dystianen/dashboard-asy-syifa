@@ -57,11 +57,12 @@
                                         ); ?>
                                 <td><?= date_format(date_create($q['created_at']), 'd M Y H:i') ?></td>
                                 <td>
-                                    <a class="btn btn-warning btn-sm" href="<?= base_url($q['file']) ?>" target="_blank">
+                                    <a class="btn btn-warning btn-sm" href="<?= base_url($q['file']) ?>"
+                                       target="_blank">
                                         <i class="bi bi-eye-fill"></i>
                                     </a>
                                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal<?= $q['qrId'] ?>">
+                                            data-bs-target="#deleteModal<?= $q['qrId'] ?>">
                                         <i class="bi bi-trash-fill"></i>
                                     </button>
                                 </td>
@@ -119,10 +120,10 @@
         <?php endforeach; ?>
 
     </div>
-<?= $this->endSection() ?>
 
-<?= $this->section('scripts') ?>
     <script type="text/javascript">
+        let isQrToday = '<?php echo $qrCreated; ?>';
+
         $(document).ready(function () {
             $('#table').DataTable({
                 "dom": `Q
@@ -145,8 +146,19 @@
                 "buttons": [
                     {
                         text: 'Generate QR',
-                        action: function (e, node, config){
-                            $('#generateModal').modal('show')
+                        action: function (e, node, config) {
+                            if (!isQrToday) {
+                                $('#generateModal').modal('show')
+                            } else {
+                                Swal.fire({
+                                    icon: 'info',
+                                    title: 'FYI!',
+                                    text: 'Unable to generate QR Code because it was already created for today!',
+                                    showConfirmButton: false,
+                                    showCloseButton: true,
+                                    heightAuto: false,
+                                })
+                            }
                         }
                     }
                 ]

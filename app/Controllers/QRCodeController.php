@@ -32,7 +32,8 @@ class QRCodeController extends BaseController
         $data = [
             'page' => 'QR',
             'qr' => $qrs,
-            'qrToday' => $qrToday
+            'qrToday' => $qrToday,
+            'qrCreated' => $qrToday ? $qrToday['created_at'] : null
         ];
 
         return view('layouts/pages/admin/qr/index', $data);
