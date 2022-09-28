@@ -63,7 +63,6 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
 
     /** Quick Response Code **/
     $routes->get('qr', 'QRCodeController::index');
-    $routes->get('qr/form', 'QRCodeController::create');
     $routes->post('qr/save', 'QRCodeController::add_data');
     $routes->post('qr/update/(:num)', 'QRCodeController::edit_data/$1');
     $routes->delete('qr/delete/(:num)', 'QRCodeController::remove_data/$1');
@@ -104,6 +103,9 @@ $routes->group('user', ['filter' => 'authGuard'], function ($routes) {
     /** PERMISSIONS **/
     $routes->get('permission', 'AttendanceController::permission', ['filter' => 'authGuard']);
     $routes->post('permission/submit', 'AttendanceController::permissionSave', ['filter' => 'authGuard']);
+
+    /** QR CODE **/
+    $routes->get('qrcode', 'AttendanceController::getQrCode', ['filter' => 'authGuard']);
 
     /** REPORT TASK **/
     $routes->get('report', 'UserController::report', ['filter' => 'authGuard']);

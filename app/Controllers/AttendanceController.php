@@ -41,6 +41,16 @@ class AttendanceController extends BaseController
     //     echo $html;
     // }
 
+    public function getQrCode() {
+        $today = date('Y-m-d');
+        $qrToday =  $this->qrModel->where('DATE(created_at)', $today)->first();
+        $data = [
+            'qr' => $qrToday
+        ];
+
+        echo view('layouts/pages/User/qrcode/index', $data);
+    }
+
     public function permission()
     {
         $data = [

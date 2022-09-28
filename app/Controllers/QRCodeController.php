@@ -90,24 +90,36 @@ class QRCodeController extends BaseController
         ];
     }
 
+    function gen_uuid() {
+        return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+            // 32 bits for "time_low"
+            mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
+
+            // 16 bits for "time_mid"
+            mt_rand( 0, 0xffff ),
+
+            // 16 bits for "time_hi_and_version",
+            // four most significant bits holds version number 4
+            mt_rand( 0, 0x0fff ) | 0x4000,
+
+            // 16 bits, 8 bits for "clk_seq_hi_res",
+            // 8 bits for "clk_seq_low",
+            // two most significant bits holds zero and one for variant DCE1.1
+            mt_rand( 0, 0x3fff ) | 0x8000,
+
+            // 48 bits for "node"
+            mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
+        );
+    }
+
     public function add_data()
     {
-        $rules = [
-            'content' => 'required|min_length[36]|max_length[36]',
-        ];
+        $data = $this->gen_uuid();
+        $qr = $this->generate_qrcode($data);
 
-        /* Generate QR Code */
-        if ($this->validate($rules)) {
-            $data = $this->request->getVar('content');
-            $qr = $this->generate_qrcode($data);
-
-            $this->qrModel->insert_data($qr);
-            session()->setFlashdata('success_qr', 'Create QR Successfully.');
-            return redirect()->to('/admin/qr');
-        } else {
-            $validation = Services::validation();
-            return redirect()->to('/admin/qr/form')->withInput()->with('validation', $validation);
-        }
+        $this->qrModel->insert_data($qr);
+        session()->setFlashdata('success_qr', 'Create QR Successfully.');
+        return redirect()->to('/admin/qr');
     }
 
     public function edit_data($id)

@@ -35,6 +35,17 @@
             </div>
         </a>
     </div>
+
+    <div class="row mt-4">
+        <a class="card card-menu stretched-link text-decoration-none" href="/user/qrcode">
+            <div class="card-body text-center">
+                <div class="column justify-content-center">
+                    <i class="bi bi-file-earmark-text mt-1 mr-3" style="font-size: 32px; color: #6610f2"></i>
+                    <h5 class="title text-center m-0 pt-3" style="color: #5e5e5e">QR CODE</h5>
+                </div>
+            </div>
+        </a>
+    </div>
 </section>
 <?= $this->endSection() ?>
 
