@@ -25,6 +25,8 @@
             </div>
         <?php endif; ?>
 
+        <div class="m-3" id="ip" style="font-weight: bold">ip</div>
+
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
@@ -75,25 +77,23 @@
         </div>
 
         <!-- Modal Generate QR CODE -->
-        <?php foreach ($qr as $q) : ?>
-            <div class="modal fade" id="generateModal" data-bs-backdrop="static" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body text-center">
-                            <h3>Are you sure</h3>
-                            Do you want to make a QR Code?
-                            </br>
-                            <div class="pt-3">
-                                <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
-                                <form class="d-inline" method="post" action="<?php echo base_url(); ?>/admin/qr/save">
-                                    <button type="submit" class="btn btn-danger m-2">Yes</button>
-                                </form>
-                            </div>
+        <div class="modal fade" id="generateModal" data-bs-backdrop="static" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <h3>Are you sure</h3>
+                        Do you want to make a QR Code?
+                        </br>
+                        <div class="pt-3">
+                            <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">No</button>
+                            <form class="d-inline" method="post" action="<?php echo base_url(); ?>/admin/qr/save">
+                                <button type="submit" class="btn btn-danger m-2">Yes</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
+        </div>
 
         <!-- Modal Delete -->
         <?php foreach ($qr as $q) : ?>
@@ -122,7 +122,47 @@
     </div>
 
     <script type="text/javascript">
+        //regular expressions to extract IP and country values
+        const countryCodeExpression = /loc=([\w]{2})/;
+        const userIPExpression = /ip=([\w\.]+)/;
+
+        //automatic country determination.
+        function initCountry() {
+            return new Promise((resolve, reject) => {
+                let xhr = new XMLHttpRequest();
+                xhr.timeout = 3000;
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        if (this.status == 200) {
+                            const countryCode = countryCodeExpression.exec(this.responseText)
+                            const ip = userIPExpression.exec(this.responseText)
+                            if (countryCode === null || countryCode[1] === '' ||
+                                ip === null || ip[1] === '') {
+                                reject('IP/Country code detection failed');
+                            }
+                            let result = {
+                                countryCode: countryCode[1],
+                                IP: ip[1]
+                            };
+                            resolve(result)
+                            document.getElementById("ip").innerHTML = "IP Address : " + result.IP
+                        } else {
+                            reject(xhr.status)
+                        }
+                    }
+                }
+                xhr.ontimeout = function () {
+                    reject('timeout')
+                }
+                xhr.open('GET', 'https://www.cloudflare.com/cdn-cgi/trace', true);
+                xhr.send();
+            });
+        }
+
+        initCountry().then(result => console.log(JSON.stringify(result))).catch(e => console.log(e))
+
         let isQrToday = '<?php echo $qrCreated; ?>';
+        console.log({isQrToday})
 
         $(document).ready(function () {
             $('#table').DataTable({
@@ -147,9 +187,7 @@
                     {
                         text: 'Generate QR',
                         action: function (e, node, config) {
-                            if (!isQrToday) {
-                                $('#generateModal').modal('show')
-                            } else {
+                            if (isQrToday) {
                                 Swal.fire({
                                     icon: 'info',
                                     title: 'FYI!',
@@ -158,6 +196,8 @@
                                     showCloseButton: true,
                                     heightAuto: false,
                                 })
+                            } else {
+                                $('#generateModal').modal('show')
                             }
                         }
                     }
