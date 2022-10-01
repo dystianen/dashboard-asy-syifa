@@ -179,5 +179,10 @@
                 ]
             });
         });
+
+        $(".success").fadeTo(2000, 500).slideUp(500, function () {
+            $(".success").slideUp(500);
+        });
+
     </script>
 <?= $this->endSection() ?>
