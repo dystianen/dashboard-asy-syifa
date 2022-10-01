@@ -138,14 +138,19 @@ class AttendanceController extends BaseController
             'description' => $currentData['description'],
             'user_proof_file' => $currentData['user_proof_file'],
             'is_logged_in' => TRUE,
-            'status' => $status === 'approve' ? 'APPROVED' : 'REJECTED',
+            'status' => $status === 'approved' ? 'APPROVED' : 'REJECTED',
             'created_at' => $currentData['created_at'],
             'updated_at' => date('Y-m-d H:i:s')
         ];
 
         $this->attendanceModel->replace($data);
 
-        session()->setFlashdata('success_change_status', "<?php $status ?> data successfully.");
+        if ($status === 'approved') {
+            session()->setFlashdata('success_change_status', "Approve Data successfully.");
+        } else {
+            session()->setFlashdata('success_change_status', "Reject Data successfully.");
+        }
+
         return redirect()->to("/admin/attendance");
     }
 }

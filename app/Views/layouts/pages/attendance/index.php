@@ -138,11 +138,11 @@
                         <div class="pt-3 text-end">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                             <form class="d-inline" method="post"
-                                  action="<?= base_url(); ?>/admin/attendance/<?= $e['attendanceId'] ?>/reject">
+                                  action="<?= base_url(); ?>/admin/attendance/<?= $e['attendanceId'] ?>/rejected">
                                 <button type="submit" class="btn btn-danger">Reject</button>
                             </form>
                             <form class="d-inline" method="post"
-                                  action="<?= base_url(); ?>/admin/attendance/<?= $e['attendanceId'] ?>/approve">
+                                  action="<?= base_url(); ?>/admin/attendance/<?= $e['attendanceId'] ?>/approved">
                                 <button type="submit" class="btn btn-success">Approve</button>
                             </form>
                         </div>
