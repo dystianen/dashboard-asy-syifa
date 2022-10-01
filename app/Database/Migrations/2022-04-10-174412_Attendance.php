@@ -40,7 +40,10 @@ class Attendance extends Migration
                 'type' => 'TEXT',
                 'null' => true
             ],
-
+            'status' => [
+                'type' => 'TEXT',
+                'null' => true
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,

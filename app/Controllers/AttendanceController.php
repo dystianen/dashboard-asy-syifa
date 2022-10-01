@@ -7,10 +7,12 @@ use App\Models\AttendanceModel;
 use App\Models\CategoryModel;
 use App\Models\QRModel;
 use CodeIgniter\Config\Services;
+use http\Params;
 
 class AttendanceController extends BaseController
 {
-    protected $attendanceModel, $categoryModel, $qrModel, $session;
+    protected $attendanceModel, $categoryModel, $qrModel, $session, $today;
+
     public function __construct()
     {
         helper(['form']);
@@ -18,6 +20,7 @@ class AttendanceController extends BaseController
         $this->categoryModel = new CategoryModel();
         $this->qrModel = new QRModel();
         $this->session = session();
+        $this->today = date('Y-m-d');
     }
 
     public function index()
@@ -26,24 +29,21 @@ class AttendanceController extends BaseController
             ->join('users', 'users.userId = attendances.user_id', 'left')
             ->findAll();
 
+        $entry_absent = $attedance ? date_format(date_create($attedance[0]['created_at']), 'Hi') : null;
+        $late = (int)$entry_absent <= 8000;
+
         $data = [
             'page' => 'attendance',
             'attendance' => $attedance,
+            'late' => $late,
         ];
 
         echo view('layouts/pages/attendance/index', $data);
     }
 
-    // public function myPdfPage()
-    // {
-    //     $url = base_url('assets/your.pdf');
-    //     $html = '<iframe src="' . $url . '" style="border:none; width: 100%; height: 100%"></iframe>';
-    //     echo $html;
-    // }
-
-    public function getQrCode() {
-        $today = date('Y-m-d');
-        $qrToday =  $this->qrModel->where('DATE(created_at)', $today)->first();
+    public function getQrCode()
+    {
+        $qrToday = $this->qrModel->where('DATE(created_at)', $this->today)->first();
         $data = [
             'qrToday' => $qrToday ? $qrToday['file'] : null
         ];
@@ -53,9 +53,12 @@ class AttendanceController extends BaseController
 
     public function permission()
     {
+        $user = $this->attendanceModel->where(['DATE(created_at)' => $this->today, 'user_id' => session()->get('id')])->first();
+
         $data = [
             'validation' => Services::validation(),
-            'category' => $this->categoryModel->findAll()
+            'category' => $this->categoryModel->findAll(),
+            'status' => $user['status'] ?? null
         ];
 
         echo view('layouts/pages/User/permission/index', $data);
@@ -67,7 +70,6 @@ class AttendanceController extends BaseController
         $rules = [
             'category' => 'required',
             'description' => 'required',
-            // 'user_proof_file' => 'required',
         ];
 
         if ($this->validate($rules)) {
@@ -82,6 +84,7 @@ class AttendanceController extends BaseController
                 'description' => $this->request->getVar('description'),
                 'user_proof_file' => $fileName,
                 'is_logged_in' => TRUE,
+                'status' => 'PENDING',
                 'created_at' => date('Y-m-d H:i:s')
             ];
 
@@ -96,40 +99,10 @@ class AttendanceController extends BaseController
         }
     }
 
-    // public function permissionSave()
-    // {
-    //     helper(['form']);
-    //     $rules = [
-    //         'category' => 'required',
-    //         'description' => 'required',
-    //         'user_proof_file' => 'required',
-    //     ];
-
-    //     if ($this->validate($rules)) {
-    //         $data = [
-    //             'user_id' => session()->get('id'),
-    //             'category' => $this->request->getVar('category'),
-    //             'description' => $this->request->getVar('description'),
-    //             'file' => $this->request->getVar('file'),
-    //             'is_logged_in' => TRUE,
-    //             'created_at' => date('Y-m-d H:i:s')
-    //         ];
-
-    //         $this->attendanceModel->save($data);
-
-    //         // TBD
-    //         session()->setFlashdata('success_absent', 'Permission submit successfully!');
-    //         return redirect()->to('/user/absent');
-    //     } else {
-    //         $validation = Services::validation();
-    //         return redirect()->to('/user/permission')->withInput()->with('validation', $validation);
-    //     }
-    // }
-
     public function scanner()
     {
         $today = date('Y-m-d');
-        $qrToday =  $this->qrModel->where('DATE(created_at)', $today)->first();
+        $qrToday = $this->qrModel->where('DATE(created_at)', $today)->first();
 
         $data = [
             'qrToday' => $qrToday['content'] ?? null,
@@ -150,6 +123,29 @@ class AttendanceController extends BaseController
 
         $this->attendanceModel->save($data);
 
+        session()->setFlashdata('success_absent', 'Scan QR Code successfully!');
         return redirect()->to('/user');
+    }
+
+    public function changeStatus($id, $status)
+    {
+        $currentData = $this->attendanceModel->where(['attendanceId' => $id])->first();
+
+        $data = [
+            'attendanceId' => $id,
+            'user_id' => session()->get('id'),
+            'category' => $currentData['category'],
+            'description' => $currentData['description'],
+            'user_proof_file' => $currentData['user_proof_file'],
+            'is_logged_in' => TRUE,
+            'status' => $status === 'approve' ? 'APPROVED' : 'REJECTED',
+            'created_at' => $currentData['created_at'],
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+
+        $this->attendanceModel->replace($data);
+
+        session()->setFlashdata('success_change_status', "<?php $status ?> data successfully.");
+        return redirect()->to("/admin/attendance");
     }
 }

@@ -20,7 +20,6 @@ class UserSeeder extends Seeder
                 'password'  =>  password_hash("123", PASSWORD_DEFAULT),
                 'registration_at' => date("Y-m-d H:i:s"),
                 'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s"),
             ],
             [
                 'ID_PKL' => 'PKL00002',
@@ -33,7 +32,6 @@ class UserSeeder extends Seeder
                 'password'  =>  password_hash("123", PASSWORD_DEFAULT),
                 'created_at' => date("Y-m-d H:i:s"),
                 'registration_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s"),
             ],
             [
                 'ID_PKL' => 'PKL00003',
@@ -46,7 +44,6 @@ class UserSeeder extends Seeder
                 'password'  =>  password_hash("123", PASSWORD_DEFAULT),
                 'registration_at' => date("Y-m-d H:i:s"),
                 'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s"),
             ],
         ];
         $this->db->table('users')->insertBatch($data);

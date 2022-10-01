@@ -58,8 +58,9 @@ $routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('job/detail/(:num)', 'JobController::detail/$1');
     $routes->delete('job/delete/(:num)', 'JobController::delete/$1');
 
-    /** ATTEDANCE **/
-    $routes->get('attedance', 'AttendanceController::index');
+    /** ATTENDANCE **/
+    $routes->get('attendance', 'AttendanceController::index');
+    $routes->post('attendance/(:num)/(:any)', 'AttendanceController::changeStatus/$1/$2');
 
     /** Quick Response Code **/
     $routes->get('qr', 'QRCodeController::index');

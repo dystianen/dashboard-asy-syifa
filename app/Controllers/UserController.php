@@ -62,7 +62,18 @@ class UserController extends BaseController
 
     public function absent()
     {
-        echo view('layouts/pages/User/absent/index');
+        $id = session()->get('id');
+
+        $isLoggedIn = $this->attendanceModel
+            ->where(['user_id' => $id])
+            ->where('DATE(created_at)', date('Y-m-d'))
+            ->first();
+
+        $data = [
+            'isLoggedIn' => $isLoggedIn
+        ];
+
+        echo view('layouts/pages/User/absent/index', $data);
     }
 
     public function report()

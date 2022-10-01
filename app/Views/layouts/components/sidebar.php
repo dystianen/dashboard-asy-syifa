@@ -22,7 +22,7 @@
         <li class="sidebar-item <?php if ($page == 'attendance') {
             echo 'active';
         } ?>">
-            <a href="/admin/attedance" class='sidebar-link'>
+            <a href="/admin/attendance" class='sidebar-link'>
                 <i class="bi bi-list-check"></i>
                 <span>Attendance</span>
             </a>

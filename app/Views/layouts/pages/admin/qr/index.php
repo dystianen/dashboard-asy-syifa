@@ -101,7 +101,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-body text-center">
-                            <h3>Are you sure?</h3>
+                            <h3>Are you sure</h3>
                             Do you really delete this data?
                             </br>
                             <div class="pt-3">

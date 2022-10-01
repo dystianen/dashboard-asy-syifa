@@ -20,6 +20,7 @@ class AttendanceModel extends Model
         "category",
         "description",
         "user_proof_file",
+        "status",
         "created_at",
         "updated_at",
     ];
