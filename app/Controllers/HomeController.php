@@ -46,19 +46,19 @@ class HomeController extends BaseController
             // Attendances
             'employee_presence' => $this
                 ->attedanceModel
-                ->where("category", "hadir")
+                ->where("category_id", 3)
                 ->where('DATE(created_at)', $todayPlusOne)
                 ->countAllResults(),
 
             'employee_sick' => $this
                 ->attedanceModel
-                ->where("category", "sakit")
+                ->where("category_id", 1)
                 ->where('DATE(created_at)', $todayPlusOne)
                 ->countAllResults(),
 
             'employee_leave' => $this
                 ->attedanceModel
-                ->where("category", "cuti")
+                ->where("category_id", 4)
                 ->where('DATE(created_at)', $todayPlusOne)
                 ->countAllResults(),
         ];

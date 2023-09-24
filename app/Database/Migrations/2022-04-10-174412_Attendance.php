@@ -22,15 +22,21 @@ class Attendance extends Migration
                 'unsigned' => true,
                 'null' => true,
             ],
-
+            'category_id' => [
+                'type' => 'INT',
+                'constraint' => 12,
+                'unsigned' => true,
+                'null' => true,
+            ],
+            'qr_id' => [
+                'type' => 'INT',
+                'constraint' => 12,
+                'unsigned' => true,
+                'null' => true,
+            ],
             'is_logged_in' => [
                 'type' => 'BOOLEAN',
                 'default' => false
-            ],
-            'category' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true,
             ],
             'description' => [
                 'type' => 'TEXT',
@@ -63,6 +69,8 @@ class Attendance extends Migration
 
         // Added Relation
         $this->forge->addForeignKey('user_id', 'users', 'userId');
+        $this->forge->addForeignKey('category_id', 'categories', 'categoryId');
+        $this->forge->addForeignKey('qr_id', 'qr', 'qrId');
 
         // Create Table Attendance
         $this->forge->createTable('attendances');

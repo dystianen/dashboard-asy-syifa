@@ -17,7 +17,7 @@ class AttendanceModel extends Model
     protected $allowedFields    = [
         "user_id",
         "is_logged_in",
-        "category",
+        "category_id",
         "description",
         "user_proof_file",
         "status",

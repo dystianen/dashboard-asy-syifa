@@ -47,8 +47,8 @@
                                 <td><?= $e['fullname']; ?></td>
 
                                 <!--START CATEGORY-->
-                                <?php if ($e['category']) : ?>
-                                    <td><?= $e['category']; ?></td>
+                                <?php if ($e['name']) : ?>
+                                    <td><?= $e['name']; ?></td>
                                 <?php else : ?>
                                     <td>-</td>
                                 <?php endif; ?>

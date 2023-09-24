@@ -27,6 +27,7 @@ class AttendanceController extends BaseController
     {
         $attedance = $this->attendanceModel
             ->join('users', 'users.userId = attendances.user_id', 'left')
+            ->join('categories', 'categories.categoryId = attendances.category_id', 'left')
             ->findAll();
 
         $entry_absent = $attedance ? date_format(date_create($attedance[0]['created_at']), 'Hi') : null;
@@ -80,13 +81,15 @@ class AttendanceController extends BaseController
 
             $data = [
                 'user_id' => session()->get('id'),
-                'category' => $this->request->getVar('category'),
+                'category_id' => $this->request->getVar('category'),
                 'description' => $this->request->getVar('description'),
                 'user_proof_file' => $fileName,
                 'is_logged_in' => TRUE,
                 'status' => 'PENDING',
                 'created_at' => date('Y-m-d H:i:s')
             ];
+
+            dd($data);
 
             $this->attendanceModel->save($data);
 
@@ -134,7 +137,7 @@ class AttendanceController extends BaseController
         $data = [
             'attendanceId' => $id,
             'user_id' => session()->get('id'),
-            'category' => $currentData['category'],
+            'category_id' => $currentData['category_id'],
             'description' => $currentData['description'],
             'user_proof_file' => $currentData['user_proof_file'],
             'is_logged_in' => TRUE,

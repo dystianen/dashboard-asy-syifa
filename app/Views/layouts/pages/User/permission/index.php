@@ -29,7 +29,7 @@
                                     id="basicSelect" value="<?= old('category') ?>">
                                 <option value="">--please select--</option>
                                 <?php foreach ($category as $e) : ?>
-                                    <option value="<?= $e['slug'] ?>"><?= $e['name'] ?></option>
+                                    <option value="<?= $e['categoryId'] ?>"><?= $e['name'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <div class="invalid-feedback">

@@ -40,7 +40,9 @@ class EvaluationController extends BaseController
 
     public function create()
     {
-        $dataUser = $this->userModel->findAll();
+        $dataUser = $this->userModel
+            ->where('position !=', 'Admin')
+            ->findAll();
         $dataJob = $this->jobModel->findAll();
         $data = [
             'page' => 'evaluation',
