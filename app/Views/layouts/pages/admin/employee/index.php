@@ -25,7 +25,7 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-striped" id="table">
+                    <table class="table" id="table">
                         <thead>
                         <tr>
                             <th>No.</th>
