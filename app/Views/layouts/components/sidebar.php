@@ -1,75 +1,28 @@
 <div class="sidebar-menu">
     <ul class="menu">
         <li class="sidebar-title">Menu</li>
-        <li class="sidebar-item <?php if ($page == 'dashboard') {
+        <li class="sidebar-item <?php if ($page == 'hero') {
             echo 'active';
         } ?>">
-            <a href="/admin/dashboard" class='sidebar-link'>
+            <a href="/hero" class='sidebar-link'>
                 <i class="bi bi-grid-fill"></i>
-                <span>Dashboard</span>
+                <span>Hero</span>
             </a>
         </li>
-
-        <li class="sidebar-item <?php if ($page == 'employee') {
+        <li class="sidebar-item <?php if ($page == 'gallery') {
             echo 'active';
         } ?>">
-            <a href="/admin/employee" class='sidebar-link'>
-                <i class="bi bi-people"></i>
-                <span>Employee</span>
+            <a href="/gallery" class='sidebar-link'>
+                <i class="bi bi-images"></i>
+                <span>Gallery</span>
             </a>
         </li>
-
-        <li class="sidebar-item <?php if ($page == 'attendance') {
+        <li class="sidebar-item <?php if ($page == 'news') {
             echo 'active';
         } ?>">
-            <a href="/admin/attendance" class='sidebar-link'>
-                <i class="bi bi-list-check"></i>
-                <span>Attendance</span>
-            </a>
-        </li>
-
-        <li class="sidebar-item <?php if ($page == 'job') {
-            echo 'active';
-        } ?>">
-            <a href="/admin/job" class='sidebar-link'>
-                <i class="bi bi-journal-text"></i>
-                <span>Job</span>
-            </a>
-        </li>
-
-        <li class="sidebar-item <?php if ($page == 'category') {
-            echo 'active';
-        } ?>">
-            <a href="/admin/category" class='sidebar-link'>
-                <i class="bi bi-tags"></i>
-                <span>Category</span>
-            </a>
-        </li>
-
-        <li class="sidebar-item <?php if ($page == 'report') {
-            echo 'active';
-        } ?>">
-            <a href="/admin/report" class='sidebar-link'>
-                <i class="bi bi-file-earmark-person"></i>
-                <span>Report</span>
-            </a>
-        </li>
-
-        <li class="sidebar-item <?php if ($page == 'evaluation') {
-            echo 'active';
-        } ?>">
-            <a href="/admin/evaluation" class='sidebar-link'>
-                <i class="bi bi-graph-up-arrow"></i>
-                <span>Evaluation</span>
-            </a>
-        </li>
-
-        <li class="sidebar-item <?php if ($page == 'QR') {
-            echo 'active';
-        } ?>">
-            <a href="/admin/qr" class='sidebar-link'>
-                <i class="bi bi-qr-code"></i>
-                <span>QR</span>
+            <a href="/news" class='sidebar-link'>
+                <i class="bi bi-newspaper"></i>
+                <span>News</span>
             </a>
         </li>
 

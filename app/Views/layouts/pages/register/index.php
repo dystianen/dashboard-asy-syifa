@@ -45,46 +45,6 @@
                                 <?= $validation->getError('password') ?>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="phone_number" class="form-label">Phone Number <span style="color: red">*</span></label>
-                            <input name="phone_number" class="form-control <?= ($validation->hasError('phone_number') ? 'is-invalid' : '') ?>" placeholder="example: 08192839281" value="<?= old('phone_number') ?>">
-                            <div class="invalid-feedback">
-                                <?= $validation->getError('phone_number') ?>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="school_origin" class="form-label">School Origin <span style="color: red">*</span></label>
-                            <input name="school_origin" class="form-control <?= ($validation->hasError('school_origin') ? 'is-invalid' : '') ?>" placeholder="example: SMK TELKOM MALANG" value="<?= old('school_origin') ?>">
-                            <div class="invalid-feedback">
-                                <?= $validation->getError('school_origin') ?>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="internship_length" class="form-label">Internship Length <span style="color: red">*</span></label>
-                            <div class="input-group">
-                                <input name="internship_length" class="form-control <?= ($validation->hasError('internship_length') ? 'is-invalid' : '') ?>" placeholder="example: 3" value="<?= old('internship_length') ?>">
-                                <div class="input-group-append">
-                                    <span class="input-group-text" id="basic-addon2">Bln</span>
-                                </div>
-                            </div>
-                            <div class="invalid-feedback">
-                                <?= $validation->getError('internship_length') ?>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="date_of_birth" class="form-label">Date of Birth <span style="color: red">*</span></label>
-                            <input name="date_of_birth" class="form-control <?= ($validation->hasError('date_of_birth') ? 'is-invalid' : '') ?>" id="date_of_birth" type="date" value="<?= old('date_of_birth') ?>">
-                            <div class="invalid-feedback">
-                                <?= $validation->getError('date_of_birth') ?>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="position" class="form-label">Position <span style="color: red">*</span></label>
-                            <input name="position" class="form-control <?= ($validation->hasError('position') ? 'is-invalid' : '') ?>" id="position" value="<?= old('position') ?>" placeholder="example: Programmer">
-                            <div class="invalid-feedback">
-                                <?= $validation->getError('position') ?>
-                            </div>
-                        </div>
 
                         <div class="float-end pt-3">
                             <a type="button" class="btn btn-secondary" href="/login">Cancel</a>

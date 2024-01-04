@@ -8,30 +8,14 @@ class Users extends Migration
 {
     public function up()
     {
-        $forge = \Config\Database::forge();
         $this->forge->addField([
-            'userId' => [
+            'user_id' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
             'fullname' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true,
-            ],
-            'ID_PKL' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true,
-            ],
-            'date_of_birth' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true,
-            ],
-            'phone_number' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
                 'null' => true,
@@ -44,30 +28,6 @@ class Users extends Migration
             'password' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
-                'null' => true,
-            ],
-            'position' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true,
-            ],
-            'school_origin' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true,
-            ],
-            'internship_length' => [
-                'type' => 'INT',
-                'constraint' => 10,
-                'null' => true,
-            ],
-            'level' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true,
-            ],
-            'registration_at' => [
-                'type' => 'DATETIME',
                 'null' => true,
             ],
             'created_at' => [
@@ -85,7 +45,7 @@ class Users extends Migration
         ]);
 
         // Primary Key Table ID
-        $this->forge->addKey('userId', true);
+        $this->forge->addKey('user_id', true);
 
         // Create Table Users
         $this->forge->createTable('users');
@@ -94,7 +54,6 @@ class Users extends Migration
     public function down()
     {
         // Drop Table Users
-        $forge = \Config\Database::forge();
         $this->forge->dropTable('users');
     }
 }

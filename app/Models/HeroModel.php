@@ -4,25 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class HeroModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'users';
-    protected $primaryKey       = 'id';
+    protected $table            = 'heroes';
+    protected $primaryKey       = 'heroes_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [
-        "fullname",
-        "phone_number",
-        "level",
-        "email",
-        "password",
-        "created_at",
-        "updated_at",
-    ];
+    protected $allowedFields    = ["file_name", "file_type", "file_path"];
 
     // Dates
     protected $useTimestamps = false;
@@ -47,9 +39,4 @@ class UserModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-    public function findJobByUserId($id)
-    {
-        $jobDetailByUserId = $this->select('id')->where("user_id", $id)->findAll();
-        return $jobDetailByUserId;
-    }
 }

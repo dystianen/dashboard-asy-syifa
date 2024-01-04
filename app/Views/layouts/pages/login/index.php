@@ -18,7 +18,7 @@
         <div class="row h-100">
             <div class="col-lg-5 col-12" style="align-self: center">
                 <div id="auth-left">
-                    <h1><i class="bi bi-alarm" style="font-size: 40px;"></i> ABSENSI.</h1>
+                    <h1><i class="bi bi-alarm" style="font-size: 40px;"></i> Asy-Syifa'</h1>
 
                     <?php if (session()->getFlashData('failed')) : ?>
                         <div class="alert alert-danger" role="alert">

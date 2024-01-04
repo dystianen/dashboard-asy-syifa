@@ -37,82 +37,21 @@ $routes->post('/login/submit', 'SigninController::loginAuth');
 $routes->get('/register', 'SigninController::register');
 $routes->post('/register/submit', 'SigninController::registerSubmit');
 
-$routes->group('admin', ['filter' => 'authGuard'], function ($routes) {
-    /** EMPLOYEE **/
-    $routes->get('dashboard', 'HomeController::index');
-    $routes->get('employee', 'EmployeeController::index');
-    $routes->get('employee/form', 'EmployeeController::create');
-    $routes->post('employee/save', 'EmployeeController::save');
-    $routes->get('employee/edit/(:num)', 'EmployeeController::edit/$1');
-    $routes->post('employee/update/(:num)', 'EmployeeController::update/$1');
-    $routes->get('employee/detail/(:num)', 'EmployeeController::detail/$1');
-    $routes->delete('employee/delete/(:num)', 'EmployeeController::delete/$1');
+$routes->group('', ['filter' => 'authGuard'], function ($routes) {
+    /** -HEROES **/
+    $routes->get('hero', 'HeroController::index');
+    $routes->post('hero/save', 'HeroController::save');
+    $routes->delete('hero/delete/(:num)', 'HeroController::delete/$1');
 
-    /** JOBS **/
-    $routes->get('job', 'JobController::index');
-    $routes->get('job/form', 'JobController::form');
-    $routes->get('job/form/(:num)', 'JobController::form/$1');
-    $routes->post('job/save', 'JobController::save');
-    $routes->get('job/edit/(:num)', 'JobController::edit/$1');
-    $routes->post('job/update/(:num)', 'JobController::update/$1');
-    $routes->get('job/detail/(:num)', 'JobController::detail/$1');
-    $routes->delete('job/delete/(:num)', 'JobController::delete/$1');
+    /** GALLERIES **/
+    $routes->get('gallery', 'GalleryController::index');
+    $routes->post('gallery/save', 'GalleryController::save');
+    $routes->delete('gallery/delete/(:num)', 'GalleryController::delete/$1');
 
-    /** ATTENDANCE **/
-    $routes->get('attendance', 'AttendanceController::index');
-    $routes->post('attendance/(:num)/(:any)', 'AttendanceController::changeStatus/$1/$2');
-
-    /** Quick Response Code **/
-    $routes->get('qr', 'QRCodeController::index');
-    $routes->post('qr/save', 'QRCodeController::add_data');
-    $routes->post('qr/update/(:num)', 'QRCodeController::edit_data/$1');
-    $routes->delete('qr/delete/(:num)', 'QRCodeController::remove_data/$1');
-
-    /** CATEGORIES **/
-    $routes->get('category', 'CategoryController::index');
-    $routes->get('category/form', 'CategoryController::create');
-    $routes->post('category/save', 'CategoryController::save');
-    $routes->get('category/edit/(:num)', 'CategoryController::edit/$1');
-    $routes->post('category/update/(:num)', 'CategoryController::update/$1');
-    $routes->get('category/detail/(:num)', 'CategoryController::detail/$1');
-    $routes->delete('category/delete/(:num)', 'CategoryController::delete/$1');
-
-    /** PERFORMANCE **/
-    $routes->get('evaluation', 'EvaluationController::index');
-    $routes->get('evaluation/create', 'EvaluationController::create');
-    $routes->post('evaluation/create/submit', 'EvaluationController::createSave');
-    $routes->get('evaluation/edit/(:num)', 'EvaluationController::edit/$1');
-    $routes->post('evaluation/edit/submit/(:num)', 'EvaluationController::editSave/$1');
-    $routes->get('evaluation/detail/(:num)', 'EvaluationController::detail/$1');
-    $routes->delete('evaluation/delete/(:num)', 'EvaluationController::delete/$1');
-
-    /** EVALUATION **/
-    $routes->get('report', 'ReportController::index');
-    $routes->get('report/detail/(:num)', 'ReportController::detail/$1');
-    $routes->delete('report/delete/(:num)', 'ReportController::delete/$1');
-});
-
-$routes->group('user', ['filter' => 'authGuard'], function ($routes) {
-    $routes->get('/', 'UserController::index', ['filter' => 'authGuard']);
-    $routes->get('profile', 'UserController::profile', ['filter' => 'authGuard']);
-
-    /** ABSENT **/
-    $routes->get('absent', 'UserController::absent', ['filter' => 'authGuard']);
-    $routes->get('scan', 'AttendanceController::scanner', ['filter' => 'authGuard']);
-    $routes->post('scan/submit', 'AttendanceController::scannerSave', ['filter' => 'authGuard']);
-
-    /** PERMISSIONS **/
-    $routes->get('permission', 'AttendanceController::permission', ['filter' => 'authGuard']);
-    $routes->post('permission/submit', 'AttendanceController::permissionSave', ['filter' => 'authGuard']);
-
-    /** QR CODE **/
-    $routes->get('qrcode', 'AttendanceController::getQrCode', ['filter' => 'authGuard']);
-
-    /** REPORT TASK **/
-    $routes->get('report', 'UserController::report', ['filter' => 'authGuard']);
-    $routes->post('report/create/submit', 'ReportController::createSave', ['filter' => 'authGuard']);
-    $routes->get('task', 'UserController::task', ['filter' => 'authGuard']);
-    $routes->get('task/detail/(:num)', 'UserController::TaskDetail/$1', ['filter' => 'authGuard']);
+    /** NEWS **/
+    $routes->get('news', 'NewsController::index');
+    $routes->post('news/save', 'NewsController::save');
+    $routes->delete('news/delete/(:num)', 'NewsController::delete/$1');
 });
 
 /*

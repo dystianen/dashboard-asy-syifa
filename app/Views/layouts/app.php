@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Absensi Karyawan</title>
+    <title>Dashboard</title>
 
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/main/app.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/main/app-dark.css">
@@ -26,7 +26,7 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between flex-column align-items-center">
                         <div class="logo">
-                            <a><i class="bi bi-alarm"></i> <span style="font-size: 26px">Absensi.</span></a>
+                            <a><i class="bi bi-alarm"></i> <span style="font-size: 26px">Asy-Syifa'</span></a>
                         </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--system-uicons" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
