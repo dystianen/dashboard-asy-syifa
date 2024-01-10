@@ -18,7 +18,7 @@
         <div class="row h-100">
             <div class="col-lg-5 col-12" style="align-self: center">
                 <div id="auth-left">
-                    <h1><i class="bi bi-alarm" style="font-size: 40px;"></i> Asy-Syifa'</h1>
+                    <h1>Asy-Syifa'</h1>
 
                     <?php if (session()->getFlashData('failed')) : ?>
                         <div class="alert alert-danger" role="alert">
@@ -50,10 +50,6 @@
                         <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
                         </button>
                     </form>
-                    <div class="text-center mt-5 text-lg fs-4">
-                        <p class="text-gray-600">Don't have an account? <a href="/register" class="font-bold">Sign
-                                up</a>.</p>
-                    </div>
                 </div>
             </div>
             <div class="col-lg-7 d-none d-lg-block h-100">
