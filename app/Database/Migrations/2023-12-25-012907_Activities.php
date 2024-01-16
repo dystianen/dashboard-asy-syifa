@@ -9,7 +9,7 @@ class News extends Migration
     public function up()
     {
         $this->forge->addField([
-            'news_id' => [
+            'activities_id' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
@@ -34,14 +34,14 @@ class News extends Migration
         ]);
 
         // Primary Key Table ID
-        $this->forge->addKey('news_id', true);
+        $this->forge->addKey('activities_id', true);
 
         // Create Table Categories
-        $this->forge->createTable('news');
+        $this->forge->createTable('activities');
     }
 
     public function down()
     {
-        $this->forge->dropTable('news');
+        $this->forge->dropTable('activities');
     }
 }

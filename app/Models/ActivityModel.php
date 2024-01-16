@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class NewsModel extends Model
+class ActivityModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'news';
+    protected $table            = 'activities';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

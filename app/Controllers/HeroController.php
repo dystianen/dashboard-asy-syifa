@@ -4,11 +4,15 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\HeroModel;
-use Config\Services;
+use Aws\S3\Exception\S3Exception;
+use CodeIgniter\API\ResponseTrait;
+use CodeIgniter\Files\File;
 use function mkdir;
+use Aws\S3\S3Client;
 
 class HeroController extends BaseController
 {
+    use ResponseTrait;
     protected $heroModel;
     protected $session;
     public function __construct()
@@ -28,29 +32,20 @@ class HeroController extends BaseController
         return view('layouts/pages/hero/index', $data);
     }
 
-    public function save()
+    public function ListHeroApi()
     {
-        foreach ($this->request->getFileMultiple("file") as $file) {
-            if ($file->isValid()) {
-                $destinationFolder = ROOTPATH . 'public/assets/media/heroes';
+        $heroes = $this->heroModel->findAll();
+        $response = [
+            'statusCode' => 200,
+            'data' => $heroes,
+        ];
 
-                if (!is_dir($destinationFolder)) {
-                    mkdir($destinationFolder, 0777, true);
-                }
-                $file_name = $file->getClientName();
-                $file->move($destinationFolder, $file_name);
+        return $this->respond($response);
+    }
 
-                $data = [
-                    "file_name" => $file_name,
-                    "file_type" => $file->getClientMimeType(),
-                    "file_path" => 'assets/media/heroes/' . $file_name,
-                ];
-                $this->heroModel->insert($data);
-            }
-        }
-
-        session()->setFlashdata('success_hero', 'Upload images is successfully!');
-        return redirect()->to(site_url('/hero'));
+    public function uploadHero()
+    {
+        return $this->upload($this->heroModel, "hero");
     }
 
     public function delete($id)

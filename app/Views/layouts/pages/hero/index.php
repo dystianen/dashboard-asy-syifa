@@ -43,7 +43,7 @@
                                 <td><?= $i++ ?></td>
                                 <td><?= $hero["file_name"] ?></td>
                                 <td><?= $hero["file_type"] ?></td>
-                                <td><img src="<?= base_url($hero['file_path']) ?>" width="50" height="50" style="object-fit: contain;" /></td>
+                                <td><img src="<?= $hero['file_path'] ?>" width="50" height="50" style="object-fit: contain;" /></td>
                                 <td>
                                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $hero['heroes_id'] ?>">
                                         <i class="bi bi-trash-fill"></i>

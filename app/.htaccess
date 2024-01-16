@@ -36,6 +36,11 @@ Options -Indexes
 	# Ensure Authorization header is passed along
 	RewriteCond %{HTTP:Authorization} .
 	RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+	Header add Access-Control-Allow-Origin: "http://localhost:3000/"
+	Header add Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
+	Header add Access-Control-Allow-Headers: "origin, x-api-key, x-requested-with, content-type, accept, access-control-request-method, access-control-allow-headers, authorization, observe, enctype, content-length, x-csrf-token"
+	Header add Access-Control-Allow-Credentials true
 </IfModule>
 
 <IfModule !mod_rewrite.c>

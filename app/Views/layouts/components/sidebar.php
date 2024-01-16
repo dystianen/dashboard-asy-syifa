@@ -20,9 +20,9 @@
         <li class="sidebar-item <?php if ($page == 'news') {
             echo 'active';
         } ?>">
-            <a href="/news" class='sidebar-link'>
+            <a href="/activity" class='sidebar-link'>
                 <i class="bi bi-newspaper"></i>
-                <span>News</span>
+                <span>Activity</span>
             </a>
         </li>
 

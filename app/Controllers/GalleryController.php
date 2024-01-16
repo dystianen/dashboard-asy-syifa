@@ -27,29 +27,19 @@ class GalleryController extends BaseController
         return view('layouts/pages/gallery/index', $data);
     }
 
-    public function save()
+    public function ListGalleryApi()
     {
-        foreach ($this->request->getFileMultiple("file") as $file) {
-            if ($file->isValid()) {
-                $destinationFolder = ROOTPATH . 'public/assets/media/galleries';
+        $galleries = $this->galleryModel->findAll();
+        $data = [
+            "status" => 200,
+            "data" => $galleries,
+        ];
+        return $this->response->setJSON($data);
+    }
 
-                if (!is_dir($destinationFolder)) {
-                    mkdir($destinationFolder, 0777, true);
-                }
-                $file_name = $file->getClientName();
-                $file->move($destinationFolder, $file_name);
-
-                $data = [
-                    "file_name" => $file_name,
-                    "file_type" => $file->getClientMimeType(),
-                    "file_path" => 'assets/media/galleries/' . $file_name,
-                ];
-                $this->galleryModel->insert($data);
-            }
-        }
-
-        session()->setFlashdata('success_gallery', 'Upload images is successfully!');
-        return redirect()->to(site_url('/gallery'));
+    public function uploadGallery()
+    {
+        return $this->upload($this->galleryModel, "gallery");
     }
 
     public function delete($id)

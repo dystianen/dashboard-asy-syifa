@@ -37,21 +37,29 @@ $routes->post('/login/submit', 'SigninController::loginAuth');
 $routes->get('/register', 'SigninController::register');
 $routes->post('/register/submit', 'SigninController::registerSubmit');
 
+$routes->group("api", function ($routes) {
+    $routes->post("login", "SigninController::LoginApi");
+    $routes->get("hero", "HeroController::ListHeroApi");
+    $routes->get("gallery", "GalleryController::ListGalleryApi");
+    $routes->get("activity", "ActivityController::ListActivityApi");
+});
+
 $routes->group('', ['filter' => 'authGuard'], function ($routes) {
     /** -HEROES **/
     $routes->get('hero', 'HeroController::index');
-    $routes->post('hero/save', 'HeroController::save');
+    $routes->post('hero/save', 'HeroController::uploadHero');
     $routes->delete('hero/delete/(:num)', 'HeroController::delete/$1');
 
     /** GALLERIES **/
     $routes->get('gallery', 'GalleryController::index');
-    $routes->post('gallery/save', 'GalleryController::save');
+    $routes->get('api/gallery', 'GalleryController:ListGallery');
+    $routes->post('gallery/save', 'GalleryController::uploadGallery');
     $routes->delete('gallery/delete/(:num)', 'GalleryController::delete/$1');
 
     /** NEWS **/
-    $routes->get('news', 'NewsController::index');
-    $routes->post('news/save', 'NewsController::save');
-    $routes->delete('news/delete/(:num)', 'NewsController::delete/$1');
+    $routes->get('activity', 'ActivityController::index');
+    $routes->post('activity/save', 'ActivityController::uploadActivity');
+    $routes->delete('activity/delete/(:num)', 'ActivityController::delete/$1');
 });
 
 /*

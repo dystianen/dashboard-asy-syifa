@@ -43,7 +43,7 @@
                 <td><?= $i++ ?></td>
                 <td><?= $gallery["file_name"] ?></td>
                 <td><?= $gallery["file_type"] ?></td>
-                <td><img src="<?= base_url($gallery['file_path']) ?>" width="50" height="50" style="object-fit: contain;" /></td>
+                <td><img src="<?= $gallery['file_path'] ?>" width="50" height="50" style="object-fit: contain;" /></td>
                 <td>
                   <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $gallery['galleries_id'] ?>">
                     <i class="bi bi-trash-fill"></i>
