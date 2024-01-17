@@ -39,7 +39,7 @@
                             <th>No.</th>
                             <th>Title</th>
                             <th>File Name</th>
-                            <th>File Type</th>
+                            <th>File Path</th>
                             <th>Image</th>
                             <th>Action</th>
                         </tr>
@@ -52,7 +52,7 @@
                                 <td><?= $i++ ?></td>
                                 <td><?= $n["title"] ?></td>
                                 <td><?= $n["file_name"] ?></td>
-                                <td><?= $n["file_type"] ?></td>
+                                <td><?= $n["file_path"] ?></td>
                                 <td><img src="<?= $n['file_path'] ?>" width="50" height="50" style="object-fit: contain;" /></td>
                                 <td>
                                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $n['activities_id'] ?>">
