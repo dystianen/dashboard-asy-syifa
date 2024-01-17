@@ -17,7 +17,7 @@
                 <span>Gallery</span>
             </a>
         </li>
-        <li class="sidebar-item <?php if ($page == 'news') {
+        <li class="sidebar-item <?php if ($page == 'activity') {
             echo 'active';
         } ?>">
             <a href="/activity" class='sidebar-link'>
